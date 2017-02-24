@@ -30,7 +30,7 @@
     "url": "https://github.com/strongloop/loopback-example-angular"
   },
   "engines": {
-    "node": "^4.0.0"
+    "node": "^6.0.0"
   },
   "license": "MIT"
 }
