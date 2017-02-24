@@ -1,0 +1,28 @@
+<div class="page-height-o row-equal align-middle" data-ng-controller="sessionCtrl">
+  <div class="column">
+    <div class="card no-border bg-white text-center">
+      <div class="card-block">
+        <div class="text-center">
+          <div class="lockscreen-avatar">
+            <img data-ng-src="images/man.png" alt="" class="avatar avatar-lg img-circle">
+          </div>
+          <span class="center-block m-t">Welcome back, {{user.fname}} {{user.lname}}</span>
+          <small>Please enter your lock code</small>
+        </div>
+        <div class="center-block lockcode">
+          <form role="form">
+            <div class="input-group m-y">
+              <input type="password" class="form-control lock-input" id="password" placeholder="enter lock code">
+              <span class="input-group-btn">
+                <button class="btn btn-danger" type="submit" data-ng-click="submit()">
+                  <i class="icon-lock"></i>
+                    Unlock
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

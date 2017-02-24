@@ -1,0 +1,16 @@
+<div class="page-title">
+  <div class="title" translate="menu.EDITORS"></div>
+  <div class="sub-title">WYSIWYG Editors</div>
+</div>
+<div data-ng-controller="editorCtrl">
+
+  <h5>textAngular</h5>
+  <div text-angular ng-model="htmlContent" name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around"></div>
+
+  <h5>Summernote</h5>
+  <div summernote ng-model="text"></div>
+  <div class="m-b clearfix"></div>
+
+  <h5>Bootstrap WYSIWYG</h5>
+  <textarea class="bootstrap-wysiwyg" placeholder="Enter text ..." ui-jq="wysihtml5" ui-options="opt1"></textarea>
+</div>

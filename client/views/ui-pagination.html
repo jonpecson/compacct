@@ -1,0 +1,34 @@
+<div class="page-title">
+  <div class="title" translate="menu.PAGINATION"></div>
+  <div class="sub-title">Pagination UI component</div>
+</div>
+<div ng-controller="PaginationDemoCtrl">
+  <div class="card bg-white">
+    <div class="card-header">Pagination variants</div>
+    <div class="card-block">
+      <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-lg"></uib-pagination>
+      <br/>
+      <uib-pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+      <br/>
+      <uib-pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm"></uib-pagination>
+      <br/>
+      <uib-pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages" class="pagination-sm"></uib-pagination>
+      <br/>
+      <pre>The selected page no: {{currentPage}}</pre>
+      <button class="btn btn-info" ng-click="setPage(3)">Set current page to: 3</button>
+    </div>
+  </div>
+  <div class="card bg-white">
+    <div class="card-header">Limit the maximum visible buttons</div>
+    <div class="card-block">
+      <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" boundary-links="true"></uib-pagination>
+      <br/>
+      <uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages"></uib-pagination>
+      <br/>
+      <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
+      <br/>
+      <p>Pagers</p>
+      <uib-pager total-items="bigTotalItems" ng-model="bigCurrentPage"></uib-pager>
+    </div>
+  </div>
+</div>

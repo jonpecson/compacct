@@ -1,0 +1,42 @@
+<div data-ng-controller="galleryCtrl">
+  <div class="m-b clearfix">
+    <button type="button" class="btn btn-default" ng-click="addSlide()"><i class="icon-folder m-r"></i>Add a project</button>
+    <div class="pull-right">
+      <div class="btn-group" uib-dropdown>
+        <button type="button" class="btn btn-default uib-dropdown-toggle" uib-dropdown-toggle>Filter
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+          <li>
+            <a href="javascript:;">Completed</a>
+          </li>
+          <li>
+            <a href="javascript:;">Pending</a>
+          </li>
+          <li>
+            <a href="javascript:;">Rejected</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-default">
+          <i class="icon-arrow-left"></i>
+        </button>
+        <button type="button" class="btn btn-default">
+          <i class="icon-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-columns four">
+    <div class="card m-t m-b-0 bg-white" data-ng-repeat="project in projects">
+      <img class="card-img-top img-responsive" data-ng-src="{{project.image}}" alt="Project {{$index}}">
+      <div class="card-block">
+        <div class="pull-right">Dec 25, 2015</div>
+        <div>Project {{project.text}}</div>
+      </div>
+    </div>
+  </div>
+</div>

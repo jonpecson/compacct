@@ -1,0 +1,9 @@
+<!-- preloader -->
+<preloader class="preloader ng-hide"></preloader>
+<!-- /preloader -->
+
+<div class="{{$state.current.data.contentClasses}}" ui-view></div>
+
+<!-- bottom footer -->
+<footer class="session-footer" data-ng-include="'views/common/footer.html'" data-ng-if="!$state.current.data.noFooter"></footer>
+<!-- /bottom footer -->

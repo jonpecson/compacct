@@ -1,0 +1,26 @@
+<div data-ng-controller="galleryCtrl">
+  <div class="m-b clearfix">
+    <button type="button" class="btn btn-default"><i class="icon-picture m-r"></i>New Album</button>
+    <div class="pull-right">
+      <button type="button" class="btn btn-default">
+        <i class="icon-settings"></i>
+      </button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default">
+          <i class="icon-arrow-left"></i>
+        </button>
+        <button type="button" class="btn btn-default">
+          <i class="icon-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row gallery chocolat-parent" data-chocolat-title="Reactor Gallery" ui-jq="Chocolat" ui-options="{loop: true, imageSize: 'cover', overlayOpacity : 1.0, duration: 150}">
+    <div class="col-md-3 col-sm-4 col-xs-6" data-ng-repeat="id in ran">
+      <a href="http://lorempixel.com/1920/1080?{{id}}" class="chocolat-image" title="App Gallery" title="caption image {{id}}">
+        <img data-ng-src="http://lorempixel.com/600/500?{{id}}" alt="">
+      </a>
+    </div>
+  </div>
+</div>

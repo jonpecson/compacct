@@ -1,0 +1,39 @@
+<div data-ng-controller="sessionCtrl">
+  <uib-carousel interval="myInterval" active="active" class="session-carousel">
+    <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" style="background-image:url({{slide.image}});background-size:cover;background-repeat: no-repeat;background-position: 50% 50%;">
+    </uib-slide>
+  </uib-carousel>
+  <div class="card bg-white no-border">
+    <div class="card-block">
+      <form role="form" class="form-layout" action="/">
+        <div class="text-center m-b">
+          <h4 class="text-uppercase">Welcome back</h4>
+          <p>Please sign in to your account</p>
+        </div>
+        <div class="form-inputs p-b">
+          <label class="text-uppercase">Your email address</label>
+          <input type="email" class="form-control input-lg" placeholder="Email Address" required>
+          <label class="text-uppercase">Password</label>
+          <input type="password" class="form-control input-lg" placeholder="Password" required>
+          <a ui-sref="user.forgot">Forgotten password?</a>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-lg m-b" type="submit">Login</button>
+
+        <div class="divider">
+          <span>OR</span>
+        </div>
+
+        <a class="btn btn-block no-bg btn-lg m-b" type="submit" ui-sref="user.signup_2">Signup</a>
+
+        <p class="text-center"><small><em>By clicking Log in you agree to our <a href="#">terms and conditions</a></em></small></p>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="push"></div>
+<script id="uib/template/carousel/carousel.html" type="text/ng-template">
+  <div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+    <div class="carousel-inner" ng-transclude></div>
+  </div>
+</script>

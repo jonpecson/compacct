@@ -1,0 +1,18 @@
+<div class="page-title">
+  <div class="title" translate="menu.FLOT"></div>
+  <div class="sub-title">Flot chart plugin</div>
+</div>
+<div data-ng-controller="FlotCtrl">
+  <div class="row">
+    <div class="{{option.colsize}}" ng-repeat='option in options' easypiesize>
+      <div class="card bg-white">
+        <div class="card-header">
+          {{option.label}}
+        </div>
+        <div class="card-block text-center">
+          <flot dataset="option.data" options="option.options" class="chart" height="320"></flot>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

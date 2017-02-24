@@ -1,0 +1,26 @@
+<div class="page-title">
+  <div class="title" translate="menu.SKINS"></div>
+  <div class="sub-title">UI Skins palette</div>
+</div>
+
+<div class="card bg-white" ng-controller="colorsCtrl">
+  <div class="card-header">
+    Sample skin colors
+  </div>
+  <div class="card-block">
+    <div class="header-brands color-brands">
+      <div>
+        <div class="text-capitalize title">Default</div>
+        <div class="header-brand color-brand bg-primary" ng-click="app.layout.sidebarTheme=''"></div>
+      </div>
+      <div>
+        <div class="text-capitalize title">Dark</div>
+        <div class="header-brand color-brand bg-dark" ng-click="app.layout.sidebarTheme='header-dark'"></div>
+      </div>
+      <div ng-repeat='brand in material'>
+        <div class="text-capitalize title">{{brand}}</div>
+        <div class="header-brand color-brand bg-{{brand}}" ng-click="app.layout.sidebarTheme='header-{{brand}}'"></div>
+      </div>
+    </div>
+  </div>
+</div>

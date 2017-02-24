@@ -1,0 +1,18 @@
+<div class="page-title">
+  <div class="title" translate="menu.N3"></div>
+  <div class="sub-title">{{$state.current.data.title}}</div>
+</div>
+<div data-ng-controller="n3Ctrl">
+  <div class="card bg-white m-b-0 m-t" ng-repeat='example in examples'>
+    <div class="card-header">
+      {{example.label}}
+    </div>
+    <div class="card-block">
+      <linechart data='example.data' options='example.options' height="500"></linechart>
+    </div>
+  </div>
+</div>
+
+
+
+

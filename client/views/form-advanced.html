@@ -1,0 +1,451 @@
+<div class="page-title">
+  <div class="title" translate="menu.PLUGINS"></div>
+  <div class="sub-title">Customized form elements</div>
+</div>
+<div data-ng-controller="advancedFormCtrl">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Custom radio inputs & checkboxes
+        </div>
+        <div class="card-block" ui-jq="checkBo">
+          <div class="row">
+            <div class="col-sm-4">
+              <p>Checkboxes</p>
+              <label class="cb-checkbox cb-sm">
+                <input type="checkbox" name="default-checkbox-name"/>Default
+              </label>
+              <br/>
+              <label class="cb-checkbox">
+                <input type="checkbox" disabled="disabled" name="disabled-checkbox-name" value="disabled-checkbox-val" />Disabled
+              </label>
+              <br/>
+              <label class="cb-checkbox cb-md">
+                <input type="checkbox" checked="checked" name="checked-checkbox-name" value="checked-checkbox-val" />Checked
+              </label>
+              <br/>
+              <label class="cb-checkbox cb-lg">
+                <input type="checkbox" name="default-checkbox-name" value="default-checkbox-val" />Default
+              </label>
+            </div>
+            <div class="col-sm-4">
+              <p>Radio inputs</p>
+              <label class="cb-radio cb-sm">
+                <input type="radio" name="default-radio-name" value="default-radio-val" />Default Radio
+              </label>
+              <br/>
+              <label class="cb-radio">
+                <input type="radio" disabled="disabled" name="disabled-radio-name" value="disabled-radio-val" />Disabled
+              </label>
+              <br/>
+              <label class="cb-radio cb-md">
+                <input type="radio" checked="checked" name="checked-radio-name" value="checked-radio-val" />Checked
+              </label>
+              <br/>
+              <label class="cb-radio cb-lg">
+                <input type="radio" name="default-radio-name" value="default-radio-val" />Default
+              </label>
+            </div>
+            <div class="col-sm-4">
+              <p>Radio group</p>
+              <label class="cb-radio">
+                <input type="radio" name="radio-group-name" value="Radio-First-val" />Group A - First
+              </label>
+              <br/>
+              <label class="cb-radio">
+                <input type="radio" name="radio-group-name" value="Radio-Second-val" />Group A - Second
+              </label>
+              <br/>
+              <label class="cb-radio">
+                <input type="radio" name="radio-group-name" value="Radio-Third-val" />Group A - Third
+              </label>
+              <br/>
+              <label class="cb-radio">
+                <input type="radio" name="radio-group-name" value="Radio-Fourth-val" />Group A - Fourth
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Chosen Select
+        </div>
+        <div class="card-block">
+          <div class="m-b">
+            <select data-placeholder="Your Favorite Football Team" class="chosen" chosen style="width: 100%;" ng-model="singleSelect" ng-options="opt.name for opt in bears">
+            </select>
+          </div>
+          <div class="">
+            <p>Multiple Select</p>
+            <select data-placeholder="Your Favorite Types of Bear" multiple class="chosen" chosen style="width: 100%;" ng-model="multipleSelect" ng-options="opt.name for opt in bears">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Selects
+        </div>
+        <div class="card-block">
+          <button class="btn btn-default btn-xs" ng-click="enable()">Enable ui-select</button>
+          <button class="btn btn-default btn-xs" ng-click="disable()">Disable ui-select</button>
+          <button class="btn btn-default btn-xs" ng-click="clear()">Clear ng-model</button>
+          
+          <p class="m-t-1">
+            Bootstrap theme
+          </p>
+          <fieldset class="form-group">
+            <label class="block">
+              Selected: {{ bootstrap.selected }}
+            </label>
+            <ui-select ng-model="bootstrap.selected" theme="bootstrap" ng-disabled="disabled" reset-search-input="false" style="max-width: 370px;">
+              <ui-select-match placeholder="Enter an person's name...">
+                {{ $select.selected.name }}
+              </ui-select-match>
+              <ui-select-choices repeat="person in people | filter: $select.search">
+                <div ng-bind-html="person.name | highlight: $select.search">
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </fieldset>
+          <p class="m-t-1">
+            Select2 theme
+          </p>
+          <fieldset class="form-group">
+            <label class="block">
+              Selected: {{ person.selected }}
+            </label>
+            <ui-select ng-model="person.selected" theme="select2" ng-disabled="disabled" style="max-width: 370px; width: 100%;">
+              <ui-select-match placeholder="Select a person in the list or search his name/age...">
+                {{ $select.selected.name }}
+              </ui-select-match>
+              <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+                <div ng-bind-html="person.name | highlight: $select.search">
+                </div>
+                <small>
+                  email: {{ person.email }}
+                  age:
+                  <span ng-bind-html="''+person.age | highlight: $select.search">
+                  </span>
+                </small>
+              </ui-select-choices>
+            </ui-select>
+          </fieldset>
+          <p class="m-t-1">
+            Selectize theme
+          </p>
+          <fieldset class="form-group">
+            <label class="block">
+              Selected: {{ country.selected }}
+            </label>
+            <ui-select ng-model="country.selected" theme="selectize" ng-disabled="disabled" style="max-width: 370px;">
+              <ui-select-match placeholder="Select or search a country in the list...">
+                {{ $select.selected.name }}
+              </ui-select-match>
+              <ui-select-choices repeat="country in countries | filter: $select.search">
+                <span ng-bind-html="country.name | highlight: $select.search">
+                </span>
+                <small ng-bind-html="country.code | highlight: $select.search">
+                </small>
+              </ui-select-choices>
+            </ui-select>
+          </fieldset>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          International telephone number input
+        </div>
+        <div class="card-block">
+          <input type="tel" class="form-control telephone-input" ui-jq="intlTelInput">
+        </div>
+      </div>
+      <div class="card bg-white">
+        <div class="card-header">
+          Multiselect
+        </div>
+        <div class="card-block">
+          <select multiple id="pre-selected-options" class="multiselect center-block" name="pre-selected-options[]" ui-jq="multiSelect">
+            <option value="elem_1" selected>elem 1</option>
+            <option value="elem_2">elem 2</option>
+            <option value="elem_3">elem 3</option>
+            <option value="elem_4" selected>elem 4</option>
+            <option value="elem_5">elem 5</option>
+            <option value="elem_6">elem 6</option>
+            <option value="elem_7">elem 7</option>
+            <option value="elem_8">elem 8</option>
+            <option value="elem_9">elem 9</option>
+            <option value="elem_10">elem 10</option>
+            <option value="elem_11">elem 11</option>
+            <option value="elem_12">elem 12</option>
+            <option value="elem_13">elem 13</option>
+            <option value="elem_14">elem 14</option>
+            <option value="elem_15">elem 15</option>
+            <option value="elem_16">elem 16</option>
+            <option value="elem_17">elem 17</option>
+            <option value="elem_18">elem 18</option>
+            <option value="elem_19">elem 19</option>
+            <option value="elem_20">elem 20</option>
+            <option value="elem_21">elem 21</option>
+            <option value="elem_22">elem 22</option>
+            <option value="elem_23">elem 23</option>
+            <option value="elem_24">elem 24</option>
+            <option value="elem_25">elem 25</option>
+            <option value="elem_26">elem 26</option>
+            <option value="elem_27">elem 27</option>
+            <option value="elem_28">elem 28</option>
+            <option value="elem_29">elem 29</option>
+            <option value="elem_30">elem 30</option>
+            <option value="elem_31">elem 31</option>
+            <option value="elem_32">elem 32</option>
+            <option value="elem_33">elem 33</option>
+            <option value="elem_34">elem 34</option>
+            <option value="elem_35">elem 35</option>
+            <option value="elem_36">elem 36</option>
+            <option value="elem_37">elem 37</option>
+            <option value="elem_38">elem 38</option>
+            <option value="elem_39">elem 39</option>
+            <option value="elem_40">elem 40</option>
+            <option value="elem_41">elem 41</option>
+            <option value="elem_42">elem 42</option>
+            <option value="elem_43">elem 43</option>
+            <option value="elem_44">elem 44</option>
+            <option value="elem_45">elem 45</option>
+            <option value="elem_46">elem 46</option>
+            <option value="elem_47">elem 47</option>
+            <option value="elem_48">elem 48</option>
+            <option value="elem_49">elem 49</option>
+            <option value="elem_50">elem 50</option>
+            <option value="elem_51">elem 51</option>
+            <option value="elem_52">elem 52</option>
+            <option value="elem_53">elem 53</option>
+            <option value="elem_54">elem 54</option>
+            <option value="elem_55">elem 55</option>
+            <option value="elem_56">elem 56</option>
+            <option value="elem_57">elem 57</option>
+            <option value="elem_58">elem 58</option>
+            <option value="elem_59">elem 59</option>
+            <option value="elem_60">elem 60</option>
+            <option value="elem_61">elem 61</option>
+            <option value="elem_62">elem 62</option>
+            <option value="elem_63">elem 63</option>
+            <option value="elem_64">elem 64</option>
+            <option value="elem_65">elem 65</option>
+            <option value="elem_66">elem 66</option>
+            <option value="elem_67">elem 67</option>
+            <option value="elem_68">elem 68</option>
+            <option value="elem_69">elem 69</option>
+            <option value="elem_70">elem 70</option>
+            <option value="elem_71">elem 71</option>
+            <option value="elem_72">elem 72</option>
+            <option value="elem_73">elem 73</option>
+            <option value="elem_74">elem 74</option>
+            <option value="elem_75">elem 75</option>
+            <option value="elem_76">elem 76</option>
+            <option value="elem_77">elem 77</option>
+            <option value="elem_78">elem 78</option>
+            <option value="elem_79">elem 79</option>
+            <option value="elem_80">elem 80</option>
+            <option value="elem_81">elem 81</option>
+            <option value="elem_82">elem 82</option>
+            <option value="elem_83">elem 83</option>
+            <option value="elem_84">elem 84</option>
+            <option value="elem_85">elem 85</option>
+            <option value="elem_86">elem 86</option>
+            <option value="elem_87">elem 87</option>
+            <option value="elem_88">elem 88</option>
+            <option value="elem_89">elem 89</option>
+            <option value="elem_90">elem 90</option>
+            <option value="elem_91">elem 91</option>
+            <option value="elem_92">elem 92</option>
+            <option value="elem_93">elem 93</option>
+            <option value="elem_94">elem 94</option>
+            <option value="elem_95">elem 95</option>
+            <option value="elem_96">elem 96</option>
+            <option value="elem_97">elem 97</option>
+            <option value="elem_98">elem 98</option>
+            <option value="elem_99">elem 99</option>
+            <option value="elem_100">elem 100</option>
+          </select>
+          <p class="text-center">Optgroup</p>
+          <select id="optgroup" class="center-block" multiple="multiple" ui-jq="multiSelect" ui-options="{selectableOptgroup: true}">
+            <optgroup label='Friends'>
+              <option value='1'>Yoda</option>
+              <option value='2' selected>Obiwan</option>
+            </optgroup>
+            <optgroup label='Enemies'>
+              <option value='3'>Palpatine</option>
+              <option value='4' disabled>Darth Vader</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Time pickers
+        </div>
+        <div class="card-block">
+          <div class="input-group">
+            <input type="text" class="form-control time-picker" ui-jq="timepicker" />
+            <span class="input-group-addon add-on">
+            <i class="fa fa-clock-o"></i>
+            </span>
+          </div>
+          <br/>
+          <p>Pick time from a clock</p>
+          <div class="input-group input-group-lg clockpicker w200" ui-jq="clockpicker" ui-options="clockOpt">
+            <input type="text" class="form-control" value="10:10">
+            <span class="input-group-addon">
+            <span class="fa fa-clock-o"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Bootstrap typeahead
+        </div>
+        <div class="card-block">
+          <p>Bloodhound (Suggestion Engine)</p>
+          <div id="bloodhound" class="m-b">
+            <input class="typeahead form-control" type="text" placeholder="States of USA" ui-jq="typeahead" ui-options="{
+            hint: true,
+            highlight: true,
+            minLength: 1
+            },
+            {
+            name: 'states',
+            source: states
+            }">
+          </div>
+          <p>Remote source</p>
+          <div id="bloodhound">
+            <input class="typeahead form-control" type="text" placeholder="Oscar winners for Best Picture" ui-jq="typeahead" ui-options="null, {
+            name: 'best-pictures',
+            display: 'value',
+            source: bestPictures
+            }">
+          </div>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Maxlength
+        </div>
+        <div class="card-block">
+          <p>Threshold 20</p>
+          <input type="text" class="form-control m-b" maxlength="20" ui-jq="maxlength" ui-options="{threshold: 20}">
+          <p>Configurable options</p>
+          <input type="text" class="form-control" maxlength="10" ui-jq="maxlength" ui-options="{
+          alwaysShow: true,
+          threshold: 10,
+          warningClass: 'label label-info',
+          limitReachedClass: 'label label-warning',
+          placement: 'top',
+          preText: 'used ',
+          separator: ' of ',
+          postText: ' chars.'}">
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Labelauty
+        </div>
+        <div class="card-block">
+          <div class="row">
+            <div class="col-xs-6">
+              <p>Labeled Check Boxes</p>
+              <div>
+                <input class="to-labelauty" type="checkbox" data-labelauty="Don't synchronize files|Synchronize my files" checked ui-jq="labelauty" ui-options="{class: 'labelauty btn-block'}"/>
+              </div>
+              <div>
+                <input class="to-labelauty" type="checkbox" data-labelauty="I don't accept terms|I read and accept terms" ui-jq="labelauty" ui-options="{class: 'labelauty btn-block'}"/>
+              </div>
+              <div>
+                <input class="to-labelauty" type="checkbox" data-labelauty="Oops, I am disabled!" disabled ui-jq="labelauty" ui-options="{class: 'labelauty btn-block'}"/>
+              </div>
+              <p>Non-labeled Check Boxes</p>
+              <p>
+              <input class="to-labelauty-icon" type="checkbox" checked ui-jq="labelauty" ui-options="{label: false}"/>
+              <input class="to-labelauty-icon" type="checkbox" ui-jq="labelauty" ui-options="{label: false}"/>
+              <input class="to-labelauty-icon" type="checkbox" disabled checked ui-jq="labelauty" ui-options="{label: false}"/>
+              <input class="to-labelauty-icon" type="checkbox" disabled ui-jq="labelauty" ui-options="{label: false}"/>
+              </p>
+            </div>
+            <div class="col-xs-6">
+              <p>Labeled Radio Buttons</p>
+              <div>
+                <input class="to-labelauty" type="radio" name="rd1" data-labelauty="Don't synchronize all files|Synchronize all files" checked ui-jq="labelauty" ui-options="{class: 'labelauty btn-block'}"/>
+              </div>
+              <div>
+                <input class="to-labelauty" type="radio" name="rd1" data-labelauty="I will not choose files|I will choose files to synch" ui-jq="labelauty" ui-options="{class: 'labelauty btn-block'}"/>
+              </div>
+              <div>
+                <input class="to-labelauty" type="radio" name="rd2" data-labelauty="Oops, I am disabled too!" disabled ui-jq="labelauty" ui-options="{class: 'labelauty btn-block'}"/>
+              </div>
+              <p>Non-labeled Radio Buttons</p>
+              <p>
+              <input class="to-labelauty-icon" type="radio" name="rd2" checked ui-jq="labelauty" ui-options="{label: false}"/>
+              <input class="to-labelauty-icon" type="radio" name="rd2" ui-jq="labelauty" ui-options="{label: false}"/>
+              <input class="to-labelauty-icon" type="radio" name="rd3" disabled checked ui-jq="labelauty" ui-options="{label: false}"/>
+              <input class="to-labelauty-icon" type="radio" name="rd3" disabled ui-jq="labelauty" ui-options="{label: false}"/>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Spinner
+        </div>
+        <div class="card-block">
+          <div class="input-group m-b">
+            <input type="text" value="" class="form-control bl0 br0" ui-jq="TouchSpin" ui-options="{initval: 0,buttondown_class: 'btn btn-primary',buttonup_class: 'btn btn-primary'}">
+          </div>
+          <div class="input-group">
+            <input type="text" value="" class="form-control bl0 br0" ui-jq="TouchSpin" ui-options="{initval: 0,buttondown_class: 'btn btn-default',buttonup_class: 'btn btn-default'}">
+          </div>
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Input Tags
+        </div>
+        <div class="card-block">
+          <input id="tags" type="text" value="Amsterdam,Washington,Sydney" ui-jq="tagsInput" />
+        </div>
+      </div>
+      <div class="card bg-white m-b">
+        <div class="card-header">
+          Color picker
+        </div>
+        <div class="card-block">
+          <input type="text" class="form-control color-picker" value="#5367ce" ui-jq="colorpicker" />
+          <br/>
+          <div class="input-group color-picker2 w200" ui-jq="colorpicker" ui-options="colorpickerOpt">
+            <input type="text" value="#00AABB" class="form-control" />
+            <span class="input-group-addon no-bg"><i></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-white">
+        <div class="card-header">
+          Date Pickers
+        </div>
+        <div class="card-block">
+          <div class="input-prepend input-group m-b">
+            <span class="add-on input-group-addon"><i class="icon-calendar"></i></span>
+            <input type="text" name="reservation" class="form-control" ui-jq="daterangepicker" ui-options="{ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY h:mm A' } }" value="01/01/2015 1:30 PM - 01/01/2015 2:00 PM" placeholder="Date range picker"/>
+          </div>
+          <input type="text" class="form-control m-b" ui-jq="datepicker" placeholder="Datepicker">
+          <p>Inline datepicker</p>
+          <div ui-jq="datepicker" class="center-block"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

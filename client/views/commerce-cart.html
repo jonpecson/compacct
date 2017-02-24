@@ -1,0 +1,13 @@
+<div class="page-title">
+  <div class="title" translate="menu.CART"></div>
+  <div class="sub-title">Shopping cart</div>
+</div>
+<div ng-controller="productsCtrl">
+	<ngcart-cart template-url="views/ngCart/cart.html"></ngcart-cart>
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="javascript:;" class="btn btn-primary pull-right">Checkout</a>
+      <a href="javascript:;" class="btn btn-default" ui-sref="app.commerce.products">Continue shopping</a>
+    </div>
+  </div>
+</div>

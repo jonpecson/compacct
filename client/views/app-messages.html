@@ -1,0 +1,141 @@
+<div class="fill-container">
+  <div class="relative full-height">
+    <div class="display-columns" data-ng-controller="MessagesCtrl">
+      <div class="column messages-sidebar hidden-xs bg-white b-r">
+        <div class="scroll">
+          <div class="p-a">
+            <nav role="navigation">
+              <a href="javascript:;" class="btn btn-primary btn-block m-b">Compose message</a>
+              <ul class="nav nav-stacked nav-pills m-b">
+                <li class="disabled text-uppercase small">
+                  <a href="javascript:;">
+                    <strong>mailboxes</strong>
+                  </a>
+                </li>
+                <li data-ng-repeat="folder in folders">
+                  <a href="javascript:;">
+                    <label ng-if="folder.value" class="badge bg-danger pull-right">{{folder.value}}</label>
+                    {{folder.name}}
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="nav nav-stacked nav-pills">
+                <li class="disabled text-uppercase small">
+                  <a href="javascript:;">
+                    <strong>Filter by Tags</strong>
+                  </a>
+                </li>
+                <li data-ng-click="setCurrentTag(null)">
+                  <a href="javascript:;">
+                    <i class="icon-tag text-white"></i>
+                    <span>All tags</span>
+                  </a>
+                </li>
+                <li data-ng-repeat="tag in tags" data-ng-class="{'active':isCurrentTag(tag)}">
+                  <a href="javascript:;" data-ng-click="setCurrentTag(tag)">
+                    <i class="icon-tag text-{{tag.color}}"></i>
+                    <span>{{tag.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="column messages-list bg-white b-r">
+        <div class="scroll">
+          <div class="message-header">
+            <div class="message-toolbar">
+              <div class="pull-right">
+                <p>Last updated 2 hours ago</p>
+              </div>
+
+              <a href="javascript:;" class="icon-info"></a>
+
+            </div>
+          </div>
+          <ul class="message-list">
+            <li class="message-list-item" ng-repeat="message in filteredMessages = ( messages | filter:{tag:currentTag.name})">
+              <a href="javascript:;" data-ng-click="setCurrentMessage(message.id);app.isMessageOpen = true">
+                <div class="message-list-item-header">
+                  <div class="time">{{ message.date | date: 'dd MMMM yyyy' }}</div>
+                  <span>{{ message.from }}</span>
+                </div>
+                <p>{{ message.subject }}</p>
+              </a>
+            </li>
+            <li class="message-list-item" ng-hide="filteredMessages.length">
+              <a href="javascript:;">
+                <div class="message-list-item-header">
+                  <span>Nothing to display</span>
+                </div>
+                <p>You don't have any messages to view</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="column message-view">
+        <div class="scroll full-height">
+          <div class="full-height">
+            <div ng-if="currentMessage">
+              <div class="message-header m-b">
+                <div class="message-toolbar m-b">
+                  <div class="pull-right">
+                    <a href="javascript:;" class="icon-paper-plane"></a>
+
+                    <a href="javascript:;" class="disabled m-l"><span class="bl"></span></a>
+
+                    <a href="javascript:;" class="icon-action-undo m-l" tooltip-placement="bottom" uib-tooltip="Reply to sender"></a>
+                    <a href="javascript:;" class="icon-control-forward m-l" tooltip-placement="bottom" uib-tooltip="Reply to all recipients"></a>
+                    <a href="javascript:;" class="icon-action-redo m-l" tooltip-placement="bottom" uib-tooltip="Forward message"></a>
+
+                    <a href="javascript:;" class="icon-flag m-l" tooltip-placement="left" uib-tooltip="Flag message"></a>
+                  </div>
+
+                  <a href="#" data-ng-click="app.isMessageOpen = false">
+                    <span class="icon-close visible-xs m-r m-l"></span>
+                  </a>
+
+                  <a href="javascript:;" tooltip-placement="right" uib-tooltip="Star message" class="icon-star inline"></a>
+                </div>
+
+                <div class="p-a">
+                  <div class="pull-left p-r" ng-if="currentMessage">
+                    <img data-ng-src="{{ currentMessage.avatar }}" class="avatar avatar-md img-circle" alt/>
+                  </div>
+                  <div class="overflow-hidden">
+                    <div class="date">{{ currentMessage.date | date:'dd MMMM yyyy HH:mm:ss' }}</div>
+                    <div class="lead h3 m-t-0">{{ currentMessage.subject }}</div>
+                    <div class="message-sender">
+                      <p><span class="text-info">{{ currentMessage.from }}</span> to me, Jeff &amp; Suzzane</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div ng-bind-html="currentMessage.body" class="p-a"></div>
+
+              <div ng-if="currentMessage.files" class="p-a">
+                <div class="message-files">
+                  <a href="javascript:;" class="btn btn-sm no-bg no-border pull-right">
+                    <i class="icon-arrow-down"></i> Save attachments
+                  </a>
+                  <a href="javascript:;" class="btn btn-sm no-bg no-border" ng-repeat="file in currentMessage.files">
+                    <i class="fa fa-file-{{file.type}}-o m-r"></i> {{file.filename}} {{file.size}}
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div ng-if="!currentMessage" class="no-messages">
+              <div class="no-title">
+                <h3 class="text-shadow text-muted">No message selected</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="page-title">
+  <div class="title" translate="menu.RICKSHAW"></div>
+  <div class="sub-title">Rickshaw chart plugin</div>
+</div>
+<div data-ng-controller="rickshawCtrl">
+  <div class="card bg-white m-b-0 m-t" ng-repeat='option in options'>
+    <div class="card-header">
+      {{option.label}}
+    </div>
+    <div class="card-block">
+      <rickshaw class="rickshaw_graph" rickshaw-options="option.options" rickshaw-features="option.features" rickshaw-series="option.series"></rickshaw>
+      <div class="chart_container">
+        <div class="y_axis" id="y_axis"></div>
+        <div class="rickshaw-chart" id="chart2"></div>
+      </div>
+    </div>
+  </div>
+</div>

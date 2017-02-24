@@ -1,0 +1,16 @@
+<div class="page-title">
+  <div class="title" translate="menu.C3JS"></div>
+  <div class="sub-title">C3 chart plugin</div>
+</div>
+<div class="row" data-ng-controller="c3Ctrl">
+  <div class="card bg-white m-b-0 m-t" ng-repeat='option in options'>
+    <div class="card-header">
+      {{option.label}}
+    </div>
+    <div class="card-block">
+      <div class="c3chart">
+        <ng-c3 chart-id="{{option.id}}" series="option.series" options="option.options"></ng-c3>
+      </div>
+    </div>
+  </div>
+</div>

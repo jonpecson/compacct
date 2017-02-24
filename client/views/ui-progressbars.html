@@ -1,0 +1,32 @@
+<div class="page-title">
+  <div class="title" translate="menu.PROGRESS"></div>
+  <div class="sub-title">UI progress indicators</div>
+</div>
+<div class="card bg-white">
+  <div class="card-header">
+    Progress bar variants
+  </div>
+  <div class="card-block">
+    <uib-progressbar value="20"></uib-progressbar>
+    <br/>
+    <uib-progressbar value="40" type="info"></uib-progressbar>
+    <br/>
+    <uib-progressbar value="60" type="success"></uib-progressbar>
+    <br/>
+    <uib-progressbar value="80" type="warning"></uib-progressbar>
+    <br/>
+    <uib-progressbar value="90" type="danger"></uib-progressbar>
+    <br/>
+    <p>Striped Progress Bars</p>
+    <uib-progressbar value="40" type="success" class="progress-striped mb25"></uib-progressbar>
+    <br/>
+    <p>Active Progress Bar</p>
+    <uib-progressbar value="50" type="info" class="progress-striped active mb25"></uib-progressbar>
+    <br/>
+    <p>Stacked Progress Bars</p>
+    <uib-progressbar>
+      <bar ng-repeat="bar in stacked track by $index" value="bar.value" type="{{bar.type}}"><span ng-hide="bar.value < 5">{{bar.value}}%</span>
+      </bar>
+    </uib-progressbar>
+  </div>
+</div>

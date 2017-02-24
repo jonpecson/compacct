@@ -1,0 +1,23 @@
+<div class="page-title">
+  <div class="title" translate="menu.EASYPIE"></div>
+  <div class="sub-title">Easypie pie charts</div>
+</div>
+<div class="row" data-ng-controller="easyChartCtrl">
+  <div class="col-md-6 col-lg-4" ng-repeat='option in options' easypiesize>
+    <div class="card bg-white">
+      <div class="card-header">
+        {{option.label}}
+      </div>
+      <div class="card-block text-center">
+        <div class="piechart">
+          <div easypiechart options="option.data" percent="option.percent">
+            <div>
+              <div class="percent h1"></div>
+              <small>{{option.label}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

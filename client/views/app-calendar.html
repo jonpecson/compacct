@@ -1,0 +1,28 @@
+<div class="fill-container bg-white">
+  <div class="relative full-height">
+    <div class="display-columns" data-ng-controller="CalendarCtrl">
+      <div class="column events-sidebar hide bg-default-light">
+        <div class="scroll">
+          <button type="button" class="btn btn-default fc-header-btn" data-ng-click="addEvent()">
+            <span class="icon-plus"></span>
+            <span>Add new event</span>
+          </button>
+
+          <ul class="external-events p-a">
+            <li ng-repeat="e in events">
+              <div class="external-event event-{{e.listColor}}">
+                <input ng-model="e.title" class="form-control no-border no-bg pl0">
+                <small>{{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}</small>
+                <a class="small ml5 remove" ng-click="remove($index)">Remove</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="column calendar-viewer">
+        <div class="alert-success calAlert" ng-show="alertMessage != undefined &amp;&amp; alertMessage != ''"></div>
+        <div ui-calendar="uiConfig.calendar" class="fullcalendar scroll" calendar="myCalendar" ng-model="eventSources2"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="page-title">
+  <div class="title" translate="menu.CHARTJS"></div>
+  <div class="sub-title">Chartjs jquery plugin</div>
+</div>
+<div data-ng-controller="chartjsCtrl">
+  <div class="row">
+    <div class="{{option.colsize}}" ng-repeat='option in options'>
+      <div class="card bg-white">
+        <div class="card-header">
+          {{option.label}}
+        </div>
+        <div class="card-block text-center">
+          <div class="canvas-holder">
+            <canvas chart="{{option.type}}" options="option.options" data="option.data"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

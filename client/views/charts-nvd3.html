@@ -1,0 +1,14 @@
+<div class="page-title">
+  <div class="title" translate="menu.NVD3"></div>
+  <div class="sub-title">NVD3 chart plugin</div>
+</div>
+<div data-ng-controller="nvd3Ctrl">
+  <div class="card bg-white m-b-0 m-t" ng-repeat='option in options'>
+    <div class="card-header">
+      {{option.label}}
+    </div>
+    <div class="card-block">
+      <nvd3 options="option.options" data="option.data"></nvd3>
+    </div>
+  </div>
+</div>

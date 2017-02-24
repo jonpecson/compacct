@@ -1,0 +1,354 @@
+<div class="page-title">
+  <div class="title" translate="menu.GENERAL"></div>
+  <div class="sub-title">Various UI components</div>
+</div>
+<div class="row" ui-jq="checkBo">
+  <div class="col-md-6">
+    <div class="card bg-white">
+      <div class="card-header">
+        Labels and Badges
+      </div>
+      <div class="card-block">
+        <p class="m-b-md">
+          <span class="label label-default">Default</span>
+          <span class="label label-primary">Primary</span>
+          <span class="label label-success">Success</span>
+          <span class="label label-info">Info</span>
+          <span class="label label-warning">Warning</span>
+          <span class="label label-danger">Danger</span>
+          <span class="label bg-purple">1</span>
+          <span class="label bg-red">2</span>
+        </p>
+        <p>
+          <span class="badge bg-default">4</span>
+          <span class="badge bg-primary">2</span>
+          <span class="badge bg-success">3</span>
+          <span class="badge bg-info">8</span>
+          <span class="badge bg-warning">6</span>
+          <span class="badge bg-danger">9</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="RatingDemoCtrl">
+      <div class="card-header">
+        Ratings
+      </div>
+      <div class="card-block">
+        <uib-rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></uib-rating>
+        <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+
+        <pre style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar || "none"}}</b></pre>
+
+        <button class="btn btn-danger" ng-click="rate = 0" ng-disabled="isReadonly">Clear</button>
+        <button class="btn btn-default" ng-click="isReadonly = ! isReadonly">Toggle Readonly</button>
+
+        <h6>Custom icons</h6>
+        <div ng-init="x = 5">
+          <uib-rating ng-model="x" max="15" state-on="'icon-star text-warning'" state-off="'icon-star'"></uib-rating> <b>(<i>Rate:</i> {{x}})</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="AccordionDemoCtrl">
+      <div class="card-header">
+        Accordions
+      </div>
+      <div class="card-block">
+        <uib-accordion close-others="oneAtATime" class="accordion">
+          <uib-accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+            This content is straight in the template.
+          </uib-accordion-group>
+          <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+            {{group.content}}
+          </uib-accordion-group>
+          <uib-accordion-group heading="Dynamic Body Content">
+            <p>The body of the accordion group grows to fit the contents</p>
+            <button class="btn btn-default" ng-click="addItem()">Add Item</button>
+            <div ng-repeat="item in items">{{item}}</div>
+          </uib-accordion-group>
+          <uib-accordion-group is-open="status.open">
+            <uib-accordion-heading>
+              I can have markup, too! <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+            </uib-accordion-heading>
+            This is just some content to illustrate fancy headings.
+          </uib-accordion-group>
+        </uib-accordion>
+
+        <button class="btn btn-default" ng-click="status.open = !status.open">Toggle last panel</button>
+        <button class="btn btn-default" ng-click="status.isFirstDisabled = ! status.isFirstDisabled">Enable / Disable first panel</button>
+
+        <label class="cb-checkbox block m-t">
+          <input type="checkbox" ng-model="oneAtATime">Open only one at a time
+        </label>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="AlertDemoCtrl">
+      <div class="card-header">
+        Alerts
+      </div>
+      <div class="card-block">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+        <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="ButtonsCtrl">
+      <div class="card-header">
+        Toggle buttons
+      </div>
+      <div class="card-block">
+        <p>Single toggle</p>
+        <pre>{{singleModel}}</pre>
+        <button type="button" class="btn btn-default" ng-model="singleModel" uib-btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
+          Single Toggle
+        </button>
+        <h6>Checkbox</h6>
+        <pre>{{checkModel}}</pre>
+        <div class="btn-group">
+          <label class="btn btn-default" ng-model="checkModel.left" uib-btn-checkbox>Left</label>
+          <label class="btn btn-default" ng-model="checkModel.middle" uib-btn-checkbox>Middle</label>
+          <label class="btn btn-default" ng-model="checkModel.right" uib-btn-checkbox>Right</label>
+        </div>
+        <h6>Radio &amp; Uncheckable Radio</h6>
+        <pre>{{radioModel || 'null'}}</pre>
+        <div class="btn-group">
+          <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'Left'">Left</label>
+          <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'Middle'">Middle</label>
+          <label class="btn btn-default" ng-model="radioModel" uib-btn-radio="'Right'">Right</label>
+        </div>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'" uncheckable>Left</label>
+          <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>Middle</label>
+          <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'" uncheckable>Right</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="CarouselDemoCtrl">
+      <div class="card-header">
+        Carousel
+      </div>
+      <div class="card-block p-a-0">
+        <uib-carousel interval="myInterval" active="active" class="mb15">
+          <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+            <img data-ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+              <h4>Slide {{$index}}</h4>
+              <div>{{slide.text}}</div>
+            </div>
+          </uib-slide>
+        </uib-carousel>
+
+        <div class="row p-a">
+          <div class="col-md-6">
+            <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+          </div>
+          <div class="col-md-6">
+            <input type="number" class="form-control" ng-model="myInterval">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="ModalDemoCtrl">
+      <div class="card-header">
+        Modal
+      </div>
+      <div class="card-block">
+        <button class="btn btn-default" ng-click="open()">Open modal!</button>
+        <button class="btn btn-default" ng-click="open('lg')">Open large modal</button>
+        <button class="btn btn-default" ng-click="open('sm')">Open small modal</button>
+        <div ng-show="selected" class="p-t">Selection from a modal: {{ selected }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card bg-white" ng-controller="TooltipDemoCtrl">
+      <div class="card-header">
+        Tooltips
+      </div>
+      <div class="card-block demo-button">
+        <a href="#" class="btn btn-default" tooltip-placement="top" uib-tooltip="On the Top!">Tooltip on top</a>
+        <a href="#" class="btn btn-primary" tooltip-placement="right" uib-tooltip="On the Right!">Tooltip on right</a>
+        <a href="#" class="btn btn-success" tooltip-placement="bottom" uib-tooltip="On the Bottom!">Tooltip on bottom</a>
+        <a href="#" class="btn btn-info" tooltip-placement="left" uib-tooltip="On the Left!">Tooltip on left</a>
+        <a href="#" class="btn btn-warning" uib-tooltip-html="htmlTooltip">Check me out!</a>
+        <a href="#" class="btn btn-danger" tooltip-placement="bottom" tooltip-popup-delay='1000' uib-tooltip='appears with delay'>Tooltip with delay</a>
+      </div>
+    </div>
+
+    <div class="card bg-white">
+      <div class="card-header">
+        Breadcrumbs
+      </div>
+      <div class="card-block">
+        <ol class="breadcrumb p-l-0">
+          <li>
+            <a href="javascript:;">Home</a>
+          </li>
+          <li>
+            <a href="javascript:;">UI Elements</a>
+          </li>
+          <li class="active">General</li>
+        </ol>
+
+        <ol class="breadcrumb p-l-0">
+          <li>
+            <a href="javascript:;"><i class="icon-home"></i>&nbsp;Dashboard</a>
+          </li>
+          <li>
+            <a href="javascript:;"><i class="icon-book-open"></i>&nbsp;Ui Elements</a>
+          </li>
+          <li class="active">General</li>
+        </ol>
+
+        <ol class="breadcrumb bordered">
+          <li>
+            <a href="javascript:;">Dashboard</a>
+          </li>
+          <li>
+            <a href="javascript:;">Ui Elements</a>
+          </li>
+          <li class="active">General</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="TypeaheadCtrl">
+      <div class="card-header">
+        Typeahead
+      </div>
+      <div class="card-block">
+        <p>Static arrays</p>
+        <pre>Model: {{selected | json}}</pre>
+        <input type="text" ng-model="selected" uib-typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+        <p>Asynchronous results</p>
+        <pre>Model: {{asyncSelected | json}}</pre>
+        <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" uib-typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+        <i ng-show="loadingLocations" class="icon-refresh"></i>
+
+        <p>Custom templates for results</p>
+        <pre>Model: {{customSelected | json}}</pre>
+        <input type="text" ng-model="customSelected" placeholder="Custom template" uib-typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="DatepickerDemoCtrl">
+      <div class="card-header">
+        Datepicker
+      </div>
+      <div class="card-block">
+        <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+        <p>Inline</p>
+        <div class="inline">
+          <uib-datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="ui-datepicker"></uib-datepicker>
+        </div>
+
+        <p>Popup</p>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="input-group ui-datepicker">
+              <input type="text" class="form-control input-sm" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label>Format:</label>
+            <select class="form-control" ng-model="format" ng-options="f for f in formats" ui-jq="chosen" ui-options="{disable_search_threshold: 10}">
+              <option></option>
+            </select>
+          </div>
+        </div>
+        <hr />
+        <button type="button" class="btn btn-info" ng-click="today()">Today</button>
+        <button type="button" class="btn btn-default" ng-click="dt = '2009-08-24'">2009-08-24</button>
+        <button type="button" class="btn btn-danger" ng-click="clear()">Clear</button>
+        <button type="button" class="btn btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="TimepickerDemoCtrl">
+      <div class="card-header">
+        Timepicker
+      </div>
+      <div class="card-block">
+        <uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></uib-timepicker>
+
+        <pre class="alert alert-info">Time is: {{mytime | date:'shortTime' }}</pre>
+
+        <div class="row">
+          <div class="col-xs-6">
+            Hours step is:
+            <select class="form-control" ng-model="hstep" ng-options="opt for opt in options.hstep" ui-jq="chosen" ui-options="{disable_search_threshold: 10}"></select>
+          </div>
+          <div class="col-xs-6">
+            Minutes step is:
+            <select class="form-control" ng-model="mstep" ng-options="opt for opt in options.mstep" ui-jq="chosen" ui-options="{disable_search_threshold: 10}"></select>
+          </div>
+        </div>
+        <hr>
+        <button class="btn btn-info" ng-click="toggleMode()">12H / 24H</button>
+        <button class="btn btn-default" ng-click="update()">Set to 14:00</button>
+        <button class="btn btn-danger" ng-click="clear()">Clear</button>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="CollapseDemoCtrl">
+      <div class="card-header">
+        Collapse
+      </div>
+      <div class="card-block">
+        <a href="javascript:;" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</a>
+        <hr>
+        <div uib-collapse="isCollapsed">
+          <div class="card card-block bg-default">Shattered Dremland!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-white" ng-controller="PopoverDemoCtrl">
+      <div class="card-header">
+        Popovers
+      </div>
+      <div class="card-block">
+        <button popover-placement="top" popover="On the Top!" class="btn btn-success">Top Popover</button>
+        <button popover-placement="left" popover="On the Left!" class="btn btn-primary">Left Popover</button>
+        <button popover-placement="right" popover="On the Right!" class="btn btn-info">Right Popover</button>
+        <button popover-placement="bottom" popover="On the Bottom!" class="btn btn-danger">Bottom Popover</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title"> I'm a modal!</h3>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li ng-repeat="item in items">
+        <a ng-click="selected.item = item">{{ item }}</a>
+      </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="customTemplate.html">
+  <a>
+    <img data-ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+    <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  </a>
+</script>

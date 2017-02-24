@@ -1,0 +1,77 @@
+<div class="configuration-cog" data-ng-click="app.isConfigOpen = !app.isConfigOpen">
+  <i class="icon-wrench"></i>
+</div>
+<div class="configuration-options">
+  <div class="title">
+    Configuration
+  </div>
+  <div class="option">
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isSmallSidebar">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+    <span>Collapsed sidebar</span>
+  </div>
+  <div class="option">
+    <span>Chat panel opened</span>
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isChatOpen">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+  </div>
+  <div class="option">
+    <span>Fixed header</span>
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isFixedHeader">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+  </div>
+  <div class="option">
+    <span>Boxed</span>
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isBoxed">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+  </div>
+  <div class="option">
+    <span>Static sidebar</span>
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isStaticSidebar">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+  </div>
+  <div class="option">
+    <span>Right sidebar</span>
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isRightSidebar">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+  </div>
+  <div class="option">
+    <span>Fixed footer</span>
+    <label class="switch switch-sm pull-right">
+      <input type="checkbox" ng-model="app.layout.isFixedFooter">
+      <span>
+      <i class="handle"></i>
+      </span>
+    </label>
+  </div>
+  <hr class="m-a-0 p-a-0">
+  <div class="option m-y">
+    <a ui-sref="app.ui.skins">
+      <span>Skin Options</span>
+    </a>
+  </div>
+</div>

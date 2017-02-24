@@ -1,0 +1,31 @@
+<div class="page-title">
+  <div class="title">Tables</div>
+  <div class="sub-title">ngtables</div>
+</div>
+<div data-ng-controller="ngtableCtrl">
+  <div class="card bg-white">
+    <div class="card-header">
+      ngTable
+    </div>
+    <div class="card-block">
+      <div class="table-responsive">
+        <table ng-table="tableParams" class="table table-bordered" show-filter="true">
+          <tr ng-repeat="user in $data">
+            <td title="'Name'" filter="{ name: 'text'}" sortable="'name'" class="col-xs-3">
+              {{user.name}}
+            </td>
+            <td title="'Age'" filter="{ age: 'number'}" sortable="'age'" class="col-xs-3">
+              {{user.age}}
+            </td>
+            <td title="'Money'" class="col-xs-3">
+              {{user.money}}
+            </td>
+            <td title="'Country'" filter="{ country: 'text'}" sortable="'country'" class="col-xs-3">
+              {{user.country}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

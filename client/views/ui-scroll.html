@@ -1,0 +1,7 @@
+<div ng-controller="scrollCtrl">
+  <div infinite-scroll="loadMore()" class="row">
+  	<div class="col-xs-6 col-sm-3 m-b" ng-repeat="image in images">
+    	<img ng-src="http://placehold.it/300x300&text={{image}}" class="img-responsive">
+    </div>
+  </div>
+</div>

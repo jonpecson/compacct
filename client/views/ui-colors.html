@@ -1,0 +1,76 @@
+<div class="page-title">
+  <div class="title" translate="menu.COLORS"></div>
+  <div class="sub-title">UI Color palette</div>
+</div>
+
+<div class="card bg-white" ng-controller="colorsCtrl">
+  <div class="card-header">
+    Colors
+  </div>
+  <div class="card-block">
+    <p>Base color brands</p>
+    <div class="color-brands">
+      <div class="color-brand bg-primary"></div>
+      <div class="color-brand bg-info"></div>
+      <div class="color-brand bg-danger"></div>
+      <div class="color-brand bg-success"></div>
+      <div class="color-brand bg-default"></div>
+      <div class="color-brand bg-dark"></div>
+      <div class="color-brand bg-white b-a"></div>
+    </div>
+
+    <p>Base color weights</p>
+    <div class="color-brands">
+      <div ng-repeat='brand in brands'>
+        <div class="text-uppercase title">{{brand}}</div>
+        <div class="color-brand text-white">
+          <div class="bg-{{brand}}-lighter">10% lighter</div>
+          <div class="bg-{{brand}}-light">5% lighter</div>
+          <div class="bg-{{brand}}">base</div>
+          <div class="bg-{{brand}}-dark">5% darker</div>
+          <div class="bg-{{brand}}-darker">10% darker</div>
+        </div>
+      </div>
+      <div>
+        <div class="text-uppercase title">White</div>
+        <div class="color-brand">
+          <div class="bg-white-lighter"></div>
+          <div class="bg-white-light"></div>
+          <div class="bg-white">base</div>
+          <div class="bg-white-dark">5% darker</div>
+          <div class="bg-white-darker">10% darker</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Material color palette</p>
+    <div class="color-brands">
+      <div ng-repeat='brand in material'>
+        <div class="text-uppercase title">{{brand}}</div>
+        <div class="color-brand text-white">
+          <div class="bg-{{brand}}-lighter">10% lighter</div>
+          <div class="bg-{{brand}}-light">5% lighter</div>
+          <div class="bg-{{brand}}">base</div>
+          <div class="bg-{{brand}}-dark">5% darker</div>
+          <div class="bg-{{brand}}-darker">10% darker</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <p>Text color</p>
+        <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+        <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+        <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+        <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="col-sm-6">
+        <p>Border color</p>
+        <div class="b-a" style="height:100px;background-color:#e4e4e4"></div>
+      </div>
+    </div>
+  </div>
+</div>

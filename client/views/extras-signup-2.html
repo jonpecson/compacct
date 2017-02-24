@@ -1,0 +1,41 @@
+<div data-ng-controller="sessionCtrl">
+  <uib-carousel interval="myInterval" active="active" class="session-carousel">
+    <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" style="background-image:url({{slide.image}});background-size:cover;background-repeat: no-repeat;background-position: 50% 50%;">
+    </uib-slide>
+  </uib-carousel>
+
+  <div class="card bg-white no-border">
+    <div class="card-block">
+      <form role="form" class="form-layout" action="#/signin_2">
+        <div class="text-center m-b">
+          <h4 class="text-uppercase">Register Now</h4>
+          <p>Join a growing community.</p>
+        </div>
+        <div class="form-inputs">
+          <div class="name">
+            <label class="text-uppercase">Name</label>
+            <input type="text" class="form-control input-lg first" placeholder="First" required>
+            <input type="text" class="form-control input-lg" placeholder="Last" required>
+          </div>
+          <label class="text-uppercase">Your current email address</label>
+          <input type="email" class="form-control input-lg" placeholder="Email address" required>
+          <label class="text-uppercase">Choose your username</label>
+          <input type="text" class="form-control input-lg" placeholder="Username" required>
+          <label class="text-uppercase">Create a password</label>
+          <input type="password" class="form-control input-lg" placeholder="Password" required>
+          <label class="text-uppercase">Confirm your password</label>
+          <input type="password" class="form-control input-lg" placeholder="Confirm password" required>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-lg m-b" type="submit">Create Account</button>
+
+        <p class="text-center"><small><em>By clicking Create account you agree to our <a href="#">terms and conditions</a></em></small></p>
+      </form>
+    </div>
+  </div>
+</div>
+<script id="uib/template/carousel/carousel.html" type="text/ng-template">
+  <div ng-mouseenter="pause()" ng-mouseleave="play()" class="carousel" ng-swipe-right="prev()" ng-swipe-left="next()">
+    <div class="carousel-inner" ng-transclude></div>
+  </div>
+</script>

@@ -1,0 +1,274 @@
+<div class="page-title">
+  <div class="title">Forms</div>
+  <div class="sub-title">Native form elements</div>
+</div>
+<div class="card bg-white m-b">
+  <div class="card-header">
+    CSS checkbox and radio inputs
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-sm-4">
+        <p>Checkboxes</p>
+        <div class="cs-checkbox m-b">
+          <input type="checkbox" id="r1" value="">
+          <label for="r1">Custom</label>
+        </div>
+        <div class="cs-checkbox m-b">
+          <input type="checkbox" id="r3" checked="checked" value="">
+          <label for="r3">Checked</label>
+        </div>
+        <div class="cs-checkbox m-b">
+          <input type="checkbox" id="r2" disabled="disabled" value="">
+          <label for="r2">Disabled</label>
+        </div>
+        <div class="cs-checkbox m-b">
+          <input type="checkbox" id="r4" disabled="disabled" checked="checked" value="">
+          <label for="r4">Disabled checked</label>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <p>Radio inputs</p>
+        <div class="cs-radio m-b">
+          <input type="radio" id="r5" name="cs-radio" value="">
+          <label for="r5">Custom</label>
+        </div>
+        <div class="cs-radio m-b">
+          <input type="radio" id="r7" checked="checked" name="cs-radio" value="">
+          <label for="r7">Checked</label>
+        </div>
+        <div class="cs-radio m-b">
+          <input type="radio" id="r6" disabled="disabled" name="cs-radio" value="">
+          <label for="r6">Disabled</label>
+        </div>
+        <div class="cs-radio m-b">
+          <input type="radio" id="r8" disabled="disabled" checked="checked" name="cs-radio" value="">
+          <label for="r8">Disabled checked</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card bg-white">
+  <div class="card-header">
+    Custom form inputs
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <span class="input m-b-md">
+        <input class="input__field" type="text" id="input-1">
+        <label class="input__label" for="input-1">
+          <span class="input__label-content">Default</span>
+        </label>
+      </span>
+
+      <span class="input input--focused m-b-md">
+        <input class="input__field" type="text" id="input-2">
+        <label class="input__label" for="input-2">
+          <span class="input__label-content">Focused</span>
+        </label>
+      </span>
+
+      <span class="input input--success m-b-md">
+        <input class="input__field" type="text" id="input-3">
+        <label class="input__label" for="input-3">
+          <span class="input__label-content">Success</span>
+        </label>
+      </span>
+
+      <span class="input input--warning m-b-md">
+        <input class="input__field" type="text" id="input-4">
+        <label class="input__label" for="input-4">
+          <span class="input__label-content">Warning</span>
+        </label>
+      </span>
+
+      <span class="input input--error m-b-md">
+        <input class="input__field" type="text" id="input-5">
+        <label class="input__label" for="input-5">
+          <span class="input__label-content">Error</span>
+        </label>
+      </span>
+
+      <span class="input m-b-md">
+        <input class="input__field" type="text" id="input-6" value="Disabled" disabled>
+        <label class="input__label" for="input-6">
+          <span class="input__label-content">Disabled</span>
+        </label>
+      </span>
+
+    </div>
+  </div>
+</div>
+<div class="card bg-white">
+  <div class="card-header">
+    Custom select inputs
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-lg-12">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Default custom select</label>
+            <div class="col-sm-4">
+              <select class="cs-select">
+                <option value="sightseeing">Sight Seeing</option>
+                <option value="business">Business</option>
+                <option value="honeymoon">Honeymoon</option>
+                <option value="food">Gourmet</option>
+                <option value="shopping">Shopping</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Custom select with icons</label>
+            <div class="col-sm-4">
+              <select class="cs-select">
+                <option value="sightseeing" data-class="icon-picture">Sight Seeing</option>
+                <option value="business" data-class="icon-wallet">Business</option>
+                <option value="honeymoon" data-class="icon-cup">Honeymoon</option>
+                <option value="food" data-class="icon-puzzle">Gourmet</option>
+                <option value="shopping" data-class="icon-basket">Shopping</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Disabled custom select</label>
+            <div class="col-sm-4">
+              <select class="cs-select cs-select-disabled" disabled>
+                <option value="sightseeing" data-class="icon-picture">Sight Seeing</option>
+                <option value="business" data-class="icon-wallet">Business</option>
+                <option value="honeymoon" data-class="icon-cup">Honeymoon</option>
+                <option value="food" data-class="icon-puzzle">Gourmet</option>
+                <option value="shopping" data-class="icon-basket">Shopping</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card bg-white m-b">
+  <div class="card-header">
+    Switches
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-sm-4">
+        <p>Default Switches</p>
+        <label class="switch switch-lg m-b">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+        <br/>
+
+        <label class="switch m-b">
+          <input type="checkbox">
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+        <br/>
+
+        <label class="switch switch-sm">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+      </div>
+
+      <div class="col-sm-4">
+        <p>Color options</p>
+        <label class="switch switch-lg switch-warning m-b">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+        <br/>
+
+        <label class="switch switch-dark m-b">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+        <br/>
+
+        <label class="switch switch-sm">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+      </div>
+
+      <div class="col-sm-4">
+        <p>Color options</p>
+        <label class="switch switch-lg switch-primary m-b">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+        <br/>
+
+        <label class="switch switch-info m-b">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+        <br/>
+
+        <label class="switch switch-sm switch-danger">
+          <input type="checkbox" checked>
+          <span>
+            <i class="handle"></i>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function() {
+  [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+    new SelectFx(el);
+  } );
+
+  // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+  if (!String.prototype.trim) {
+    (function() {
+      // Make sure we trim BOM and NBSP
+      var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+      String.prototype.trim = function() {
+        return this.replace(rtrim, '');
+      };
+    })();
+  }
+  [].slice.call(document.querySelectorAll('input.input__field')).forEach(function(inputEl) {
+    // in case the input is already filled..
+    if (inputEl.value.trim() !== '') {
+      classie.add(inputEl.parentNode, 'input--filled');
+    }
+    // events:
+    inputEl.addEventListener('focus', onInputFocus);
+    inputEl.addEventListener('blur', onInputBlur);
+  });
+
+  function onInputFocus(ev) {
+    classie.add(ev.target.parentNode, 'input--filled');
+  }
+
+  function onInputBlur(ev) {
+    if (ev.target.value.trim() === '') {
+      classie.remove(ev.target.parentNode, 'input--filled');
+    }
+  }
+})();
+</script>

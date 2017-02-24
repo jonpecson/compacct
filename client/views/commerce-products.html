@@ -1,0 +1,23 @@
+<div class="page-title">
+  <div class="title" translate="menu.PRODUCTS"></div>
+  <div class="sub-title">Products list</div>
+</div>
+<div ng-controller="productsCtrl">
+	<ngcart-summary template-url="views/ngCart/summary.html" class="cart-summary" ui-sref="app.commerce.cart" style="cursor:pointer"></ngcart-summary>
+	<div class="tile-container" masonry='{ "transitionDuration" : "0.15s" , "columnWidth": ".tile-sizer", "itemSelector" : ".tile"}'>
+    <div class="tile product-tile tile-small tile-sizer" style="padding-bottom:0;"></div>
+    <div class="tile product-tile {{shop.gridClass}}" data-ng-repeat="shop in shops" masonry-tile>
+    	<div class="product-image">
+    		<img class="card-img-top img-responsive center-block" data-ng-src="images/{{shop.name}}.png" alt="{{$index}}">
+    	</div>
+    	<div class="product-meta">
+      	<h5 class="product-title text-capitalize">{{shop.name}}</h5>
+				<span class="product-brand">{{shop.text}}</span>
+				<span class="product-price">$99</span>
+    	</div>
+    	<div class="product-actions">
+	    	<ngcart-addtocart template-url="views/ngCart/addtocart.html" id="{{$index}}" name="{{ shop.name }}" price="{{ shop.price }}" quantity="1" quantity-max="5" data="item">Add to cart</ngcart-addtocart>
+    	</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="page-title">
+  <div class="title" translate="menu.NOTIFICATIONS"></div>
+  <div class="sub-title">Growl notitifications UI component</div>
+</div>
+<div class="card bg-white" data-ng-controller="NotificationsCtrl">
+  <div class="card-header">
+    Noty notifications
+  </div>
+  <div class="card-block">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="controls inline w300 checkbo m-r-lg">
+          <label class="control-label" for="message">Message</label>
+          <textarea class="form-control m-b" id="message" rows="2" placeholder="Enter a message ..."></textarea>
+          <label class="control-label" for="messenger-type">Type</label>
+          <div class="m-b">
+            <select class="chosen-select" id="messenger-type" style="width: 100%;" ui-jq="chosen" ui-options="{disable_search_threshold: 10}">
+              <option>Information</option>
+              <option>Success</option>
+              <option>Error</option>
+              <option>Warning</option>
+              <option>Confirm</option>
+            </select>
+          </div>
+          <label class="control-label" for="position">Position</label>
+          <div class="m-b">
+            <select class="chosen-select" id="position" style="width: 100%;" ui-jq="chosen" ui-options="{disable_search_threshold: 10}">
+              <option value="topLeft">Top left</option>
+              <option value="top">Top</option>
+              <option value="topRight">Top right</option>
+              <option value="bottomLeft">Bottom left</option>
+              <option value="bottom">Bottom</option>
+              <option value="bottomRight">Bottom right</option>
+            </select>
+          </div>
+          <a href="javascript:;" class="btn btn-primary" data-ng-click="showNoty()">
+            <span>Show me</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

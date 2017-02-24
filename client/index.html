@@ -1,42 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" data-ng-app="app">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LoopBack Angular example</title>
-
-    <!-- Bootstrap -->
-    <link href="vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>Reactor - Bootstrap Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- oclazyload stylesheets before this tag -->
+    <meta id="load_styles_before">
+    <!-- build:css({.tmp,app}) styles/app.min.css -->
+    <link rel="stylesheet" href="styles/webfont.css">
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/textAngular/dist/textAngular.css">
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="styles/climacons-font.css">
+    <link rel="stylesheet" href="styles/font-awesome.css">
+    <link rel="stylesheet" href="styles/card.css">
+    <link rel="stylesheet" href="styles/sli.css">
+    <link rel="stylesheet" href="styles/animate.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/app.skins.css">
+    <!-- endbuild -->
   </head>
-  <body ng-app="app">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">LoopBack Angular example</a>
-        </div>
+  <body data-ng-controller="AppCtrl" class="{{ app.layout.sidebarTheme }} {{ app.layout.headerTheme }} page-loading">
+    <!-- page loading spinner -->
+    <div class="pageload">
+      <div class="pageload-inner">
+        <div class="sk-rotating-plane"></div>
       </div>
     </div>
-
-    <div class="container">
-      <div ui-view></div>
+    <!-- /page loading spinner -->
+    <div class="app {{$state.current.data.appClasses}}" data-ng-class="{'layout-small-menu': app.layout.isSmallSidebar, 'layout-chat-open': app.layout.isChatOpen, 'layout-fixed-header': app.layout.isFixedHeader, 'layout-boxed': app.layout.isBoxed, 'layout-static-sidebar': app.layout.isStaticSidebar, 'layout-right-sidebar': app.layout.isRightSidebar, 'layout-fixed-footer': app.layout.isFixedFooter, 'message-open': app.isMessageOpen, 'contact-open': app.isContactOpen}" data-ui-view>
     </div>
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <!-- build:js({.tmp,app}) scripts/app.min.js -->
+    <script src="scripts/helpers/modernizr.js"></script>
     <script src="vendor/jquery/dist/jquery.js"></script>
-    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
     <script src="vendor/angular/angular.js"></script>
-    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="js/services/lb-services.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controllers/todo.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="vendor/angular-touch/angular-touch.js"></script>
+    <script src="vendor/ui-jq/jq.js"></script>
+    <script src="vendor/ngstorage/ngStorage.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.js"></script>
+    <script src="vendor/ocLazyLoad/dist/ocLazyLoad.js"></script>
+    <script src="vendor/angular-translate/angular-translate.js"></script>
+    <script src="vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="vendor/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="vendor/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+    <script src="vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="vendor/fastclick/lib/fastclick.js"></script>
+    <script src="scripts/helpers/smartresize.js"></script>
+    <script src="scripts/helpers/sameheight.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/app.main.js"></script>
+    <script src="scripts/config.router.js"></script>
+    <script src="scripts/config.language.js"></script>
+    <script src='vendor/textAngular/dist/textAngular-rangy.min.js'></script>
+    <script src='vendor/textAngular/dist/textAngular-sanitize.min.js'></script>
+    <script src="vendor/textAngular/dist/textAngularSetup.js"></script>
+    <script src="vendor/textAngular/dist/textAngular.js"></script>
+    <script src="scripts/helpers/colors.js"></script>
+    <script src="scripts/directives/anchor-scroll.js"></script>
+    <script src="scripts/directives/c3.js"></script>
+    <script src="scripts/directives/chosen.js"></script>
+    <script src="scripts/directives/navigation.js"></script>
+    <script src="scripts/directives/offscreen.js"></script>
+    <script src="scripts/directives/card-control-collapse.js"></script>
+    <script src="scripts/directives/card-control-refresh.js"></script>
+    <script src="scripts/directives/card-control-remove.js"></script>
+    <script src="scripts/directives/preloader.js"></script>
+    <script src="scripts/directives/quick-launch.js"></script>
+    <script src="scripts/directives/rickshaw.js"></script>
+    <script src="scripts/directives/scrollup.js"></script>
+    <script src="scripts/directives/vector.js"></script>
+    <script src="scripts/directives/ripple.js"></script>
+    <script src="vendor/d3/d3.min.js"></script>
+    <script src="vendor/n3-line-chart/build/line-chart.js"></script>
+    <!-- endbuild -->
   </body>
 </html>

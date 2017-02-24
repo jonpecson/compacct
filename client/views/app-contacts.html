@@ -1,0 +1,115 @@
+<div class="fill-container">
+  <div class="relative full-height">
+    <div class="display-columns" data-ng-controller="contactsCtrl">
+      <div class="column contacts-sidebar hidden-xs bg-white b-r">
+        <div class="scroll">
+          <div class="p-a">
+            <nav role="navigation">
+              <a href="javascript:;" class="btn btn-default btn-block m-b">You have a total of {{contacts.length}} contacts</a>
+              <ul class="nav nav-stacked nav-pills">
+                <li class="disabled text-uppercase small">
+                  <a href="javascript:;">
+                    <strong>Filter by Tags</strong>
+                  </a>
+                </li>
+                <li data-ng-click="setCurrentTag(null)">
+                  <a href="javascript:;">
+                    <i class="icon-tag"></i>
+                    <span>All tags</span>
+                  </a>
+                </li>
+                <li data-ng-repeat="tag in tags" data-ng-class="{'active':isCurrentTag(tag)}">
+                  <a href="javascript:;" data-ng-click="setCurrentTag(tag)">
+                    <i class="icon-tag text-{{tag.color}}"></i>
+                    <span>{{tag.name}}</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="column contacts-list bg-white b-r">
+        <div ui-jq="ioslist">
+          <div class="ioslist-group-container" ng-repeat="letter in alphabet track by $index">
+            <div class="ioslist-group-header">{{letter}}</div>
+            <ul>
+              <li ng-repeat="contact in contacts | startsWithLetter : letter | filter:{tag:currentTag.name}" data-ng-class="{'active':isCurrentIndex(contacts.indexOf(contact))}" data-ng-click="setCurrentContact(contacts.indexOf(contact));setCurrentIndex(contacts.indexOf(contact));app.isContactOpen = true">{{ contact.name }} {{ contact.surname }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="column contact-view">
+        <div class="scroll full-height">
+          <div class="full-height">
+            <div ng-if="currentContact">
+              <div class="contact-header m-b">
+                <div class="contact-toolbar visible-xs m-b">
+                  <a href="#" data-ng-click="app.isContactOpen = false">
+                    <span class="icon-close visible-xs m-r m-l"></span>
+                  </a>
+                </div>
+                <div class="p-a">
+                  <div class="pull-left p-r" ng-if="currentContact">
+                    <img data-ng-src="{{ currentContact.avatar }}" class="avatar avatar-lg img-circle" alt/>
+                  </div>
+                  <div class="overflow-hidden">
+                    <h1><b>{{ currentContact.surname }}</b> {{ currentContact.name }}</h1>
+                    <h3>{{ currentContact.role }}</h3>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row m-b">
+                <div class="col-xs-4 text-right">
+                  <span class="text-muted">email</span>
+                </div>
+                <div class="col-xs-8">
+                  <a ng-href="{{currentContact.home}}">{{currentContact.home}}</a>
+                </div>
+              </div>
+              <div class="row m-b">
+                <div class="col-xs-4 text-right">
+                  <span class="text-muted">mobile</span>
+                </div>
+                <div class="col-xs-8">
+                  <span>{{currentContact.mobile}}</span>
+                </div>
+              </div>
+              <div class="row m-b">
+                <div class="col-xs-4 text-right">
+                  <span class="text-muted">home</span>
+                </div>
+                <div class="col-xs-8">
+                  <a ng-href="{{currentContact.profile}}">{{currentContact.profile}}</a>
+                </div>
+              </div>
+              <div class="row m-b">
+                <div class="col-xs-4 text-right">
+                  <span class="text-muted">country</span>
+                </div>
+                <div class="col-xs-8">
+                  <span>{{currentContact.country}}</span>
+                </div>
+              </div>
+              <div class="row m-b">
+                <div class="col-xs-4 text-right">
+                  <span class="text-muted">note</span>
+                </div>
+                <div class="col-xs-8">
+                  <span>Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Maecenas faucibus mollis interdum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</span>
+                </div>
+              </div>
+            </div>
+            <div ng-if="!currentContact" class="no-contacts">
+              <div class="no-title">
+                <h3 class="text-shadow text-muted">Please select a contact</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
