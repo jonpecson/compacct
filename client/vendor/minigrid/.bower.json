@@ -1,0 +1,14 @@
+{
+  "name": "minigrid",
+  "homepage": "https://github.com/henriquea/minigrid",
+  "version": "3.0.3",
+  "_release": "3.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.0.3",
+    "commit": "955150e4dcefc6a4235ee52012d759b4753ab4c5"
+  },
+  "_source": "https://github.com/henriquea/minigrid.git",
+  "_target": "~3.0.3",
+  "_originalSource": "minigrid"
+}
