@@ -5,48 +5,42 @@
 
 <div class="card bg-white m-b">
     <div class="card-header">Journals Table
-        <button type="button" class="btn pull-right" data-ng-click="vm.addJournal()">Add new student</button>
+        <!--<button type="button" class="btn pull-right" >
+            <i class="glyphicon  glyphicon-list-alt"></i> New Journal</button>
+            -->
+        <button type="button" class="btn pull-right btn-primary btn-md btn-icon">
+<i class="icon-plus"></i>
+<span>New Journal</span>
+</button>
     </div>
     <div class="card-block p-a-0">
         <div class="table-responsive">
             <table class="table m-b-0">
                 <thead>
                     <tr>
-                        <th class="col-md-1">
-                            <span></span>ID</th>
-                        <th class="col-md-1">Photo</th>
-                        <th class="col-md-2">Name</th>
-                        <th class="col-md-2">Address</th>
-                        <th class="col-md-1">Yearl Level</th>
-                        <th class="col-md-1">Gender</th>
-                        <th class="col-md-1">Action</th>
+                        <th class="col-md-1"><b>Date</b></th>
+                        <th class="col-md-1"><b>JOURNAL#</b></th>
+                        <th class="col-md-2"><b>REFERENCE#</b></th>
+                        <th class="col-md-2"><b>AMOUNT</b></th>
+                        <th class="col-md-1"><b>NOTES</b></th>
+                        <!--<th class="col-md-1">Gender</th>
+                        <th class="col-md-1">Action</th>-->
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-ng-repeat="student in vm.students">
+                    <tr>
                         <td>
-                            <span>{{$index}}</span></td>
-                        <td><img class="img-circle" data-ng-src="{{student.photo}}" alt="" height="50px" width="50px"></td>
-                        <td>{{student.displayName}}</td>
-                        <td class="align-middle">
-                            {{student.address}}
-                        </td>
-                        <td>
-                            Grade {{student.yearLevel}}
-                        </td>
-                        <td>
-                            {{student.gender}}
-                        </td>
-                        <td>
-                            <button type="button" ng-click="vm.editStudent(student.$id)" class="btn btn-sm row">
-				<i class="glyphicon glyphicon-pencil"></i>
-			</button>
+                            <span>1/1/2017</span></td>
 
-                            <button type="button" ng-click="vm.removeStudent(student.$id)" class="btn btn-sm btn-danger">
-				<i class="glyphicon glyphicon-trash">
-				</i>
-			</button>
+                        <td>CMPCT-001</td>
+                        <td>REF-001</td>
+                        <td class="align-left">
+                            500000
                         </td>
+                        <td>
+                            <i class="glyphicon  glyphicon-list-alt"></i>
+                        </td>
+
                     </tr>
 
 
