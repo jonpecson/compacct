@@ -238,14 +238,28 @@
         </li>
         <!-- /accountant -->
 
-        <!-- customizer -->
-        <li ui-sref-active="active">
-            <a href="#" target="_blank">
+       <!-- purchaces -->
+        <!--data-ng-class="{open: $state.includes('app.cards')}"-->
+        <li>
+            <a href="javascript:;">
+                <!--<span class="badge pull-right">3</span>-->
                 <i class="icon-graph"></i>
                 <span>Reports</span>
             </a>
+            <ul class="sub-menu">
+
+
+
+                <li ui-sref-active="active">
+                    <a ui-sref="app.reports.trial-balance">
+                        <span>Trial Balance</span>
+                    </a>
+                </li>
+                
+
+            </ul>
         </li>
-        <!-- /customizer -->
+        <!-- /purchaces -->
 
 
 

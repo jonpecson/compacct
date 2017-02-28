@@ -44,12 +44,64 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         templateUrl: 'app/journals/journals.all.html',
         resolve: {
           deps: ['$ocLazyLoad', function($ocLazyLoad) {
-            return $ocLazyLoad.load('app/journals/journals.all.html');
+            return $ocLazyLoad.load('app/journals/journals.all.js');
           }]
         },
         controller: "journalsCtrl as vm"
         
       })
+
+      // Reports routes
+
+      .state('app.reports', {
+        template: '<div ui-view></div>',
+        abstract: true,
+        url: '/reports',
+      })
+      
+      // 1. Trial Balance
+      .state('app.reports.trial-balance', {
+        url: '/trial-balance',
+        templateUrl: 'app/reports/trial-balance/trial-balance.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/trial-balance/trial-balance.js');
+          }]
+        },
+        controller: "trialBalanceCtrl as vm"
+        
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       // UI Routes
