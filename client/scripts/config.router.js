@@ -38,7 +38,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
        .state('app.journals', {
         template: '<div ui-view></div>',
         abstract: true,
-        url: '/ui',
+        url: '/app',
       }).state('app.journals.all', {
         url: '/journals',
         templateUrl: 'app/journals/journals.all.html',
