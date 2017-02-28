@@ -72,6 +72,97 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         
       })
 
+      // 2. Profit/Loss
+      .state('app.reports.profit-loss', {
+        url: '/profit-loss',
+        templateUrl: 'app/reports/profit-loss/profit-loss.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/profit-loss/profit-loss.js');
+          }]
+        },
+        controller: "profitLossCtrl as vm"
+        
+      })
+
+       // 3. General Ledger
+      .state('app.reports.general-ledger', {
+        url: '/general-ledger',
+        templateUrl: 'app/reports/general-ledger/general-ledger.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/general-ledger/general-ledger.js');
+          }]
+        },
+        controller: "generalLedgerCtrl as vm"
+        
+      })
+
+      // 4. Daily Cash Position
+      .state('app.reports.daily-cash-position', {
+        url: '/daily-cash-position',
+        templateUrl: 'app/reports/daily-cash-position/daily-cash-position.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/daily-cash-position/daily-cash-position.js');
+          }]
+        },
+        controller: "dailyCashPositionCtrl as vm"
+        
+      })
+
+      // 5. Cash Flow Statement
+      .state('app.reports.cash-flow', {
+        url: '/cash-flow',
+        templateUrl: 'app/reports/cash-flow/cash-flow.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/cash-flow/cash-flow.js');
+          }]
+        },
+        controller: "cashFlowCtrl as vm"
+        
+      })
+
+      // 6. Balance Sheet Statement
+      .state('app.reports.balance-sheet', {
+        url: '/balance-sheet',
+        templateUrl: 'app/reports/balance-sheet/balance-sheet.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/balance-sheet/balance-sheet.js');
+          }]
+        },
+        controller: "balanceSheetCtrl as vm"
+        
+      })
+
+      // 7. Aging Summary Bill
+      .state('app.reports.aging-summary-bill', {
+        url: '/aging-summary-bill',
+        templateUrl: 'app/reports/aging-summary-bill/aging-summary-bill.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/aging-summary-bill/aging-summary-bill.js');
+          }]
+        },
+        controller: "agingSummaryBillCtrl as vm"
+        
+      })
+
+      // 7. Aging Summary Invoice
+      .state('app.reports.aging-summary-invoice', {
+        url: '/aging-summary-invoice',
+        templateUrl: 'app/reports/aging-summary-invoice/aging-summary-invoice.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/aging-summary-invoice/aging-summary-invoice.js');
+          }]
+        },
+        controller: "agingSummaryInvoiceCtrl as vm"
+        
+      })
+
 
 
 
