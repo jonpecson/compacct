@@ -3,7 +3,7 @@ angular.module('app').controller('AppCtrl', ['$scope', '$http', '$localStorage',
   function AppCtrl($scope, $http, $localStorage, $timeout, $translate) {
     $scope.mobileView = 767;
     $scope.app = {
-      name: 'CompAcct',
+      name: 'Reactor',
       year: (new Date()).getFullYear(),
       layout: {
         isSmallSidebar: false,

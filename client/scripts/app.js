@@ -21,8 +21,7 @@ angular
     'ngTouch',
     'pascalprecht.translate',
     'n3-line-chart',
-    'textAngular',
-    'simpleGrid'
+    'textAngular'
   ])
   .constant('COLORS', {
     font: 'Arial, "Helvetica Neue", Helvetica, sans-serif',

@@ -34,66 +34,22 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         }
       })
 
-       $stateProvider.state('app.journals', {
-            template: '<div ui-view></div>',
-            abstract: true,
-            templateUrl: '/journals',
-        }).state('app.journals.all', {
-            url: '/journals/all',
-            templateUrl: './app/journals/journals.all.html',
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('./app/journals/journals.all.js');
-                }]
-            },
-            controller: 'journalsCtrl as vm'
-        })
 
-        .state('app.journals.add', {
-            url: '/journals/add',
-            templateUrl: './app/journals/journals.add.html',
-            resolve: {
-                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('./app/journals/journals.add.js');
-                }]
-            },
-            controller: 'journalsAddCtrl as vm'
-        })
+       .state('app.journals', {
+        template: '<div ui-view></div>',
+        abstract: true,
+        url: '/ui',
+      }).state('app.journals.all', {
+        url: '/journals',
+        templateUrl: 'app/journals/journals.all.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/journals/journals.all.html');
+          }]
+        },
+        controller: "journalsCtrl as vm"
         
-        // .state('app.students.add', {
-        //     url: '/students/add',
-        //     templateUrl: './app/students/students.add.html',
-        //     resolve: {
-        //         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-        //             return $ocLazyLoad.load('vendor/jquery-validation/dist/jquery.validate.min.js').then(function () {
-        //                 return $ocLazyLoad.load('./app/students/students.add.js');
-        //             }).then(function () {
-        //                 return $ocLazyLoad.load({
-        //                     name: 'ngFileUpload',
-        //                     files: ['vendor/ng-file-upload/ng-file-upload-all.js']
-        //                 })
-        //             });
-        //         }]
-        //     },
-        //     controller: 'studentsAddCtrl as vm'
-        // }).state('app.students.edit', {
-        //     url: '/students/edit/:id',
-        //     templateUrl: './app/students/students.edit.html',
-        //     resolve: {
-        //         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-        //             return $ocLazyLoad.load('./app/students/students.edit.js').then(function () {
-        //                 return $ocLazyLoad.load('vendor/jquery-validation/dist/jquery.validate.min.js')
-        //             }).then(function () {
-        //                 return $ocLazyLoad.load({
-        //                     name: 'ngFileUpload',
-        //                     files: ['vendor/ng-file-upload/ng-file-upload-all.js']
-        //                 })
-        //             });
-        //         }]
-        //     },
-        //     controller: 'studentsEditCtrl as vm'
-        // })
-
+      })
 
 
       // UI Routes
