@@ -1,0 +1,57 @@
+<div class="page-title">
+    <div class="title">Journals</div>
+    <div class="sub-title">All Journals</div>
+</div>
+
+<div class="card bg-white m-b">
+    <div class="card-header">Journals Table
+        <button type="button" class="btn pull-right" data-ng-click="vm.addJournal()">Add new student</button>
+    </div>
+    <div class="card-block p-a-0">
+        <div class="table-responsive">
+            <table class="table m-b-0">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">
+                            <span></span>ID</th>
+                        <th class="col-md-1">Photo</th>
+                        <th class="col-md-2">Name</th>
+                        <th class="col-md-2">Address</th>
+                        <th class="col-md-1">Yearl Level</th>
+                        <th class="col-md-1">Gender</th>
+                        <th class="col-md-1">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="student in vm.students">
+                        <td>
+                            <span>{{$index}}</span></td>
+                        <td><img class="img-circle" data-ng-src="{{student.photo}}" alt="" height="50px" width="50px"></td>
+                        <td>{{student.displayName}}</td>
+                        <td class="align-middle">
+                            {{student.address}}
+                        </td>
+                        <td>
+                            Grade {{student.yearLevel}}
+                        </td>
+                        <td>
+                            {{student.gender}}
+                        </td>
+                        <td>
+                            <button type="button" ng-click="vm.editStudent(student.$id)" class="btn btn-sm row">
+				<i class="glyphicon glyphicon-pencil"></i>
+			</button>
+
+                            <button type="button" ng-click="vm.removeStudent(student.$id)" class="btn btn-sm btn-danger">
+				<i class="glyphicon glyphicon-trash">
+				</i>
+			</button>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
