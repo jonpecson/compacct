@@ -1,0 +1,34 @@
+.aHead:not(:last-child) {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.aChild:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.aTop:not(:last-child) {
+    border-top: 1px solid #ccc;
+}
+
+.aBottom:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.tabIndent { 
+    text-indent:15px; 
+}
+
+.cellPadding {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #f5f5f5;
+}
+
+.list-custom {
+    background-color: #f0f0f0;
+    border-style: hidden;
+}
+.aChildBorder:not(:last-child) {
+    border-bottom: 1px solid #e4e4e4;
+}

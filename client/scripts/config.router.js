@@ -51,7 +51,20 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         
       })
 
-      // Reports routes
+      //Reports routes
+
+      .state('app.reports.report', {
+       url: '/report',
+        templateUrl: 'app/reports/report/report.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/reports/report/report.js');
+          }]
+        },
+        controller: "reportCtrl as vm"
+      })
+
+      // Reportings
 
       .state('app.reports', {
         template: '<div ui-view></div>',
