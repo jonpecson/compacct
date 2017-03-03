@@ -32,3 +32,57 @@
 .aChildBorder:not(:last-child) {
     border-bottom: 1px solid #e4e4e4;
 }
+#textboxReport {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #f0f0f0;
+}
+
+.headerReport {
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    margin-top: -12px;
+    margin-left: -12px;
+    -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+}
+
+.contentReport {
+    z-index:1;
+}
+
+.headerButton {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+
+}
+
+.headerButton:hover {
+    background-color: #f0f0f0;
+}
+
+.headerButtonClose {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+
+}
+
+.headerButtonClose:hover {
+    background-color: #ce3e25;
+    color: #ffffff
+}
+
+.body {
+    background-color: #ffffff;
+}
+
+

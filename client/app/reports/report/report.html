@@ -1,111 +1,131 @@
-<!-- 1st Row -->
-<div class="aChildBorder">
-    <h4>Reports</h4>
+<div class="panelReport">
+    <div class="row headerReport">
+        <div class="col-xs-12 col-md-1">
+            <h4>Reports</h4>
+        </div><!-- /.col-lg-6 -->
+    
+        <div class="col-xs-12 col-md-10">
+            <div class="input-group">
+            <input type="text" class="form-control" id="textboxReport" placeholder="Search reports" list="reports" name="report">
+                <datalist id="reports">
+                    <option value="Business Overview">
+                    <option value="Accountant">
+                    <option value="Payables">
+                    <option value="Receivables">
+                    <option value="Sales">
+                    <option value="Inventory">
+                </datalist>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+
+
+    <div class="contentReport">
+        <!-- 1st Row -->
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
+                <h5><i class="glyphicon glyphicon-stats"></i> Business Overview</h5>
+                <ul class="list-group">
+                    <li class="list-group-item list-custom">    
+                        <a ui-sref="app.reports.profit-loss">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Profit Loss</span>
+                        </a>
+                    </li>
+                    
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.cash-flow">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Cash Flow</span>
+                        </a>
+                    </li>
+
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.balance-sheet">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Balance Sheet</span>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="col-xs-12 col-md-1"></div>
+
+            <div class="col-xs-12 col-md-3">
+                <h5><i class="glyphicon glyphicon-user"></i> Accountant</h5>
+                <ul class="list-group">
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.general-ledger">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> General Ledger</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.trial-balance">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Trial Balance</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.daily-cash-position">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Daily Cash Position</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-md-1"></div>
+
+            <div class="col-xs-12 col-md-3">
+                <h5><i class="glyphicon glyphicon-log-out"></i> Payables</h5>
+                <ul class="list-group">
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.aging-summary-bill">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Aging Summary Bill</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- 2nd Row -->
+        <div class="aChildBorder">
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
+                <h5><i class="glyphicon glyphicon-log-in"></i> Receivables</h5>
+                <ul class="list-group">
+                    <li class="list-group-item list-custom">
+                        <a ui-sref="app.reports.aging-summary-invoice">
+                            <span><i class="glyphicon glyphicon-menu-right"></i> Aging Summary Invoice</span>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+
+            <div class="col-xs-12 col-md-1"></div>
+
+            <div class="col-xs-12 col-md-3">
+                <h5><i class="glyphicon glyphicon-shopping-cart"></i> Sales</h5>
+                <ul class="list-group">
+                    <li class="list-group-item list-custom">    
+                        no report
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-12 col-md-1"></div>
+
+            <div class="col-xs-12 col-md-3">
+                <h5><i class="glyphicon glyphicon-scale"></i> Inventory</h5>
+                <ul class="list-group">
+                    <li class="list-group-item list-custom">    
+                        no report
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
 </div>
-
-<br>
-<div class="row">
-    <div class="col-xs-12 col-md-3">
-        <h5><i class="glyphicon glyphicon-stats"></i> Business Overview</h5>
-        <ul class="list-group">
-            <li class="list-group-item list-custom">    
-                <a ui-sref="app.reports.profit-loss">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Profit Loss</span>
-                </a>
-            </li>
-            
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.cash-flow">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Cash Flow</span>
-                </a>
-            </li>
-
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.balance-sheet">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Balance Sheet</span>
-                </a>
-            </li>
-        </ul>
-        
-    </div>
-
-    <div class="col-xs-12 col-md-1"></div>
-
-    <div class="col-xs-12 col-md-3">
-        <h5><i class="glyphicon glyphicon-user"></i> Accountant</h5>
-        <ul class="list-group">
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.general-ledger">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> General Ledger</span>
-                </a>
-            </li>
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.trial-balance">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Trial Balance</span>
-                </a>
-            </li>
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.daily-cash-position">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Daily Cash Position</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="col-xs-12 col-md-1"></div>
-
-     <div class="col-xs-12 col-md-3">
-        <h5><i class="glyphicon glyphicon-log-out"></i> Payables</h5>
-        <ul class="list-group">
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.aging-summary-bill">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Aging Summary Bill</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-</div>
-
-<!-- 2nd Row -->
-<div class="aChildBorder">
-</div>
-
-<br>
-<div class="row">
-    <div class="col-xs-12 col-md-3">
-        <h5><i class="glyphicon glyphicon-log-in"></i> Receivables</h5>
-        <ul class="list-group">
-            <li class="list-group-item list-custom">
-                <a ui-sref="app.reports.aging-summary-invoice">
-                    <span><i class="glyphicon glyphicon-menu-right"></i> Aging Summary Invoice</span>
-                </a>
-            </li>
-        </ul>
-        
-    </div>
-
-    <div class="col-xs-12 col-md-1"></div>
-
-    <div class="col-xs-12 col-md-3">
-        <h5><i class="glyphicon glyphicon-shopping-cart"></i> Sales</h5>
-        <ul class="list-group">
-            <li class="list-group-item list-custom">    
-                no report
-            </li>
-        </ul>
-    </div>
-
-    <div class="col-xs-12 col-md-1"></div>
-
-     <div class="col-xs-12 col-md-3">
-        <h5><i class="glyphicon glyphicon-scale"></i> Inventory</h5>
-        <ul class="list-group">
-            <li class="list-group-item list-custom">    
-                no report
-            </li>
-        </ul>
-    </div>
-
-</div>
-
