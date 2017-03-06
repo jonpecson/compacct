@@ -40,7 +40,7 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         abstract: true,
         url: '/app',
       }).state('app.journals.all', {
-        url: '/journals',
+        url: '/journals/all',
         templateUrl: 'app/journals/journals.all.html',
         resolve: {
           deps: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -48,6 +48,16 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
           }]
         },
         controller: "journalsCtrl as vm"
+        
+      }).state('app.journals.add', {
+        url: '/journals/add',
+        templateUrl: 'app/journals/journals.add.html',
+        resolve: {
+          deps: ['$ocLazyLoad', function($ocLazyLoad) {
+            return $ocLazyLoad.load('app/journals/journals.add.js');
+          }]
+        },
+        controller: "journalsAddCtrl as vm"
         
       })
 
