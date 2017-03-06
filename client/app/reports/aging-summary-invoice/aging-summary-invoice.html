@@ -1,44 +1,54 @@
-    <br><br>
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-4"><center>ABC Corporation</center></div>
-		<div class="col-xs-12 col-md-4"></div>
+<div class="panelReport">
+	<div class="row headerReport">
+		<div data-ng-include="'app/common/report-header.html'"></div>
 	</div>
 
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-4"><center><h4>{{ vm.reportTitle }}</h4></center></div>
-		<div class="col-xs-12 col-md-4"></div>
-	</div>
-	
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-4"><center>as of 22 Feb 2017</center></div>
-		<div class="col-xs-12 col-md-4"></div>
+	<div class="contentReport">
+		<br><br><br><br>
+		<div class="row">
+			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-4"><center>ABC Corporation</center></div>
+			<div class="col-xs-12 col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-4"><center><h4>{{ vm.reportTitle }}</h4></center></div>
+			<div class="col-xs-12 col-md-4"></div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-4"><center>as of 22 Feb 2017</center></div>
+			<div class="col-xs-12 col-md-4"></div>
+		</div>
+
+		<br><br>
+		<div class="row">
+			<div class="col-xs-12 col-md-1"></div>
+			<div class="col-xs-12 col-md-3 aHead" align="left"><b>CUSTOMER NAME</b></div>
+			<div class="col-xs-12 col-md-1 aHead" align="left"><b>CURRENT</b></div>
+			<div class="col-xs-12 col-md-1 aHead" align="left"><b>1-15 DAYS</b></div>
+			<div class="col-xs-12 col-md-1 aHead" align="left"><b>16-30 DAYS</b></div>
+			<div class="col-xs-12 col-md-1 aHead" align="left"><b>31-45 DAYS</b></div>
+			<div class="col-xs-12 col-md-1 aHead" align="left"><b>>45 DAYS</b></div>
+			<div class="col-xs-12 col-md-2 aHead" align="left"><b>TOTAL</b></div>
+			<div class="col-xs-12 col-md-1"></div>
+		</div>
+
+		<br>
+		<div class="row">
+			<div class="col-xs-12 col-md-1"></div>
+			<div class="col-xs-12 col-md-3 aChild" align="left">Zen Corportion</div>
+			<div class="col-xs-12 col-md-1 aChild" align="left">50,000.00</div>
+			<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
+			<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
+			<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
+			<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
+			<div class="col-xs-12 col-md-2 aChild" align="left">50,000.00</div>
+			<div class="col-xs-12 col-md-1"></div>
+		</div>
 	</div>
 
-	<br><br>
-	<div class="row">
-		<div class="col-xs-12 col-md-1"></div>
-		<div class="col-xs-12 col-md-3 aHead" align="left"><b>CUSTOMER NAME</b></div>
-		<div class="col-xs-12 col-md-1 aHead" align="left"><b>CURRENT</b></div>
-		<div class="col-xs-12 col-md-1 aHead" align="left"><b>1-15 DAYS</b></div>
-		<div class="col-xs-12 col-md-1 aHead" align="left"><b>16-30 DAYS</b></div>
-		<div class="col-xs-12 col-md-1 aHead" align="left"><b>31-45 DAYS</b></div>
-		<div class="col-xs-12 col-md-1 aHead" align="left"><b>>45 DAYS</b></div>
-		<div class="col-xs-12 col-md-2 aHead" align="left"><b>TOTAL</b></div>
-		<div class="col-xs-12 col-md-1"></div>
-	</div>
 
-	<br>
-	<div class="row">
-		<div class="col-xs-12 col-md-1"></div>
-		<div class="col-xs-12 col-md-3 aChild" align="left">Zen Corportion</div>
-		<div class="col-xs-12 col-md-1 aChild" align="left">50,000.00</div>
-		<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
-		<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
-		<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
-		<div class="col-xs-12 col-md-1 aChild" align="left">0.00</div>
-		<div class="col-xs-12 col-md-2 aChild" align="left">50,000.00</div>
-		<div class="col-xs-12 col-md-1"></div>
-	</div>
+</div>

@@ -1,141 +1,152 @@
-<br><br>
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-4"><center>ABC Corporation</center></div>
-		<div class="col-xs-12 col-md-4"></div>
+<div class="panelReport">
+	<div class="row headerReport">
+		<div data-ng-include="'app/common/report-header.html'"></div>
 	</div>
 
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-4"><center><h4>{{ vm.reportTitle }}</h4></center></div>
-		<div class="col-xs-12 col-md-4"></div>
-	</div>
-	
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-4"><center>From 01 Feb 2017  To 28 Feb 2017</center></div>
-		<div class="col-xs-12 col-md-4"></div>
+	<div class="contentReport">
+		<br><br><br><br>
+		<div class="row">
+			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-4"><center>ABC Corporation</center></div>
+			<div class="col-xs-12 col-md-4"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-4"><center><h4>{{ vm.reportTitle }}</h4></center></div>
+			<div class="col-xs-12 col-md-4"></div>
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-md-4"></div>
+			<div class="col-xs-12 col-md-4"><center>From 01 Feb 2017  To 28 Feb 2017</center></div>
+			<div class="col-xs-12 col-md-4"></div>
+		</div>
+
+		<br><br>
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4 aHead" align="left">Account</div>
+			<div class="col-xs-12 col-md-4 aHead" align="right">Total</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-8" align="left">Current Assets</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4" align="left"><a href="#">Accounts Receivable</a></div>
+			<div class="col-xs-12 col-md-4" align="right">0.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-8" align="left">Cash</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4" align="left"><a href="#">Cash in Bank</a></div>
+			<div class="col-xs-12 col-md-4" align="right">61,000.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4 aHead" align="left"><b>Total Current Assets</b></div>
+			<div class="col-xs-12 col-md-4 aHead" align="right"><b>61,000.00</b></div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-8" align="left">Fixed Assets</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4" align="left"><a href="#">Computer Equipment</a></div>
+			<div class="col-xs-12 col-md-4" align="right">10,000.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4 aHead" align="left"><b>Total Fixed Assets</b></div>
+			<div class="col-xs-12 col-md-4 aHead" align="right"><b>10,000.00</b></div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-6"></div>
+			<div class="col-xs-12 col-md-2" align="right">TOTAL ASSETS</div>
+			<div class="col-xs-12 col-md-2 aChild" align="right">71,000.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+		
+		<br>
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4 aHead" align="left">Liabilities & Equities</div>
+			<div class="col-xs-12 col-md-4 aHead" align="right">Total</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-8" align="left">Current Liabilities</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4" align="left"><a href="#">Accounts Payable</a></div>
+			<div class="col-xs-12 col-md-4" align="right">61,000.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4 aHead" align="left"><b>Total Current Liabilities</b></div>
+			<div class="col-xs-12 col-md-4 aHead" align="right"><b>61,000.00</b></div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-8" align="left">Equities</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4" align="left"><a href="#">Current Year Earnings</a></div>
+			<div class="col-xs-12 col-md-4" align="right">100,000.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-2"></div>
+			<div class="col-xs-12 col-md-4 aHead" align="left"><b>Total Equities</b></div>
+			<div class="col-xs-12 col-md-4 aHead" align="right"><b>100,000.00</b></div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-md-5"></div>
+			<div class="col-xs-12 col-md-3" align="right">TOTAL LIABILITIES & EQUITIES</div>
+			<div class="col-xs-12 col-md-2 aChild" align="right">39,000.00</div>
+			<div class="col-xs-12 col-md-2"></div>
+		</div>
+
 	</div>
 
-	<br><br>
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-2 aHead" align="left">Account</div>
-		<div class="col-xs-12 col-md-4 aHead" align="right">Total</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
 
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-6" align="left">Current Assets</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3" align="left"><a href="#">Accounts Receivable</a></div>
-		<div class="col-xs-12 col-md-3" align="right">0.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-6" align="left">Cash</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3" align="left"><a href="#">Cash in Bank</a></div>
-		<div class="col-xs-12 col-md-3" align="right">61,000.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3 aHead" align="left"><b>Total Current Assets</b></div>
-		<div class="col-xs-12 col-md-3 aHead" align="right"><b>61,000.00</b></div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-6" align="left">Fixed Assets</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3" align="left"><a href="#">Computer Equipment</a></div>
-		<div class="col-xs-12 col-md-3" align="right">10,000.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3 aHead" align="left"><b>Total Fixed Assets</b></div>
-		<div class="col-xs-12 col-md-3 aHead" align="right"><b>10,000.00</b></div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-5"></div>
-		<div class="col-xs-12 col-md-2" align="right">TOTAL ASSETS</div>
-		<div class="col-xs-12 col-md-2 aChild" align="right">71,000.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-    
-    <br>
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-2 aHead" align="left">Liabilities & Equities</div>
-		<div class="col-xs-12 col-md-4 aHead" align="right">Total</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-6" align="left">Current Liabilities</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3" align="left"><a href="#">Accounts Payable</a></div>
-		<div class="col-xs-12 col-md-3" align="right">61,000.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3 aHead" align="left"><b>Total Current Liabilities</b></div>
-		<div class="col-xs-12 col-md-3 aHead" align="right"><b>61,000.00</b></div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-6" align="left">Equities</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3" align="left"><a href="#">Current Year Earnings</a></div>
-		<div class="col-xs-12 col-md-3" align="right">100,000.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-3"></div>
-		<div class="col-xs-12 col-md-3 aHead" align="left"><b>Total Equities</b></div>
-		<div class="col-xs-12 col-md-3 aHead" align="right"><b>100,000.00</b></div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-xs-12 col-md-4"></div>
-		<div class="col-xs-12 col-md-3" align="right">TOTAL LIABILITIES & EQUITIES</div>
-		<div class="col-xs-12 col-md-2 aChild" align="right">39,000.00</div>
-		<div class="col-xs-12 col-md-3"></div>
-	</div>
+</div>
