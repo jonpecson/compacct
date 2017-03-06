@@ -26,7 +26,6 @@
 }
 
 .list-custom {
-    background-color: #f0f0f0;
     border-style: hidden;
 }
 .aChildBorder:not(:last-child) {
@@ -42,7 +41,7 @@
 .headerReport {
     border-bottom: 1px solid #e4e4e4;
     border-top: 1px solid #e4e4e4;
-    background-color: #ffffff;
+    background-color: #f0f0f0;
     position: fixed;
     width: 100%;
     z-index: 10;
@@ -51,9 +50,9 @@
     padding-left: 20px;
     margin-top: -12px;
     margin-left: -12px;
-    -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+    /*-webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
     -moz-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
-    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);*/
 }
 
 .contentReport {
@@ -61,17 +60,17 @@
 }
 
 .headerButton {
-    background-color: #ffffff;
+    background-color: #f0f0f0;
     border: 1px solid #f0f0f0;
 
 }
 
 .headerButton:hover {
-    background-color: #f0f0f0;
+    background-color: #fffff;
 }
 
 .headerButtonClose {
-    background-color: #ffffff;
+    background-color: #f0f0f0;
     border: 1px solid #f0f0f0;
 
 }
@@ -83,6 +82,25 @@
 
 .body {
     background-color: #ffffff;
+}
+
+.sidebar-panel {
+    background-color: #f0f0f0;
+}
+
+.sidebar-panel > .brand {
+    background-color: #f0f0f0;
+}
+
+.main-panel {
+    background: #ffffff;
+}
+
+.app {
+    background: #ffffff;
+    width: 100%;
+    min-height: 100%;
+    position: relative;
 }
 
 
