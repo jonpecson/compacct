@@ -8,6 +8,7 @@
      */
     angular
         .module("app")
+        .controller("journalsAddCtrl", JournalsAddCtrl);
     JournalsAddCtrl.$inject = ['$state'];
     function JournalsAddCtrl($state) {
         var vm = this;
