@@ -5,33 +5,70 @@
         
         <!--<div class="sub-title">Native form elements</div>-->
     </div>
-    <div class="card bg-white">
-        <div class="card-header">
+    <!--<div class="card bg-white">-->
+        <!--<div class="card-header">
             Default Bootstrap elements
-        </div>
+        </div>-->
         <div class="card-block">
             <div class="row m-a-0">
-                <div class="col-lg-12">
+                <div class="col-lg-5">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Default</label>
+                            <label class="col-sm-2 control-label"><b>Date</b></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Help text</label>
+                            <label class="col-sm-2 control-label"><b>Reference #</b></label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control">
-                                <p class="help-block">Example block-level help text here.</p>
+                                <!--<p class="help-block">Example block-level help text here.</p>-->
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Rounded</label>
+                            <label class="col-sm-2 control-label"><b>Notes</b></label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control input-rounded">
+                                <!--<input type="text" class="form-control input-rounded">-->
+                                <textarea name="" class="form-control input-rounded" id="" rows="3"></textarea>
                             </div>
                         </div>
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Journal Type</b></label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+<input type="checkbox">Cash based journal</label>
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label"><b>Currency</b></label>
+                            <div class="col-sm-10">
+                                <select class="form-control">
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+</select>
+                                <h6>Multiple select</h6>
+                                <select multiple="" class="form-control">
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+</select>
+                            </div>
+                        </div>
+
+                        
+
+
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Placeholder</label>
                             <div class="col-sm-10">
@@ -186,190 +223,4 @@
             </div>
         </div>
     </div>
-    <div class="card bg-white m-b-0">
-        <div class="card-header">
-            Form input groups
-        </div>
-        <div class="card-block m-b">
-            <div class="row m-a-0">
-                <div class="col-lg-12">
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Input Groups</label>
-                            <div class="col-sm-10">
-                                <div class="input-group m-b">
-                                    <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Username">
-                                </div>
-                                <div class="input-group m-b">
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-addon">.00</span>
-                                </div>
-                                <div class="input-group m-b">
-                                    <span class="input-group-addon">$</span>
-                                    <input type="text" class="form-control">
-                                    <span class="input-group-addon">.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Input Groups</label>
-                            <div class="col-sm-10">
-                                <div class="input-group input-group-lg m-b">
-                                    <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Username">
-                                </div>
-                                <div class="input-group m-b">
-                                    <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Username">
-                                </div>
-                                <div class="input-group input-group-sm m-b">
-                                    <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Username">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Checkboxes and radio addons</label>
-                            <div class="col-sm-10">
-                                <div class="input-group m-b">
-                                    <span class="input-group-addon">
-<input type="checkbox">
-</span>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="input-group m-b">
-                                    <span class="input-group-addon">
-<input type="radio">
-</span>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Button addons</label>
-                            <div class="col-sm-10">
-                                <div class="input-group m-b">
-                                    <span class="input-group-btn">
-<button class="btn btn-primary" type="button">Go!</button>
-</span>
-                                    <input type="text" class="form-control bl0">
-                                </div>
-                                <div class="input-group m-b">
-                                    <input type="text" class="form-control br0">
-                                    <span class="input-group-btn">
-<button class="btn btn-info" type="button">Go!</button>
-</span>
-                                </div>
-                                <div class="input-group m-b">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-success" data-toggle="dropdown">Action
-<span class="caret"></span>
-</button>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a href="javascript:;">Action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Something else here</a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="javascript:;">Separated link</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <input type="text" class="form-control bl0">
-                                </div>
-
-                                <div class="input-group m-b">
-                                    <input type="text" class="form-control br0">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-danger" data-toggle="dropdown">Action
-<span class="caret"></span>
-</button>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li>
-                                                <a href="javascript:;">Action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Something else here</a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="javascript:;">Separated link</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Segmented buttons</label>
-                            <div class="col-sm-10">
-                                <div class="input-group m-b">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-                                        <button type="button" class="btn btn-default" data-toggle="dropdown" tabindex="-1">
-<span class="caret"></span>
-<span class="sr-only">Toggle Dropdown</span>
-</button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="javascript:;">Action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Something else here</a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="javascript:;">Separated link</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="input-group m-b">
-                                    <input type="text" class="form-control">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default" tabindex="-1">Action</button>
-                                        <button type="button" class="btn btn-default" data-toggle="dropdown" tabindex="-1">
-<span class="caret"></span>
-<span class="sr-only">Toggle Dropdown</span>
-</button>
-                                        <ul class="dropdown-menu pull-right" role="menu">
-                                            <li>
-                                                <a href="javascript:;">Action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Another action</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;">Something else here</a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a href="javascript:;">Separated link</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    
