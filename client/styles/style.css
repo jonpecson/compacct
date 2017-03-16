@@ -105,43 +105,57 @@
     position: relative;
 }
 
-<<<<<<< HEAD
-.alignRight {
-	text-align: right;
+<<<<<<< HEAD .alignRight {
+    text-align: right;
 }
+
 .underline {
     border-bottom: 1px solid #ccc;
 }
 
+
 /*Table CSS*/
+
 .table-report {
-    width:100%;
+    width: 100%;
     border-collapse: collapse;
     border-top: 1px solid #ccc;
 }
+
 .table-report-tr-title-border {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
+
 .table-report-tr-title-border-top {
     border-top: 1px solid #ccc;
 }
+
 .table-report-tr-title-border-inside {
     border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc; 
+    border-bottom: 1px solid #ccc;
 }
 
+
 /*CSS for Custom Modal*/
-.modal{
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    padding-top: 0px; /* Location of the box */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    padding-top: 0px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Black w/ opacity */
 }
 
 .modal-content-customize-report {
@@ -154,7 +168,7 @@
     width: 800px;
     height: 450px;
     overflow: y;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -171,7 +185,7 @@
     width: 800px;
     height: 650px;
     overflow: y;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -188,7 +202,7 @@
     width: 1000px;
     height: 700px;
     overflow: y;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -204,7 +218,9 @@
     font-size: 20px;
 }
 
-.modal-body {padding: 2px;}
+.modal-body {
+    padding: 2px;
+}
 
 .modal-body-schedule-report {
     padding: 40px;
@@ -219,6 +235,7 @@
 
 
 /*Textbox CSS*/
+
 input[type=text] {
     width: 100%;
     padding: 2px 10px;
@@ -228,6 +245,7 @@ input[type=text] {
     transition: 0.5s;
     outline: none;
 }
+
 input[type=text]:focus {
     border: 3px solid #555;
 }
@@ -242,7 +260,8 @@ input[type=text]:focus {
     transition: 0.5s;
     outline: none;
 }
-.drop-down-schedule-report{
+
+.drop-down-schedule-report {
     width: 100%;
     height: 30px;
     padding: 0px 0px;
@@ -262,9 +281,27 @@ input[type=text]:focus {
 }
 
 =======
-
 /*John Anthony Pecson*/
 
 
+/*Printing*/
+
+@media print {
+    .hidden-print {
+        display: none !important;
+    }
+    /*.hidden-border {
+        border: none !important;
+        border-bottom: none !important;
+    }*/
+}
+
+.no-border {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+
 /*editable text styles*/
->>>>>>> 70bc4b048a2711fe15503f7c64b5c9724c44a204
+
+>>>>>>>70bc4b048a2711fe15503f7c64b5c9724c44a204

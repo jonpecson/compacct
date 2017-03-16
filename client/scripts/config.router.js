@@ -189,37 +189,6 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // UI Routes
         .state('app.ui', {
                 template: '<div ui-view></div>',

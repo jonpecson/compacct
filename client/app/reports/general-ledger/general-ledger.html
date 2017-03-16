@@ -1,9 +1,9 @@
-<div class="panelReport">
+<div class="panelReport hidden-print">
     <div class="row headerReport">
         <div data-ng-include="'app/common/report-header.html'"></div>
     </div>
 
-    <div class="contentReport">
+    <div class="contentReport hidden-print">
         <!-- Start - Insert data here for company name -->
         <br><br><br><br>
         <div class="row">
@@ -251,13 +251,13 @@
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
-        <div class="modal-content-print">
-            <div class="modal-header">
+        <div class="modal-content-print no-border">
+            <div class="modal-header no-border">
                 <div class="col-xs-12 col-md-6">
                     <p>Preview</p>
                 </div>
-                <div class="col-xs-12 col-md-6" align="right">
-                    <button type="button" class="btn btn-danger btn-modal-print" onclick="myFunction()">Print</button>
+                <div class="col-xs-12 col-md-6 hidden-print" align="right">
+                    <button type="button" class="btn btn-danger btn-modal-print " onclick="myFunction()">Print</button>
                     <button type="button" class="btn btn-secondary btn-modal-close" data-dismiss="modal">Close</button>
                 </div>
             </div>
