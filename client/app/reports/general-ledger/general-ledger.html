@@ -1,307 +1,324 @@
 <div class="panelReport">
-	<div class="row headerReport">
-		<div data-ng-include="'app/common/report-header.html'"></div>
-	</div>
+    <div class="row headerReport">
+        <div data-ng-include="'app/common/report-header.html'"></div>
+    </div>
 
-	<div class="contentReport">
-		<!-- Start - Insert data here for company name -->
-		<br><br><br><br>
-		<div class="row">
-			<div class="col-xs-12 col-md-4"></div>
-			<div class="col-xs-12 col-md-4"><center>ABC Corporation</center></div>
-			<div class="col-xs-12 col-md-4"></div>
-		</div>
-		<!-- End - Insert data here for company name -->
+    <div class="contentReport">
+        <!-- Start - Insert data here for company name -->
+        <br><br><br><br>
+        <div class="row">
+            <div class="col-xs-12 col-md-4"></div>
+            <div class="col-xs-12 col-md-4">
+                <center>ABC Corporation</center>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
+        <!-- End - Insert data here for company name -->
 
-		<div class="row">
-			<div class="col-xs-12 col-md-4"></div>
-			<div class="col-xs-12 col-md-4"><center><h4>General Ledger</h4></center></div>
-			<div class="col-xs-12 col-md-4"></div>
-		</div>
-		
-		<!-- Start - Insert data here for date covered -->
-		<div class="row">
-			<div class="col-xs-12 col-md-4"></div>
-			<div class="col-xs-12 col-md-4"><center>From 01 Feb 2017  To 28 Feb 2017</center></div>
-			<div class="col-xs-12 col-md-4"></div>
-		</div>
-		<!-- End - Insert data here for date covered -->
+        <div class="row">
+            <div class="col-xs-12 col-md-4"></div>
+            <div class="col-xs-12 col-md-4">
+                <center>
+                    <h4>General Ledger</h4>
+                </center>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
 
-		<br><br>
-		<div class="row">
-			<div class="col-xs-12 col-md-2"></div>
-			<div class="col-xs-12 col-md-8">
-				<table class="table-report table-hover">
-					<tr class="table-report-tr-title-border">
-						<th>ACOUNT</th>
-						<th class="alignRight">DEBIT</th> 
-						<th class="alignRight">CREDIT</th>
-						<th class="alignRight">BALANCE</th>
-					</tr>
-					<tr ng-repeat="currency in currencies">
-						<td>{{ currency.currncy_code }}</td>
-						<td class="alignRight">{{ currency.currncy_symbol }}</td>
-						<td class="alignRight">{{ currency.currncy_decimal_places }}</td>
-						<td class="alignRight">{{ currency.created_at }}</td>
-					</tr>
-				</table>
-			</div>
-			<div class="col-xs-12 col-md-2"></div>
-		</div>
-	</div>
+        <!-- Start - Insert data here for date covered -->
+        <div class="row">
+            <div class="col-xs-12 col-md-4"></div>
+            <div class="col-xs-12 col-md-4">
+                <center>From 01 Feb 2017 To 28 Feb 2017</center>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
+        <!-- End - Insert data here for date covered -->
+
+        <br><br>
+        <div class="row">
+            <div class="col-xs-12 col-md-2"></div>
+            <div class="col-xs-12 col-md-8">
+                <table class="table-report table-hover">
+                    <tr class="table-report-tr-title-border">
+                        <th>ACOUNT</th>
+                        <th class="alignRight">DEBIT</th>
+                        <th class="alignRight">CREDIT</th>
+                        <th class="alignRight">BALANCE</th>
+                    </tr>
+                    <tr ng-repeat="currency in currencies">
+                        <td>{{ currency.currncy_code }}</td>
+                        <td class="alignRight">{{ currency.currncy_symbol }}</td>
+                        <td class="alignRight">{{ currency.currncy_decimal_places }}</td>
+                        <td class="alignRight">{{ currency.created_at }}</td>
+                    </tr>
+
+
+                    <tr ng-repeat="account in accounts">
+                        <td>{{ account.acct_name }}</td>
+                        <!--<td class="alignRight">{{ account.currncy_symbol }}</td>
+                        <td class="alignRight">{{ account.currncy_decimal_places }}</td>
+                        <td class="alignRight">{{ account.created_at }}</td>-->
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col-xs-12 col-md-2"></div>
+        </div>
+    </div>
 </div>
 
 <!--Header-Modals-->
 
 <!--Schedule Report MOdal-->
-	<div class="modal fade" id="myModalCustomizeReport" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content-customize-report">
-				<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Schedule Report</h4>
-				</div>
-				<div class="modal-body-schedule-report">
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Date Option</p>
-						</div>
-						<div class="col-xs-12 col-md-3">
-							<select class= "drop-down-schedule-report">
+<div class="modal fade" id="myModalCustomizeReport" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content-customize-report">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Schedule Report</h4>
+            </div>
+            <div class="modal-body-schedule-report">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Date Option</p>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <select class="drop-down-schedule-report">
 								<option value="weekly">Today</option>
 								<option value="monthly">This Week</option>
 								<option value="quarterly">This Month</option>
 								<option value="yearly">This Quarter</option>
 								<option value="yearly">This Year</option>
 							</select>
-						</div>
-						<div class="col-xs-12 col-md-3">
-							<input type="date" class="drop-down-schedule-report" />
-						</div>
-						<div class="col-xs-12 col-md-3">
-							<input type="date" class="drop-down-schedule-report" />
-						</div>
-					</div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <input type="date" class="drop-down-schedule-report" />
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <input type="date" class="drop-down-schedule-report" />
+                    </div>
+                </div>
 
-					<br><br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Compare With</p>
-						</div>
-						
-						<div class="col-xs-12 col-md-3">
-							<select class= "drop-down-schedule-report">
+                <br><br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Compare With</p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-3">
+                        <select class="drop-down-schedule-report">
 								<option value="weekly">Previous Year(s)</option>
 								<option value="monthly">Previous Period(s)</option>
 							</select>
-						</div>
-						
-					</div>
+                    </div>
 
-					<br><br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Report Basis</p>
-						</div>
-						
-						<div class="col-xs-12 col-md-3">
-							<select class= "drop-down-schedule-report">
+                </div>
+
+                <br><br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Report Basis</p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-3">
+                        <select class="drop-down-schedule-report">
 								<option value="weekly">Accrual</option>
 								<option value="monthly">Cash</option>
 							</select>
-						</div>
-						
-					</div>
+                    </div>
 
-					<br><br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3"></div>
-						<div class="col-xs-12 col-md-3">
-							<input type="checkbox" name="report" value="year"><b>Year to Date</b><br>
-						</div>
-						
-					</div>	
-				</div>
-				
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+
+                <br><br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3"></div>
+                    <div class="col-xs-12 col-md-3">
+                        <input type="checkbox" name="report" value="year"><b>Year to Date</b><br>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
 <!--Schedule Report MOdal-->
-	<div class="modal fade" id="myModalScheduleReport" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content-schedule-report">
-				<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Schedule Report</h4>
-				</div>
-				<div class="modal-body-schedule-report">
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Schedule</p>
-						</div>
-						<div class="col-xs-12 col-md-3">
-							<select class= "drop-down-schedule-report">
+<div class="modal fade" id="myModalScheduleReport" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content-schedule-report">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Schedule Report</h4>
+            </div>
+            <div class="modal-body-schedule-report">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Schedule</p>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <select class="drop-down-schedule-report">
 								<option value="weekly">Weekly</option>
 								<option value="monthly">Monthly</option>
 								<option value="quarterly">Quarterly</option>
 								<option value="yearly">Yearly</option>
 							</select>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Start Date & Time</p>
-						</div>
-						<div class="col-xs-12 col-md-4">
-							<input type="date" class="drop-down-schedule-report" />
-						</div>
-						<div class="col-xs-12 col-md-1">
-							<select class="drop-down-schedule-report">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Start Date & Time</p>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <input type="date" class="drop-down-schedule-report" />
+                    </div>
+                    <div class="col-xs-12 col-md-1">
+                        <select class="drop-down-schedule-report">
 								<option value="00">00</option>
 								<option value="30">30</option>
 							</select>
-						</div>
-						<div class="col-xs-12 col-md-1">
-							<select class="drop-down-schedule-report">
+                    </div>
+                    <div class="col-xs-12 col-md-1">
+                        <select class="drop-down-schedule-report">
 								<option value="00">00</option>
 								<option value="30">30</option>
 							</select>
-						</div>
-					</div>
-					
-					<br>
-					<h4>Recipient Details</h4>
+                    </div>
+                </div>
 
-					<br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Email Recipients</p>
-						</div>
-						<div class="col-xs-12 col-md-5">
-							<input type="text" class="drop-down-schedule-report" />
-						</div>
-						
-					</div>
+                <br>
+                <h4>Recipient Details</h4>
 
-					<br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Additional Recipients</p>
-						</div>
-						<div class="col-xs-12 col-md-5">
-							<textarea type="text" class="textArea" />
-							<p>Use comma(,) to separate more than one email address.</p>
-						</div>
-						
-					</div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Email Recipients</p>
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <input type="text" class="drop-down-schedule-report" />
+                    </div>
 
-					<br>
-					<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="label-schedule-report">Attach report as</p>
-						</div>
-						<div class="col-xs-12 col-md-5">
-							<form action="">
-								<input type="radio" name="report" value="pdf" checked="checked"><b>PDF</b><br>
-								<input type="radio" name="report" value="xls"><b>XLS</b> (Microsoft Excel)<br>
-							</form>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Additional Recipients</p>
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <textarea type="text" class="textArea" />
+                        <p>Use comma(,) to separate more than one email address.</p>
+                    </div>
+
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <p class="label-schedule-report">Attach report as</p>
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <form action="">
+                            <input type="radio" name="report" value="pdf" checked="checked"><b>PDF</b><br>
+                            <input type="radio" name="report" value="xls"><b>XLS</b> (Microsoft Excel)<br>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!--Print Modal Pop-up	-->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content-print">
-				<div class="modal-header">
-					<div class="col-xs-12 col-md-6">
-						<p>Preview</p>
-					</div>
-					<div class="col-xs-12 col-md-6" align="right">
-						<button type="button" class="btn btn-danger btn-modal-print" onclick="myFunction()">Print</button>
-						<button type="button" class="btn btn-secondary btn-modal-close" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-				<div class="modal-body">
-					<div class="contentReport">
-						<!-- Start - Insert data here for company name -->
-						<div class="row">
-							<div class="col-xs-12 col-md-4"></div>
-							<div class="col-xs-12 col-md-4"><center>ABC Corporation</center></div>
-							<div class="col-xs-12 col-md-4"></div>
-						</div>
-						<!-- End - Insert data here for company name -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content-print">
+            <div class="modal-header">
+                <div class="col-xs-12 col-md-6">
+                    <p>Preview</p>
+                </div>
+                <div class="col-xs-12 col-md-6" align="right">
+                    <button type="button" class="btn btn-danger btn-modal-print" onclick="myFunction()">Print</button>
+                    <button type="button" class="btn btn-secondary btn-modal-close" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="contentReport">
+                    <!-- Start - Insert data here for company name -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4"></div>
+                        <div class="col-xs-12 col-md-4">
+                            <center>ABC Corporation</center>
+                        </div>
+                        <div class="col-xs-12 col-md-4"></div>
+                    </div>
+                    <!-- End - Insert data here for company name -->
 
-						<div class="row">
-							<div class="col-xs-12 col-md-4"></div>
-							<div class="col-xs-12 col-md-4"><center><h4>General Ledger</h4></center></div>
-							<div class="col-xs-12 col-md-4"></div>
-						</div>
-						
-						<!-- Start - Insert data here for date covered -->
-						<div class="row">
-							<div class="col-xs-12 col-md-4"></div>
-							<div class="col-xs-12 col-md-4"><center>From 01 Feb 2017  To 28 Feb 2017</center></div>
-							<div class="col-xs-12 col-md-4"></div>
-						</div>
-						<!-- End - Insert data here for date covered -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4"></div>
+                        <div class="col-xs-12 col-md-4">
+                            <center>
+                                <h4>General Ledger</h4>
+                            </center>
+                        </div>
+                        <div class="col-xs-12 col-md-4"></div>
+                    </div>
 
-						<br><br>
-						<div class="row">
-							<div class="col-xs-12 col-md-2"></div>
-							<div class="col-xs-12 col-md-8">
-								<table class="table-report table-hover">
-									<tr class="table-report-tr-title-border">
-										<th>ACOUNT</th>
-										<th class="alignRight">DEBIT</th> 
-										<th class="alignRight">CREDIT</th>
-										<th class="alignRight">BALANCE</th>
-									</tr>
-									<tr ng-repeat="currency in currencies">
-										<td>{{ currency.currncy_code }}</td>
-										<td class="alignRight">{{ currency.currncy_symbol }}</td>
-										<td class="alignRight">{{ currency.currncy_decimal_places }}</td>
-										<td class="alignRight">{{ currency.created_at }}</td>
-									</tr>
-								</table>
-							</div>
-							<div class="col-xs-12 col-md-2"></div>
-						</div>
-						<!-- End - Insert data here for all accounts <--></-->
+                    <!-- Start - Insert data here for date covered -->
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4"></div>
+                        <div class="col-xs-12 col-md-4">
+                            <center>From 01 Feb 2017 To 28 Feb 2017</center>
+                        </div>
+                        <div class="col-xs-12 col-md-4"></div>
+                    </div>
+                    <!-- End - Insert data here for date covered -->
 
-					</div>
-				</div>
-			</div>
-	</div><!-- End Modal -->
+                    <br><br>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-2"></div>
+                        <div class="col-xs-12 col-md-8">
+                            <table class="table-report table-hover">
+                                <tr class="table-report-tr-title-border">
+                                    <th>ACOUNT</th>
+                                    <th class="alignRight">DEBIT</th>
+                                    <th class="alignRight">CREDIT</th>
+                                    <th class="alignRight">BALANCE</th>
+                                </tr>
+                                <tr ng-repeat="currency in currencies">
+                                    <td>{{ currency.currncy_code }}</td>
+                                    <td class="alignRight">{{ currency.currncy_symbol }}</td>
+                                    <td class="alignRight">{{ currency.currncy_decimal_places }}</td>
+                                    <td class="alignRight">{{ currency.created_at }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-xs-12 col-md-2"></div>
+                    </div>
+                    <!-- End - Insert data here for all accounts <-->
+                    </-->
 
-
-	
-
-	
-	
-
-	
-	
-	
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->

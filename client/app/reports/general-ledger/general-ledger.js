@@ -26,22 +26,38 @@
      * definition of the results controller function itself. Taking 
      * quizMetrics as an argument
      */
-    function GeneralLedgerCtrl($state,$scope,$http) {
+    function GeneralLedgerCtrl($state, $scope, $http) {
         var vm = this;
         $scope.currency = {};
-        
+
         //vm.reportTitle = "General Ledger";
 
         var API_URL = "http://compacct.api.hybrain.co/api/v1/";
         //Retrieve all employees from API
         $http.get(API_URL + "currencies")
-                .success(function(response) {
-                    $scope.currencies = response;
-                    // for (var j=0; j < data.length; j++) {
-                    //     $scope.featureName=data[j]; 
-                    // }
-                    console.log($scope.currencies);
-                });
-        }
+            .success(function(response) {
+                $scope.currencies = response;
+                // for (var j=0; j < data.length; j++) {
+                //     $scope.featureName=data[j]; 
+                // }
+                console.log($scope.currencies);
+            });
+
+
+        $http.get(API_URL + "accounts")
+            .success(function(response) {
+                $scope.accounts = response;
+                // for (var j=0; j < data.length; j++) {
+                //     $scope.featureName=data[j]; 
+                // }
+                console.log($scope.accounts);
+            });
+
+
+
+
+    }
+
+
 
 })();
