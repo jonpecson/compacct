@@ -20,16 +20,28 @@
      * as strings in an array using the $inject method we can be sure angular 
      * still knows what we want to do.
      */
-    GeneralLedgerCtrl.$inject = ['$state'];
+    GeneralLedgerCtrl.$inject = ['$state', '$scope', '$http'];
 
     /*
      * definition of the results controller function itself. Taking 
      * quizMetrics as an argument
      */
-    function GeneralLedgerCtrl($state) {
+    function GeneralLedgerCtrl($state,$scope,$http) {
         var vm = this;
+        $scope.currency = {};
         
-        vm.reportTitle = "General Ledger";
-    }
+        //vm.reportTitle = "General Ledger";
+
+        var API_URL = "http://compacct.api.hybrain.co/api/v1/";
+        //Retrieve all employees from API
+        $http.get(API_URL + "currencies")
+                .success(function(response) {
+                    $scope.currencies = response;
+                    // for (var j=0; j < data.length; j++) {
+                    //     $scope.featureName=data[j]; 
+                    // }
+                    console.log($scope.currencies);
+                });
+        }
 
 })();
