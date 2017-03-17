@@ -50,7 +50,7 @@
                         <th class="alignRight">CREDIT</th>
                         <th class="alignRight">BALANCE</th>
                     </tr>
-                    <tr ng-repeat="currency in currencies">
+                    <!--<tr ng-repeat="currency in currencies">
                         <td>{{ currency.currncy_code }}</td>
                         <td class="alignRight">{{ currency.currncy_symbol }}</td>
                         <td class="alignRight">{{ currency.currncy_decimal_places }}</td>
@@ -60,12 +60,25 @@
 
                     <tr ng-repeat="account in accounts">
                         <td>{{ account.acct_name }}</td>
-                        <!--<td class="alignRight">{{ account.currncy_symbol }}</td>
+                        <td class="alignRight">{{ account.currncy_symbol }}</td>
                         <td class="alignRight">{{ account.currncy_decimal_places }}</td>
-                        <td class="alignRight">{{ account.created_at }}</td>-->
+                        <td class="alignRight">{{ account.created_at }}</td>
+                    </tr>-->
+
+                    <tr ng-repeat="journal in journals">
+                        <td>
+                            {{journal.acct_name}}
+                        </td>
+                        <td>{{journal.entry_debit | currency : '' : '2'}}</td>
+                        <td>{{journal.entry_credit | currency : '' : '2'}}</td>
+                        <td>{{journal.entry_debit - journal.entry_credit | currency : '' : '2'}}</td>
+
                     </tr>
 
+
                 </table>
+
+                <!--<p>{{aggregatedObject | json}}</p>-->
             </div>
             <div class="col-xs-12 col-md-2"></div>
         </div>

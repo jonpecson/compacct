@@ -10,12 +10,15 @@
         .module("app")
 
     .controller("journalsAddCtrl", JournalsAddCtrl);
-    JournalsAddCtrl.$inject = ['$state', '$scope', '$filter', '$http', 'Accounts'];
+    JournalsAddCtrl.$inject = ['$state', '$scope', '$filter', '$http', 'Accounts', 'Journals'];
 
-    function JournalsAddCtrl($state, $scope, $filter, $http, Accounts) {
+    function JournalsAddCtrl($state, $scope, $filter, $http, Accounts, Journals) {
         var vm = this;
-        vm.contacts;
-        vm.accounts;
+        vm.contacts = [];
+        vm.accounts = [];
+        vm.journals = [];
+        vm.journal = {};
+        vm.journalEntries = [];
 
         init();
 
@@ -30,132 +33,49 @@
                 vm.accounts = data;
                 console.log("Accounts: " + vm.accounts);
             });
+
+            Journals.getAll().success(function(data, status) {
+                vm.journals = data;
+                console.log("Journals: " + JSON.stringify(vm.journals));
+            })
+
+            vm.journalEntries = [
+                { id: 1, acct_id: 1, desc: 'sample' },
+                { id: 2, acct_id: 2, desc: 'sample' },
+                { id: 3, acct_id: 3, desc: 'sample' }
+            ];
         }
 
-
-
-
-        vm.journal = {};
-
-        $scope.journal = {};
-
-        $scope.accounts = [{
-                code: 1,
-                name: "Petty Cash",
-                type: "Cash"
-            },
-            {
-                code: 2,
-                name: 'Sales',
-                type: 'Income'
-            },
-            {
-                code: 3,
-                name: 'Expense',
-                type: 'Rent Expense'
-            }
-        ];
-
-        $scope.showAccount = function(user) {
-            var selected = [];
-            if (user.account) {
-                selected = $filter('filter')($scope.accounts, { code: user.account });
-            }
-            // console.log(selected);
-            return selected.length ? selected[0].name : 'Not set';
+        vm.showAccount = function(journal) {
+            // console.log(journal);
+            // var selected = [];
+            // // if (journal.acct_id) {
+            // selected = $filter('filter')(vm.accounts, { acct_id: journal.acct_id });
+            // // }
+            // // console.log(selected);
+            // return selected.length ? selected[0].acct_name : 'Not set';
         };
 
-
-
-        $scope.countries = [{
-                "code": "AD",
-                "name": "Andorra",
-                "continent": "Europe"
-            },
-            {
-                "code": "AE",
-                "name": "United Arab Emirates",
-                "continent": "Asia"
-            },
-            {
-                "code": "AF",
-                "name": "Afghanistan",
-                "continent": "Asia"
-            }
-        ];
-
-
-        $scope.users = [
-            { id: 1, account: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin' },
-            { id: 2, account: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip' },
-            { id: 3, account: 3, name: 'awesome user3', status: 2, group: null }
-        ];
-
-        $scope.statuses = [
-            { value: 1, text: 'status1' },
-            { value: 2, text: 'status2' },
-            { value: 3, text: 'status3' },
-            { value: 4, text: 'status4' }
-        ];
-
-        $scope.groups = [];
-        $scope.loadGroups = function() {
-            // return $scope.groups.length ? null : $http.get('/groups').success(function(data) {
-            $scope.groups = [{ id: 1, text: 'admin', level: 'A' }, { id: 2, text: 'vip', level: 'A' }, { id: 3, text: 'customer', level: 'B' }, { id: 4, text: 'user', level: 'B' }];
-            // });
+        vm.addJournalEntry = function() {
+            vm.journalEntries.push({ id: vm.journalEntries.length + 1, acct_id: null });
         };
 
-        $scope.showGroup = function(user) {
-            if (user.group && $scope.groups.length) {
-                var selected = $filter('filter')($scope.groups, { id: user.group });
-                return selected.length ? selected[0].text : 'Not set';
-            } else {
-                return user.groupName || 'Not set';
-            }
-        };
-
-        $scope.showStatus = function(user) {
-            var selected = [];
-            if (user.status) {
-                selected = $filter('filter')($scope.statuses, { value: user.status });
-            }
-            return selected.length ? selected[0].text : 'Not set';
-        };
-
-
-
-        $scope.checkName = function(data, id) {
-            if (id === 2 && data !== 'awesome') {
-                return "Username 2 should be `awesome`";
-            }
-        };
-
-        $scope.saveUser = function(data, id) {
+        vm.addJournalEntry = function(data, index) {
             //$scope.user not updated yet
-            console.log("data before: " + JSON.stringify(data));
+            console.log("Account id: " + data.journal.acct_id);
 
-            angular.extend(data, { id: id });
+            // angular.extend(data, { id: id });
             console.log("data after: " + JSON.stringify(data));
+            console.log("Journal #:" + index);
+
+            vm.journalEntries[index].acct_id = data.journal.acct_id;
 
             // return $http.post('/saveUser', data);
         };
 
-        // remove user
-        $scope.removeUser = function(index) {
-            $scope.users.splice(index, 1);
-        };
-
-        // add user
-        $scope.addUser = function() {
-            $scope.inserted = {
-                id: $scope.users.length + 1,
-                name: '',
-                status: null,
-                group: null
-            };
-            $scope.users.push($scope.inserted);
-        };
-
+        vm.addJournalEntry = function(index) {
+            vm.journalEntries.splice(index, 1)
+        }
     }
 
 })();

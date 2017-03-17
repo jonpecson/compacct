@@ -40,7 +40,7 @@
                 // for (var j=0; j < data.length; j++) {
                 //     $scope.featureName=data[j]; 
                 // }
-                console.log($scope.currencies);
+                // console.log($scope.currencies);
             });
 
 
@@ -50,12 +50,25 @@
                 // for (var j=0; j < data.length; j++) {
                 //     $scope.featureName=data[j]; 
                 // }
-                console.log($scope.accounts);
+                // console.log($scope.accounts);
             });
 
+        $http.get(API_URL + "journals/filter-by-date")
+            .success(function(response) {
+                var journals = response;
 
-
-
+                $scope.journals = Enumerable.From(journals)
+                    .GroupBy("$.acct_name", null,
+                        function(key, g) {
+                            return {
+                                acct_name: key,
+                                entry_credit: g.Sum("$.entry_credit"),
+                                entry_debit: g.Sum("$.entry_debit")
+                            }
+                        })
+                    .ToArray();
+                console.log($scope.journals);
+            });
     }
 
 
