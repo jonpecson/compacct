@@ -44,14 +44,32 @@
             });
 
 
-        $http.get(API_URL + "accounts")
+        $http.get(API_URL + "journals/filter-by-date")
             .success(function(response) {
-                $scope.accounts = response;
-                // for (var j=0; j < data.length; j++) {
-                //     $scope.featureName=data[j]; 
+                $scope.journalentries = response;
+                // var ctr;
+                // for(var i=0; i<$scope.journalentries; i++){
+                //     for(var j=0; j<$scope.journalentries; j++){
+                //         if($scope.journalentries[i].acct_name == $scope.journalentries[j].acct_name){
+                //             ctr = ctr + 1;
+                //             //console.log($scope.journalentries[2].entry_debit);
+                //         }
+                //     }
+                    
                 // }
-                console.log($scope.accounts);
+                // for(var i=0; i<$scope.journalentries; i++){
+                //     $scope.journalentriesctr = $scope.journalentries[i].acct_name;
+                // }
+                // console.log($scope.journalentriesctr);
             });
+
+            // var range = [];
+            // for(var i=20;i<=70;i++) {
+            //     range.push(i);
+            // }
+            // $scope.driverAges = range;
+
+            // console.log($scope.driverAges);
 
 
 
