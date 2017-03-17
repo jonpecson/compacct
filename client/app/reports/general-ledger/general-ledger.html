@@ -58,7 +58,7 @@
                         </td>
                         <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
                         <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
-                        <td class="alignRight">{{journal.entry_debit - journal.entry_credit | currency : '' : '2' }}</td>
+                        <td class="alignRight">{{getBalance(journal.entry_debit, journal.entry_credit)}}</td>
 
                     </tr>
 
@@ -316,7 +316,7 @@
                                     </td>
                                     <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
                                     <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
-                                    <td class="alignRight">{{journal.entry_debit - journal.entry_credit | currency : '' : '2' }}</td>
+                                    <td class="alignRight">{{getBalance(journal.entry_debit, journal.entry_credit)}}</td>
 
                                 </tr>
 

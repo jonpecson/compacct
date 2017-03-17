@@ -44,45 +44,13 @@
 					</tr>
 					
 					<!-- Start - Insert data here for assets -->
-					<tr class="underline">
-						<td>Cash in Bank</td>
-						<td class="alignRight">61,000.00</td>
+					<tr class="underline" ng-repeat="tbA in trialBalanceAssets">
+						<td>{{tbA.acct_name}}</td>
+						<td class="alignRight">{{getBalance(tbA.entry_debit, tbA.entry_credit)}}</td>
 						<td class="alignRight"></td>
 					</tr>
 					<!-- End - Insert data here for assets -->
 					<!--End - Assets-->
-
-					<!--Liabilities-->
-					<tr class="underline">
-						<td><b>Liabilities</b></td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<!-- Start - Insert data here for Liabilities -->
-					<tr class="underline">
-						<td>Accounts Payables</td>
-						<td class="alignRight"></td>
-						<td class="alignRight">61,000.00</td>
-					</tr>
-					<!-- End - Insert data here for Liabilities -->
-					<!--End - Liabilities-->
-
-					<!--Income-->
-					<tr class="underline">
-						<td><b>Income</b></td>
-						<td></td>
-						<td></td>
-					</tr>
-					
-					<!-- Start - Insert data here for Income -->
-					<tr class="underline">
-						<td>Sales</td>
-						<td class="alignRight"></td>
-						<td class="alignRight">15,000.00</td>
-					</tr>
-					<!-- End - Insert data here for Income -->
-					<!--End - Income-->
 
 					<!--Expense-->
 					<tr class="underline">
@@ -92,13 +60,62 @@
 					</tr>
 					
 					<!-- Start - Insert data here for Expense -->
-					<tr class="underline">
-						<td>Utilities</td>
-						<td class="alignRight">15,000.00</td>
+					<tr class="underline" ng-repeat="tbEx in trialBalanceExpense">
+						<td>{{tbEx.acct_name}}</td>
+						<td class="alignRight">{{getBalance(tbEx.entry_debit, tbEx.entry_credit)}}</td>
 						<td class="alignRight"></td>
 					</tr>
 					<!-- End - Insert data here for Expense -->
 					<!--End - Expense-->
+
+					<!--Liabilities-->
+					<tr class="underline">
+						<td><b>Liabilities</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<!-- Start - Insert data here for Liabilities -->
+					<tr class="underline" ng-repeat="tbL in trialBalanceLiabilities">
+						<td>{{tbL.acct_name}}</td>
+						<td class="alignRight"></td>
+						<td class="alignRight">{{tbL.entry_credit | currency : '' : '2'}}</td>
+					</tr>
+					<!-- End - Insert data here for Liabilities -->
+					<!--End - Liabilities-->
+
+					<!--Capital-->
+					<tr class="underline">
+						<td><b>Capital</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<!-- Start - Insert data here for Capital -->
+					<tr class="underline" ng-repeat="tbCap in trialBalanceCapital">
+						<td>{{tbCap.acct_name}}</td>
+						<td class="alignRight"></td>
+						<td class="alignRight">{{tbCap.entry_credit | currency : '' : '2'}}</td>
+					</tr>
+					<!-- End - Insert data here for Capital -->
+					<!--End - Capital-->
+
+					<!--Income-->
+					<tr class="underline">
+						<td><b>Income</b></td>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<!-- Start - Insert data here for Income -->
+					<tr class="underline" ng-repeat="tbIn in trialBalanceIncome">
+						<td>{{tbIn.acct_name}}</td>
+						<td class="alignRight"></td>
+						<td class="alignRight">{{tbIn.entry_credit | currency : '' : '2'}}</td>
+					</tr>
+					<!-- End - Insert data here for Income -->
+					<!--End - Income-->
+
 
 					<tr class="underline">
 						<td>&nbsp;</td>

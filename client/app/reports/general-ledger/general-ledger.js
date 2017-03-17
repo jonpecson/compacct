@@ -20,13 +20,13 @@
      * as strings in an array using the $inject method we can be sure angular 
      * still knows what we want to do.
      */
-    GeneralLedgerCtrl.$inject = ['$state', '$scope', '$http'];
+    GeneralLedgerCtrl.$inject = ['$state', '$scope', '$http', '$filter'];
 
     /*
      * definition of the results controller function itself. Taking 
      * quizMetrics as an argument
      */
-    function GeneralLedgerCtrl($state, $scope, $http) {
+    function GeneralLedgerCtrl($state, $scope, $http, $filter) {
         var vm = this;
         $scope.currency = {};
 
@@ -41,6 +41,12 @@
                 //     $scope.featureName=data[j]; 
                 // }
                 // console.log($scope.currencies);
+            });
+
+        $http.get(API_URL + "journals/filter-by-date")
+        .success(function(response) {
+            $scope.journalentries = response;
+            console.log($scope.journalentries);
             });
 
 
@@ -61,6 +67,17 @@
                     .ToArray();
                 console.log($scope.journals);
             });
+
+
+
+        $scope.getBalance = function(debit, credit) {
+            var result = debit - credit;
+            var total = $filter('currency')(result, '', 2).toString();
+            if (result < 0) {
+                total = total.replace(/\B(?=(\d{3})+\b)/g, ",").replace(/-(.*)/, "($1)");
+            }
+            return total;
+        }
     }
 
 
