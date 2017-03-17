@@ -43,16 +43,14 @@
                 // console.log($scope.currencies);
             });
 
-
-        $http.get(API_URL + "accounts")
-            .success(function(response) {
-                $scope.accounts = response;
-                // for (var j=0; j < data.length; j++) {
-                //     $scope.featureName=data[j]; 
-                // }
-                // console.log($scope.accounts);
+        $http.get(API_URL + "journals/filter-by-date")
+        .success(function(response) {
+            $scope.journalentries = response;
+            console.log($scope.journalentries);
             });
 
+
+        
         $http.get(API_URL + "journals/filter-by-date")
             .success(function(response) {
                 var journals = response;

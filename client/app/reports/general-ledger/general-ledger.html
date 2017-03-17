@@ -50,6 +50,7 @@
                         <th class="alignRight">CREDIT</th>
                         <th class="alignRight">BALANCE</th>
                     </tr>
+<<<<<<< HEAD
                     <!--<tr ng-repeat="currency in currencies">
                         <td>{{ currency.currncy_code }}</td>
                         <td class="alignRight">{{ currency.currncy_symbol }}</td>
@@ -67,14 +68,17 @@
                     <p>{{j | json}}</p>
 
 
+=======
+>>>>>>> bc2f89100b3a344a6a92170dbff6f9268de7cf18
 
+                  
                     <tr ng-repeat="journal in journals">
                         <td>
                             {{journal.acct_name}}
                         </td>
-                        <td>{{journal.entry_debit | currency : '' : '2'}}</td>
-                        <td>{{journal.entry_credit | currency : '' : '2'}}</td>
-                        <td>{{getBalance(journal.entry_debit, journal.entry_credit)}}</td>
+                        <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
+                        <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
+                        <td class="alignRight">{{getBalance(journal.entry_debit, journal.entry_credit)}}</td>
 
                     </tr>
 
@@ -324,13 +328,22 @@
                                     <th class="alignRight">CREDIT</th>
                                     <th class="alignRight">BALANCE</th>
                                 </tr>
-                                <tr ng-repeat="currency in currencies">
-                                    <td>{{ currency.currncy_code }}</td>
-                                    <td class="alignRight">{{ currency.currncy_symbol }}</td>
-                                    <td class="alignRight">{{ currency.currncy_decimal_places }}</td>
-                                    <td class="alignRight">{{ currency.created_at }}</td>
+
+                            
+                                <tr ng-repeat="journal in journals">
+                                    <td>
+                                        {{journal.acct_name}}
+                                    </td>
+                                    <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
+                                    <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
+                                    <td class="alignRight">{{getBalance(journal.entry_debit, journal.entry_credit)}}</td>
+
                                 </tr>
+
+
                             </table>
+
+                            <!--<p>{{aggregatedObject | json}}</p>-->
                         </div>
                         <div class="col-xs-12 col-md-2"></div>
                     </div>
