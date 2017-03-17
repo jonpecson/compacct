@@ -40,40 +40,27 @@
                 // for (var j=0; j < data.length; j++) {
                 //     $scope.featureName=data[j]; 
                 // }
-                console.log($scope.currencies);
+                // console.log($scope.currencies);
             });
 
 
+        
         $http.get(API_URL + "journals/filter-by-date")
             .success(function(response) {
-                $scope.journalentries = response;
-                // var ctr;
-                // for(var i=0; i<$scope.journalentries; i++){
-                //     for(var j=0; j<$scope.journalentries; j++){
-                //         if($scope.journalentries[i].acct_name == $scope.journalentries[j].acct_name){
-                //             ctr = ctr + 1;
-                //             //console.log($scope.journalentries[2].entry_debit);
-                //         }
-                //     }
-                    
-                // }
-                // for(var i=0; i<$scope.journalentries; i++){
-                //     $scope.journalentriesctr = $scope.journalentries[i].acct_name;
-                // }
-                // console.log($scope.journalentriesctr);
+                var journals = response;
+
+                $scope.journals = Enumerable.From(journals)
+                    .GroupBy("$.acct_name", null,
+                        function(key, g) {
+                            return {
+                                acct_name: key,
+                                entry_credit: g.Sum("$.entry_credit"),
+                                entry_debit: g.Sum("$.entry_debit")
+                            }
+                        })
+                    .ToArray();
+                console.log($scope.journals);
             });
-
-            // var range = [];
-            // for(var i=20;i<=70;i++) {
-            //     range.push(i);
-            // }
-            // $scope.driverAges = range;
-
-            // console.log($scope.driverAges);
-
-
-
-
     }
 
 

@@ -3,9 +3,13 @@
         <div data-ng-include="'app/common/report-header.html'"></div>
     </div>
 
+    <div class="hidden-print">
+        <br><br><br><br>
+    </div>
+
     <div class="contentReport">
         <!-- Start - Insert data here for company name -->
-        <br><br><br><br>
+
         <div class="row">
             <div class="col-xs-12 col-md-4"></div>
             <div class="col-xs-12 col-md-4">
@@ -46,14 +50,22 @@
                         <th class="alignRight">CREDIT</th>
                         <th class="alignRight">BALANCE</th>
                     </tr>
-                    <tr ng-repeat="je in journalentries | orderBy:'account_id' ">
-                        <td>{{ je.acct_name }}</td>
-                        <td class="alignRight">{{ je.entry_debit }}</td>
-                        <td class="alignRight">{{ je.entry_credit }}</td>
-                        <td class="alignRight">{{ je.entry_debit - je.entry_credit }}</td>
+
+                  
+                    <tr ng-repeat="journal in journals">
+                        <td>
+                            {{journal.acct_name}}
+                        </td>
+                        <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
+                        <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
+                        <td class="alignRight">{{journal.entry_debit - journal.entry_credit | currency : '' : '2' }}</td>
+
                     </tr>
 
+
                 </table>
+
+                <!--<p>{{aggregatedObject | json}}</p>-->
             </div>
             <div class="col-xs-12 col-md-2"></div>
         </div>
@@ -296,13 +308,22 @@
                                     <th class="alignRight">CREDIT</th>
                                     <th class="alignRight">BALANCE</th>
                                 </tr>
-                                <tr ng-repeat="currency in currencies">
-                                    <td>{{ currency.currncy_code }}</td>
-                                    <td class="alignRight">{{ currency.currncy_symbol }}</td>
-                                    <td class="alignRight">{{ currency.currncy_decimal_places }}</td>
-                                    <td class="alignRight">{{ currency.created_at }}</td>
+
+                            
+                                <tr ng-repeat="journal in journals">
+                                    <td>
+                                        {{journal.acct_name}}
+                                    </td>
+                                    <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
+                                    <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
+                                    <td class="alignRight">{{journal.entry_debit - journal.entry_credit | currency : '' : '2' }}</td>
+
                                 </tr>
+
+
                             </table>
+
+                            <!--<p>{{aggregatedObject | json}}</p>-->
                         </div>
                         <div class="col-xs-12 col-md-2"></div>
                     </div>

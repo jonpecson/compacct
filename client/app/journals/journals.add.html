@@ -59,8 +59,7 @@
 
             </form>
 
-            <p>{{vm.contacts | json}}</p>
-            <p>{{vm.accounts | json}}</p>
+            <p>Journal Entries: {{vm.journalEntries | json}}</p>
         </div>
     </div>
 </div>
@@ -106,92 +105,41 @@
                 <td style="width:20%">Group</td>
                 <td style="width:20%">Action</td>-->
             </tr>
-            <tr ng-repeat="user in users">
 
 
-                <!--<td>
-                    editable username (text with validation) 
-                    <span theme="bootstrap" editable-text="user.name" e-name="name" e-form="rowform" onbeforesave="checkName($data, user.id)">
-          {{ user.name || 'empty' }}
-        </span>
-                </td>-->
-
-                <!--Accounts field-->
+            <tr ng-repeat="journal in vm.journalEntries">
                 <td>
 
-                    <span editable-ui-select="journal.account" e-form="rowform" e-name="account" name="account" e-ng-model="account.name">
+                    <!--{{'journal'+($index+1)}}-->
+                    <span editable-ui-select="vm.journal.accounts" e-form="rowform" e-name="journal" name="journal" e-ng-model="{{'journal'+($index+1)}}">
     <editable-ui-select-match 
     placeholder="Select Account" 
     style="width: 200px">
-        {{$select.selected.name}}
+        {{$select.selected.acct_name}}
     </editable-ui-select-match>
-    <editable-ui-select-choices repeat="account in accounts | filter: {name: $select.search}" group-by="'type'">
-                        <span ng-bind="account.name"></span>
+    <editable-ui-select-choices repeat="account in vm.accounts | filter: {acct_name: $select.search}" group-by="'acct_type_name'">
+                        <span ng-bind="account.acct_name"></span>
                     </editable-ui-select-choices>
-                    {{ showAccount(user) }}
+                    {{ vm.showAccount(journal) }}
                     </span>
 
                 </td>
 
+
+
                 <!--Description field-->
                 <td>
                     <!--editable description (textarea with validation) -->
-                    <a href="#" editable-textarea="user.desc" e-rows="3" e-cols="40">
-                        {{ user.desc || 'empty' }}
+                    <a href="#" editable-textarea="journal.desc" e-rows="3" e-cols="40">
+                        {{ journal.desc || 'empty' }}
                     </a>
                     <!--{{ user.desc || 'empty' }}-->
                     </span>
                 </td>
 
-
-
-
-
-                <!--Contacts-->
-                <td>
-
-                    <span editable-ui-select="user.description" e-form="rowform" e-name="account" name="account" e-ng-model="account.name">
-    <editable-ui-select-match 
-    placeholder="Select Account" 
-    style="width: 200px">
-        {{$select.selected.name}}
-    </editable-ui-select-match>
-    <editable-ui-select-choices repeat="account in accounts | filter: {name: $select.search}" group-by="'type'">
-                        <span ng-bind="account.name"></span>
-                    </editable-ui-select-choices>
-                    {{ showAccount(user) }}
-                    </span>
-
-                </td>
-
-
-
-
-
-                <td>
-                    <!-- editable status (select-local) -->
-                    <span editable-select="user.status" e-name="status" e-form="rowform" e-ng-options="s.value as s.text for s in statuses">
-          {{ showStatus(user) }}
-        </span>
-                </td>
-
-
-
-
-
-
-
-                <td>
-                    <!-- editable group (select-remote) -->
-                    <span editable-select="user.group" e-name="group" onshow="loadGroups()" e-form="rowform" e-ng-options="g.id as g.text group by g.level for g in groups">
-          {{ showGroup(user) }}
-        </span>
-                </td>
-
-
                 <td style="white-space: nowrap">
                     <!-- form -->
-                    <form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                    <form editable-form name="rowform" onbeforesave="vm.saveJournalEntry($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
                         <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
             save
           </button>
@@ -201,13 +149,13 @@
                     </form>
                     <div class="buttons" ng-show="!rowform.$visible">
                         <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                        <button type="button" class="btn btn-danger" ng-click="removeUser($index)">del</button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.removeJournalEntry($index)">del</button>
                     </div>
                 </td>
             </tr>
         </table>
 
-        <button type="button" class="btn btn-default" ng-click="addUser()">Add row</button>
+        <button type="button" class="btn btn-default" ng-click="vm.addJournalEntry();  rowform.$visible();">Add row</button>
 
     </div>
 </div>
