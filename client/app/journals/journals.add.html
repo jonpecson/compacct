@@ -59,7 +59,10 @@
 
             </form>
 
-            <p>Journal Entries: {{vm.journalEntries | json}}</p>
+            <!--<p>Journal Entries: {{vm.journalEntries | json}}</p>-->
+
+            <p>{{vm.contacts | json}}</p>
+
         </div>
     </div>
 </div>
@@ -107,6 +110,7 @@
             </tr>
 
 
+
             <tr ng-repeat="journal in vm.journalEntries">
                 <td>
 
@@ -125,17 +129,17 @@
 
                 </td>
 
-
-
                 <!--Description field-->
                 <td>
                     <!--editable description (textarea with validation) -->
-                    <a href="#" editable-textarea="journal.desc" e-rows="3" e-cols="40">
+                    <span editable-textarea="journal.desc" e-rows="3" e-cols="40" theme="bootstrap">
                         {{ journal.desc || 'empty' }}
-                    </a>
-                    <!--{{ user.desc || 'empty' }}-->
                     </span>
                 </td>
+
+
+
+
 
                 <td style="white-space: nowrap">
                     <!-- form -->

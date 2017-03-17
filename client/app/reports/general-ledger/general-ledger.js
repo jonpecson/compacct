@@ -56,14 +56,18 @@
         $http.get(API_URL + "journals/filter-by-date")
             .success(function(response) {
                 var journals = response;
+                $scope.j = journals;
 
                 $scope.journals = Enumerable.From(journals)
                     .GroupBy("$.acct_name", null,
                         function(key, g) {
+                            console.log("G:" +
+                                JSON.stringify(g));
                             return {
                                 acct_name: key,
                                 entry_credit: g.Sum("$.entry_credit"),
-                                entry_debit: g.Sum("$.entry_debit")
+                                entry_debit: g.Sum("$.entry_debit"),
+                                classification: g.account_type_cla_name
                             }
                         })
                     .ToArray();
