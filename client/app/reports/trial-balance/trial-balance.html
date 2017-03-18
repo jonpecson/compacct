@@ -32,7 +32,7 @@
         </div>
 
 
-        <p>{{trialBalanceAssets | json}}</p>
+        <!--<p>{{trialBalanceAssets | json}}</p>-->
 
         <br><br>
         <div class="row">
@@ -137,7 +137,7 @@
                         <tr class="underline">
                             <td><b>Total</b></td>
                             <td class="alignRight">{{debitSum | currency : 'PHP' : '2'}}</td>
-                            <td class="alignRight">PHP 66,000.00</td>
+                            <td class="alignRight">{{creditSum * -1 | currency : 'PHP' : '2'}}</td> <!--Multiply by -1 to get positive amount -->
                         </tr>
                         <!--End - Total-->
 

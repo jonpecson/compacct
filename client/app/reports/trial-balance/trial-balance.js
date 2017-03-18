@@ -144,6 +144,17 @@
 
 
             // 2. Sum of Credits (Liabilities, Capital, Income) Todo
+            var getTotal = function(account) {
+                for (var i = 0; i < account.length; i++) {
+                    var item = account[i];
+                    var balance = item.entry_debit - item.entry_credit;
+                    $scope.creditSum = $scope.creditSum + balance;
+                }
+            }
+            getTotal($scope.trialBalanceLiabilities);
+            getTotal($scope.trialBalanceCapital);
+            getTotal($scope.trialBalanceIncome);
+            console.log("Credit Sum: " + $scope.creditSum)
 
 
 
