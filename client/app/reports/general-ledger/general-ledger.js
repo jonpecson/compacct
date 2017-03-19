@@ -57,6 +57,7 @@
                 $scope.j = journals;
 
                 $scope.journals = Enumerable.From(journals)
+                    .OrderBy("$.acct_name") //Order by Account Name
                     .GroupBy("$.acct_name", null,
                         function(key, g) {
                             console.log("G:" +
