@@ -59,8 +59,9 @@
 
 .contentReport {
     z-index: 1;
-    padding-top: 1em;
+    padding-top: 6em;
     padding-left: 4em;
+    padding-right: 2em;
 }
 
 .headerButton {
@@ -109,6 +110,10 @@
     text-align: right;
 }
 
+.alignLeft {
+    text-align: left;
+}
+
 .underline {
     border-bottom: 1px solid #ccc;
 }
@@ -116,10 +121,20 @@
 
 /*Table CSS*/
 
+.table-report-main {
+    width: 100%;
+    border-collapse: collapse;
+    text-overflow: auto;
+}
+
 .table-report {
     width: 100%;
     border-collapse: collapse;
     border-top: 1px solid #ccc;
+}
+
+.table-margin-top {
+    margin-top: 40px;
 }
 
 .table-report-tr-title-border {
