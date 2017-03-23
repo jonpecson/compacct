@@ -43,7 +43,13 @@
                     var balanceSheet = response;
                     // Current Assets
                     $scope.balanceSheetCurrentAssets = Enumerable.From(balanceSheet)
-                        .Where("$.acc_type_id == 2") //Account Type - Other Current Assets
+                        /*Account Type 
+                        Other Current Assets = 2
+                        Bank = 4
+                        Stocks = 6
+                         */
+                        .Where("$.acc_type_id == 2 || $.acc_type_id == 4 || $.acc_type_id == 6") 
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -55,7 +61,11 @@
                         .ToArray();
 
                     $scope.balanceSheetCash = Enumerable.From(balanceSheet)
-                        .Where("$.acc_type_id == 3") //Account Type - Cash
+                        /*Account Type
+                        Cash = 3
+                        */
+                        .Where("$.acc_type_id == 3")
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -67,7 +77,12 @@
                         .ToArray();
 
                      $scope.balanceSheetFixedAssets = Enumerable.From(balanceSheet)
-                        .Where("$.acc_type_id == 5") //Account Type - Fixed Assets
+                        /*Account Type
+                        Fixed Assets = 5
+                        Other Assets = 1
+                        */
+                        .Where("$.acc_type_id == 5 || $.acc_type_id == 1") 
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -79,7 +94,27 @@
                         .ToArray();
 
                         $scope.balanceSheetCurrentLiabilities = Enumerable.From(balanceSheet)
-                        .Where("$.acc_type_id == 7") //Account Type - Other Current Liabilities
+                        /*Account Type
+                        Other Current Liabilities = 7
+                        Credit Card = 8
+                        */
+                        .Where("$.acc_type_id == 7")
+                        .GroupBy("$.acct_name", null,
+                            function(key, g) {
+                                return {
+                                    acct_name: key,
+                                    entry_credit: g.Sum("$.entry_credit"),
+                                    entry_debit: g.Sum("$.entry_debit")
+                                }
+                            })
+                        .ToArray();
+
+                        $scope.balanceSheetNonCurrentLiabilities = Enumerable.From(balanceSheet)
+                        /*Account Type
+                        Other Liabilities = 16
+                        Long Term Liabilities = 9
+                        */
+                        .Where("$.acc_type_id == 16 || $.acc_type_id == 9")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -93,7 +128,10 @@
                         // =====================================================================
 
                         $scope.balanceSheetEquity = Enumerable.From(balanceSheet)
-                        .Where("$.acc_type_id == 10") //Account Type - Equity
+                        /* Account Type
+                        Equity
+                        */
+                        .Where("$.acc_type_id == 10")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -221,6 +259,7 @@
                 }
             }
             getTotal($scope.balanceSheetCurrentLiabilities);
+            getTotal($scope.balanceSheetNonCurrentLiabilities);
             console.log("OtherCurrentLiabilitiesSum: " + $scope.OtherCurrentLiabilitiesSum)
 
             // 5. Sum of Equity
@@ -271,7 +310,6 @@
                 }
             }
             getTotal($scope.profitLossExpense);
-            //getTotal($scope.profitLossOtherExpense); ----------------------------------->Exclude for the mean time, for review!!!
             console.log("Expense Sum: " + $scope.expenseSum)
 
             // 3. Sum of Cost of Goods Sold

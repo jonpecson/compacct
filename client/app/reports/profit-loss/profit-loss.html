@@ -102,6 +102,35 @@
 						<td class="alignRight underline">{{(incomeSum * -1) - expenseSum | currency : '' : '2' }}</td>
 					</tr>
 					<!--End - Operating Profit-->
+					
+					<!--Fourth Set-->
+					<tr>
+						<td>&nbsp;</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Non-Operating Expense (Income/Expense)</td>
+						<td></td>
+					</tr>
+					
+					<!-- Review this part (
+						if( acct_type_id == Other Expense){
+							amount is positive
+						}
+						if( acct_type_id == Other Income){
+							amount is negative
+						}
+
+					) -->
+
+					<tr ng-repeat="plOtherExpense in profitLossOtherExpense">
+						<td>{{plOtherExpense.acct_name}}</td>
+						<td class="alignRight">{{(plOtherExpense.entry_debit * -1) | currency : '' : '2'}}</td>
+					</tr>
+					<tr class="table-report-tr-title-border-inside">
+						<td><b>Total Non Operating Expense</b></td>
+						<td class="alignRight">{{(otherExpenseSum * -1) | currency : '' : '2'}}</td>
+					</tr>
 
 					<!--Net/Profit Loss-->
 					
@@ -111,7 +140,7 @@
 					</tr>
 					<tr>
 						<td class="alignRight underline"><b>Net/Profit Loss</b></td>
-						<td class="alignRight underline">{{(incomeSum * -1) - costofgoodssoldSum - expenseSum | currency : '' : '2' }}</td>
+						<td class="alignRight underline">{{(incomeSum * -1) - costofgoodssoldSum - expenseSum - otherExpenseSum | currency : '' : '2' }}</td>
 					</tr>
 					<!--End - Net/Profit Loss-->
 				</table>

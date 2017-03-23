@@ -47,7 +47,10 @@
                     var trialBalance = response;
                     // Assets
                     $scope.trialBalanceAssets = Enumerable.From(trialBalance)
-                        .Where("$.acc_type_cla_id == 1") //Account Type Classification - Assets
+                        //Account Type Classification - Assets
+                        //&& $.journ_date >= 2017-03-01 00:00:00 && $.journ_date <= 2017-03-31 23:59:59
+                        .Where("$.acc_type_cla_id == 1")
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -60,7 +63,9 @@
 
                     // Liabilities
                     $scope.trialBalanceLiabilities = Enumerable.From(trialBalance)
-                        .Where("$.acc_type_cla_id == 2") //Account Type Classification - Liabilities
+                        //Account Type Classification - Liabilities
+                        .Where("$.acc_type_cla_id == 2") 
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -74,7 +79,9 @@
 
                     // Equity
                     $scope.trialBalanceCapital = Enumerable.From(trialBalance)
-                        .Where("$.acc_type_cla_id == 3") //Account Type Classification - Capital
+                        //Account Type Classification - Capital
+                        .Where("$.acc_type_cla_id == 3") 
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -87,7 +94,9 @@
 
                     // Income
                     $scope.trialBalanceIncome = Enumerable.From(trialBalance)
-                        .Where("$.acc_type_cla_id == 4") //Account Type Classification - Income
+                        //Account Type Classification - Income
+                        .Where("$.acc_type_cla_id == 4") 
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -100,7 +109,9 @@
 
                     // Expense
                     $scope.trialBalanceExpense = Enumerable.From(trialBalance)
-                        .Where("$.acc_type_cla_id == 5") //Account Type Classification - Expense
+                        //Account Type Classification - Expense
+                        .Where("$.acc_type_cla_id == 5") 
+                        .OrderBy("$.acct_name")
                         .GroupBy("$.acct_name", null,
                             function(key, g) {
                                 return {
@@ -110,12 +121,6 @@
                                 }
                             })
                         .ToArray();
-
-
-
-
-
-
 
                     $scope.$broadcast('dataLoaded')
                 });

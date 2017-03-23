@@ -188,6 +188,19 @@ angular.module('app').run(['$rootScope', '$state', '$stateParams',
 
         })
 
+        // 7. Journal Report
+        .state('app.reports.journal-report', {
+            url: '/journal-report',
+            templateUrl: 'app/reports/journal-report/journal-report.html',
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load('app/reports/journal-report/journal-report.js');
+                }]
+            },
+            controller: "journalReportCtrl as vm"
+
+        })
+
 
         // UI Routes
         .state('app.ui', {

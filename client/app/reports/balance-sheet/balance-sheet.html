@@ -13,7 +13,7 @@
 
 		<div class="row">
 			<div class="col-xs-12 col-md-4"></div>
-			<div class="col-xs-12 col-md-4"><center><h4>{{ vm.reportTitle }}</h4></center></div>
+			<div class="col-xs-12 col-md-4"><center><h4>Balance Sheet</h4></center></div>
 			<div class="col-xs-12 col-md-4"></div>
 		</div>
 		
@@ -108,6 +108,18 @@
 					</tr>
 					<!-- End - Insert data here for Fixed Assets -->
 
+					<tr>
+						<td>Non Current Liabilities</td>
+						<td></td>
+					</tr>
+
+					<!-- Start - Insert data here for NonCurrentLiabilites -->
+					<tr ng-repeat="blNonCurrentLiabilites in balanceSheetNonCurrentLiabilities">
+						<td>{{blNonCurrentLiabilites.acct_name}}</td>
+						<td class="alignRight">{{blNonCurrentLiabilites.entry_credit | currency: '' : '2' }}</td>
+					</tr>
+					<!-- End - Insert data here for NonCurrentLiabilites -->
+
 					<!--total Current Liabilities-->
 					<tr class="table-report-tr-title-border">
 						<th><b>Total Current Liabilities</b></th>
@@ -120,10 +132,17 @@
 						<td></td>
 					</tr>
 
+					<!-- Start - Insert data here for Capital -->
+					<tr ng-repeat="blEquity in balanceSheetEquity">
+						<td>{{blEquity.acct_name}}</td>
+						<td class="alignRight">{{((blEquity.entry_debit-blEquity.entry_credit) * -1) | currency: '' : '2' }}</td>
+					</tr>
+					<!-- End - Insert data here for Capital -->
+
 					<!-- Start - Insert data here for Current Year Earnings -->
 					<tr>
 						<td>Current Year Earnings</td>
-						<td class="alignRight">{{ ((EquitySum * -1) + ((incomeSum * -1) - costofgoodssoldSum - expenseSum ))- (OtherExpenseSum) | currency : '' : '2' }}</td>
+						<td class="alignRight">{{ (((incomeSum * -1) - costofgoodssoldSum - expenseSum ))- (OtherExpenseSum) | currency : '' : '2' }}</td>
 					</tr>
 					<!-- End - Insert data here for Current Year Earnings -->
 
@@ -139,7 +158,9 @@
 						<td class="alignRight">TOTAL LIABILITIES & EQUITIES</td>
 						<td class="alignRight underline">{{ ((EquitySum * -1) + ((incomeSum * -1) - costofgoodssoldSum - expenseSum )) - (OtherExpenseSum) + (OtherCurrentLiabilitiesSum * -1) | currency : 'PHP' : '2'}}</td>
 					</tr>
-					<!--TOTAL LIABILITIES & EQUITIES-->
+					<!--TOTAL LIABILITIES & EQUITIES
+						((Equity + Income) - Cost Of Goods Sold - Expense)  - Other Expense + Other Current Liabilities
+					-->
 
 				</table>
 				

@@ -1,0 +1,65 @@
+<div class="panelReport ">
+    <div class="row headerReport hidden-print">
+        <div data-ng-include="'app/common/report-header.html'"></div>
+    </div>
+
+    <div class="hidden-print">
+        <br><br><br><br>
+    </div>
+
+    <div class="contentReport">
+        <!-- Start - Insert data here for company name -->
+
+        <div class="row">
+            <div class="col-xs-12 col-md-4"></div>
+            <div class="col-xs-12 col-md-4">
+                <center>ABC Corporation</center>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
+        <!-- End - Insert data here for company name -->
+
+        <div class="row">
+            <div class="col-xs-12 col-md-4"></div>
+            <div class="col-xs-12 col-md-4">
+                <center>
+                    <h4>Journal Report</h4>
+                </center>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
+
+        <!-- Start - Insert data here for date covered -->
+        <div class="row">
+            <div class="col-xs-12 col-md-4"></div>
+            <div class="col-xs-12 col-md-4">
+                <center>From 01 Feb 2017 To 28 Feb 2017</center>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
+        <!-- End - Insert data here for date covered -->
+
+        <br><br>
+        <div class="row">
+            <div class="col-xs-12 col-md-2"></div>
+            <div class="col-xs-12 col-md-8">
+                <table class="table-report table-hover">
+                    <tr class="table-report-tr-title-border">
+                        <th></th>
+                        <th class="alignRight">DEBIT</th>
+                        <th class="alignRight">CREDIT</th>
+                    </tr>
+
+                    <tr ng-repeat="journal in journalentries">
+                        <td>{{journal.acct_name}}</td>
+                        <td class="alignRight">{{journal.entry_debit | currency : '' : '2'}}</td>
+                        <td class="alignRight">{{journal.entry_credit | currency : '' : '2'}}</td>
+                    </tr>
+
+                </table>
+                
+            </div>
+            <div class="col-xs-12 col-md-2"></div>
+        </div>
+    </div>
+</div>
