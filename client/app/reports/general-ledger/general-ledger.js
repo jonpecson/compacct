@@ -43,25 +43,41 @@
                 // console.log($scope.currencies);
             });
 
-        $http.get(API_URL + "journals/filter-by-date")
-        .success(function(response) {
-            $scope.journalentries = response;
-            console.log($scope.journalentries);
-            });
-
-
+        // $http.get(API_URL + "journals/filter-by-date")
+        // .success(function(response) {
+        //     $scope.journalentries = response;
+        //     console.log($scope.journalentries);
+        //     });
         
         $http.get(API_URL + "journals/filter-by-date")
             .success(function(response) {
                 var journals = response;
                 $scope.j = journals;
+                var startDate = "2017-03-01";
+                var endDate = "2017-03-31";
 
+                //*********************************************************
+                var today = new Date();                                 
+                var dd = today.getDate();                               
+                var mm = today.getMonth()+1; /*January is 0! */         
+                var yyyy = today.getFullYear();                         
+                                                                        
+                if(dd<10) {dd='0'+dd}                                   
+                if(mm<10) { mm='0'+mm }                                 
+                                                                        
+                today = mm+'/'+dd+'/'+yyyy;                             
+                console.log(today);                                     
+                console.log(yyyy);                                      
+                //*********************************************************
+
+                //Order by Account Name
                 $scope.journals = Enumerable.From(journals)
-                    .OrderBy("$.acct_name") //Order by Account Name
+                    .Where("$.journ_date >='" + startDate + "' && $.journ_date <= '" +  endDate + "'")
+                    .OrderBy("$.acct_name")
                     .GroupBy("$.acct_name", null,
                         function(key, g) {
-                            console.log("G:" +
-                                JSON.stringify(g));
+                            // console.log("G:" +
+                            //     JSON.stringify(g));
                             return {
                                 acct_name: key,
                                 entry_credit: g.Sum("$.entry_credit"),
@@ -70,7 +86,7 @@
                             }
                         })
                     .ToArray();
-                console.log($scope.journals);
+                //console.log($scope.journals);
             });
 
 
