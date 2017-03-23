@@ -134,7 +134,9 @@
                         <tr class="underline">
                             <td><b>Total</b></td>
                             <td class="alignRight">{{debitSum | currency : 'PHP' : '2'}}</td>
-                            <td class="alignRight">{{creditSum | currency : 'PHP' : '2'}}</td>
+
+                            <td class="alignRight">{{creditSum * -1 | currency : 'PHP' : '2'}}</td>
+                            <!--Multiply by -1 to get positive amount -->
                         </tr>
                         <!--End - Total-->
 
