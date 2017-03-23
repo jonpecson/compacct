@@ -5,25 +5,40 @@
      */
     angular
         .module("app")
-        .factory('Journals', function($http) {
+        .factory('Journals', function($http, $filter) {
             var factory = {};
 
-            function getPreviousMonth(yourDate) {
-                return new Date(yourDate.getFullYear(), yourDate.getMonth() - 1, 1);
-            }
+            // function getPreviousMonth(yourDate) {
+            //     return new Date(yourDate.getFullYear(), yourDate.getMonth() - 1, 1);
+            // }
 
-            factory.create = function() {
+            factory.create = function(journal) {
+                console.log('From service: ' + JSON.stringify(journal));
+                var url = 'http://compacct.api.hybrain.co/api/v1/journals/create';
+                var format = "'yyyy-MM-dd HH:mm:ss"
+                var formattedDate = $filter('date')(journal.date, format)
 
+                var data = $.param({
+                    currency_id: 1,
+                    journ_date: formattedDate,
+                    journ_reference_number: journal.reference,
+                    journ_notes: journal.notes
+                })
 
-                return $http.post('/journals/' + filter, { type: 'getSource', ID: 'TP001' });
+                var config = {
+                    transformRequest: angular.identity,
+                    transformResponse: angular.identity,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    }
+                }
+
+                console.log("Serialized data: " + data);
+                return $http.post(url, data, config)
             };
 
             factory.getAll = function() {
-                // var d = new Date();
-                // var previousDate = getPreviousMonth(d);
-
-                var filter = "filter-by-date";
-                return $http.get('http://compacct.api.hybrain.co/api/v1/journals/' + filter);
+                return $http.get('http://compacct.api.hybrain.co/api/v1/journals/');
             }
 
             return factory;

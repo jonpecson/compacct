@@ -10,100 +10,205 @@
         .module("app")
 
     .controller("journalsAddCtrl", JournalsAddCtrl);
-    JournalsAddCtrl.$inject = ['$state', '$scope', '$filter', '$http', 'Contacts', 'Accounts', 'Journals'];
+    JournalsAddCtrl.$inject = ['$state', '$scope', '$filter', '$http', 'Contacts', 'Accounts', 'Journals', 'Tax', 'JournalEntries'];
 
-    function JournalsAddCtrl($state, $scope, $filter, $http, Contacts, Accounts, Journals) {
+    function JournalsAddCtrl($state, $scope, $filter, $http, Contacts, Accounts, Journals, Tax, JournalEntries) {
         var vm = this;
         vm.contacts = [];
         vm.accounts = [];
-        vm.journals = [];
+        vm.line = {};
         vm.journal = {};
-        vm.journalEntries = [];
+        $scope.response = {};
+        vm.journal.date = new Date();
 
         init();
 
         function init() {
             Contacts.getAll().success(function(data, status) {
                 vm.contacts = data;
-                console.log("Contacts: " + vm.contacts);
+                // console.log("Contacts: " + vm.contacts);
 
             });
 
 
             Accounts.getAll().success(function(data, status) {
                 vm.accounts = data;
-                console.log("Accounts: " + vm.accounts);
+                // console.log("Accounts: " + vm.accounts);
             });
 
             Journals.getAll().success(function(data, status) {
                 vm.journals = data;
-                console.log("Journals: " + JSON.stringify(vm.journals));
+                // console.log("Journals: " + JSON.stringify(vm.journals));
+            })
+
+            Tax.getAll().success(function(data, status) {
+                vm.tax = data;
+                console.log("Tax: " + JSON.stringify(vm.tax));
             })
 
             selected = $filter('filter')(vm.accounts, { acct_name: '' });
 
-            vm.journalEntries = [
-                { id: 1, acct_id: 1, desc: 'sample' },
-                { id: 2, acct_id: 2, desc: 'sample' },
-                { id: 3, acct_id: 3, desc: 'sample' }
+
+            $scope.journalEntries = [
+                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '0', 'accountName': 'Assets', 'entry_desc': 'Description 1', 'contactName': 'PLDT', 'tax': '12%', 'entry_debit': 1, 'entry_credit': 1 },
+                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '1', 'accountName': 'Expense', 'entry_desc': 'Description 2', 'contactName': 'SMART', 'tax': '12%', 'entry_debit': 1, 'entry_credit': 1 },
+                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '2', 'accountName': 'Equity', 'entry_desc': 'Description 3', 'contactName': 'GLOBE', 'tax': '12%', 'entry_debit': 1, 'entry_credit': 1 }
             ];
+
         }
 
 
-        // Helper function for displaying Account
+        $scope.editingData = {};
 
-        vm.showAccount = function(journal) {
-            // console.log(journal);
-            var selected = [];
-            // if (journal.acct_id) {
-            selected = $filter('filter')(vm.accounts, { acct_id: journal.acct_id });
-            // }
-            // console.log(selected);
-            return selected.length ? selected[0].acct_name : 'Not set';
+        for (var i = 0, length = $scope.journalEntries.length; i < length; i++) {
+            $scope.editingData[$scope.journalEntries[i].id] = false;
+        }
+
+
+        $scope.modify = function(tableData) {
+            $scope.editingData[tableData.id] = true;
         };
 
 
-        // Helper function for displaying Contacts
-        // vm.showContacts = function(journal) {
-        //     // console.log(journal);
-        //     var selected = [];
-        //     // if (journal.acct_id) {
-        //     selected = $filter('filter')(vm.contacts, { contact_id: journal.acct_id });
-        //     // }
-        //     // console.log(selected);
-        //     return selected.length ? selected[0].acct_name : 'Not set';
-        // };
+        $scope.update = function(tableData, line) {
+            $scope.editingData[tableData.id] = false;
+            console.log(line);
+            var index = tableData.id;
+
+            // if account, contact and tax has been selected
+            if (line.selectedAccount.acct_id && line.selectedContact.contact_id && line.selectedTax.tax_id) {
+
+                var selectedAccount = {
+                    id: line.selectedAccount.acct_id,
+                    name: line.selectedAccount.acct_name
+                }
+                console.log(selectedAccount);
+
+                var selectedContact = {
+                    id: line.selectedContact.contact_id,
+                    name: line.selectedContact.contact_display_name
+                }
+                console.log(selectedContact);
+
+                var selectedTax = {
+                    id: line.selectedTax.tax_id,
+                    name: line.selectedTax.tax_name + ' [' + line.selectedTax.tax_rate_percentage + ']',
+                    rate: line.selectedTax.tax_rate_percentage
+                }
+                console.log(selectedTax);
 
 
+                $scope.journalEntries[index].accountName = selectedAccount.name;
+                $scope.journalEntries[index].acct_id = selectedAccount.id;
+
+                $scope.journalEntries[index].description = line.desc;
+
+                $scope.journalEntries[index].contactName = selectedContact.name;
+                $scope.journalEntries[index].contact_id = selectedContact.id;
 
 
+                $scope.journalEntries[index].tax = selectedTax.name;
+                $scope.journalEntries[index].tax_id = selectedTax.id;
 
 
+                $scope.journalEntries[index].debit = line.debit;
+                $scope.journalEntries[index].credit = line.credit;
 
-
-        vm.addJournalEntry = function() {
-            vm.journalEntries.push({ id: vm.journalEntries.length + 1, acct_id: null });
+                console.log(JSON.stringify(tableData));
+                // $scope.journalEntries
+                console.log(JSON.stringify($scope.journalEntries));
+            }
         };
 
-        vm.saveJournalEntry = function(data, index) {
+        $scope.add = function() {
+            var idNo = $scope.journalEntries.length;
+            $scope.journalEntries.push({
+                'id': idNo,
+                'accountName': 'Account',
+                'description': 'Description',
+                'contactName': 'Contact',
+                'tax': 'Tax',
+                'debit': '0',
+                'credit': '0',
+                acct_id: 1,
+                contact_id: 1,
+                tax_id: 1,
+            });
+        };
+
+
+
+        $scope.saveJournalEntry = function(data, index) {
             //$scope.user not updated yet
-            console.log("Account id: " + data.journal.acct_id);
+            // console.log(JSON.stringify(data));
+            // console.log("Account id: " + data.journalAccount.acct_id);
+            // vm.journalEntries[index].acct_id = data.journalAccount.acct_id;
+            // vm.journalEntries[index].contact_id = data.journalContacts.contact_id;
 
-            // angular.extend(data, { id: id });
+
+
+            angular.extend(data, { index: index });
             console.log("data after: " + JSON.stringify(data));
             console.log("Journal #:" + index);
 
-            vm.journalEntries[index].acct_id = data.journal.acct_id;
+
 
             // return $http.post('/saveUser', data);
         };
 
-        vm.removeJournalEntry = function(index) {
-            vm.journalEntries.splice(index, 1)
-        };
+        var getJournalId = function(data) {
+            // remove all text that precedes the 'msg'
+            var str = data.substring(data.indexOf("msg"));
+
+            // remove the [null] keyword
+            str = str.substring(0, str.indexOf("[null]"))
+
+            // add '{' to match the '}'
+            var str = '{"' + str
+
+            // converts string to object
+            var res = JSON.parse(str);
+
+            // return the journal id
+            return res.data.journ_id;
+        }
+
+        $scope.saveJournal = function() {
+            console.log('From controller: ' + JSON.stringify(vm.journal));
 
 
+            // Add Journal
+            Journals.create(vm.journal)
+                .then(
+                    function(response) {
+                        var data = response.data;
+                        // var journalId = getJournalId(data);
 
+                        // console.log(journalId);
+
+                        var payload = {
+                            journal_id: getJournalId(data),
+                            journal_entries: $scope.journalEntries
+                        }
+
+                        // Add Journal Entries
+                        JournalEntries.create(payload)
+                            .then(
+                                function(response) {
+                                    console.log("Journal Entries: " + JSON.stringify(response));
+                                },
+                                function(err) {
+                                    console.log("Journal Entries error: " + JSON.stringify(err));
+
+                                });
+                    },
+                    function(response) {
+                        // failure callback
+                        console.log('Success: ' + JSON.stringify(response));
+
+                    }
+                );
+        }
     }
 
 })();

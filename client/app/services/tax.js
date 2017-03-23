@@ -13,7 +13,7 @@
             };
 
             factory.getAll = function() {
-                return $http.get('http://compacct.api.hybrain.co/api/v1/tax');
+                return $http.get('http://compacct.api.hybrain.co/api/v1/taxes');
             }
 
             return factory;

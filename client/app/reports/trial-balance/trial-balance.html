@@ -31,9 +31,6 @@
             <div class="col-xs-12 col-md-4"></div>
         </div>
 
-
-        <p>{{trialBalanceAssets | json}}</p>
-
         <br><br>
         <div class="row">
             <div class="col-xs-12 col-md-2"></div>
@@ -137,7 +134,7 @@
                         <tr class="underline">
                             <td><b>Total</b></td>
                             <td class="alignRight">{{debitSum | currency : 'PHP' : '2'}}</td>
-                            <td class="alignRight">PHP 66,000.00</td>
+                            <td class="alignRight">{{creditSum | currency : 'PHP' : '2'}}</td>
                         </tr>
                         <!--End - Total-->
 

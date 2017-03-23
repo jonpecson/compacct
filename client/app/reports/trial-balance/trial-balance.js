@@ -129,21 +129,35 @@
             $scope.creditSum = 0; // Todo
 
             // 1. Sum of Debits (Assets, Expense)
-            var getTotal = function(account) {
+            var getDebitTotal = function(account) {
                 for (var i = 0; i < account.length; i++) {
                     var item = account[i];
                     var balance = item.entry_debit - item.entry_credit;
                     $scope.debitSum = $scope.debitSum + balance;
                 }
             }
-            getTotal($scope.trialBalanceAssets);
-            getTotal($scope.trialBalanceExpense);
+            getDebitTotal($scope.trialBalanceAssets);
+            getDebitTotal($scope.trialBalanceExpense);
             console.log("Debit Sum: " + $scope.debitSum)
 
 
 
 
             // 2. Sum of Credits (Liabilities, Capital, Income) Todo
+            var getCreditTotal = function(account) {
+                for (var i = 0; i < account.length; i++) {
+                    var item = account[i];
+                    var balance = item.entry_debit - item.entry_credit;
+                    $scope.creditSum = $scope.creditSum + balance;
+                }
+            }
+            getCreditTotal($scope.trialBalanceLiabilities);
+            getCreditTotal($scope.trialBalanceCapital);
+
+            getCreditTotal($scope.trialBalanceIncome);
+            $scope.creditSum = $scope.creditSum * -1;
+
+            console.log("Credit Sum: " + $scope.creditSum);
 
 
 

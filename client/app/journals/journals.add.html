@@ -10,18 +10,20 @@
         </div>-->
 <div class="card-block">
     <div class="row m-a-0">
+
+        <p>{{response}}</p>
         <div class="col-lg-5">
             <form class="form-horizontal" role="form" ui-jq="validate">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Date</b></label>
                     <div class="col-sm-9">
-                        <input type="date" class="form-control">
+                        <input type="date" class="form-control" ng-model="vm.journal.date">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><b>Reference #</b></label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" required minlength="5">
+                        <input type="text" class="form-control" required minlength="5" ng-model="vm.journal.reference">
                         <!--<p class="help-block">Example block-level help text here.</p>-->
                     </div>
                 </div>
@@ -29,10 +31,10 @@
                     <label class="col-sm-3 control-label"><b>Notes</b></label>
                     <div class="col-sm-9">
                         <!--<input type="text" class="form-control input-rounded">-->
-                        <textarea name="" class="form-control input-rounded" id="" rows="3"></textarea>
+                        <textarea name="" class="form-control input-rounded" id="" rows="3" ng-model="vm.journal.notes"></textarea>
                     </div>
                 </div>
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="col-sm-3 control-label"><b>Journal Type</b></label>
                     <div class="col-sm-9">
                         <div class="checkbox">
@@ -41,9 +43,9 @@
                         </div>
 
                     </div>
-                </div>
+                </div>-->
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="col-sm-3 control-label"><b>Currency</b></label>
                     <div class="col-sm-9">
                         <select class="form-control">
@@ -55,112 +57,127 @@
 </select>
 
                     </div>
-                </div>
+                </div>-->
 
             </form>
 
             <!--<p>Journal Entries: {{vm.journalEntries | json}}</p>-->
 
-            <p>{{vm.contacts | json}}</p>
+            <!--<p>{{vm.contacts | json}}</p>-->
 
         </div>
     </div>
 </div>
 
-<!--<div>
-    <label>COUNTRY</label><br>
-    <ui-select ng-model="user.country" style="min-width: 300px;">
-        <ui-select-match placeholder="Select Country">
-            <span ng-bind="$select.selected.name"></span>
-        </ui-select-match>
-        <ui-select-choices repeat="country in countries | filter: {name: $select.search}" group-by="'continent'">
-            <span ng-bind="country.name"></span>
-        </ui-select-choices>
-    </ui-select>
-</div>
 
-<div>
-    <label>Accounts</label><br>
-    <span editable-ui-select="journal.account" ng-model="journal.account" style="min-width: 300px;">
-                        <editable-ui-select-match placeholder="Select Account">
-                            <span ng-bind="$select.selected.name"></span>
-    </editable-ui-select-match>
-    <editable-ui-select-choices repeat="account in accounts | filter: {name: $select.search}" group-by="'type'">
-        <span ng-bind="account.name"></span>
-    </editable-ui-select-choices>
-    </span>
-</div>-->
+<div class="wraper">
+
+    <p>{{journalEntries}}</p>
+
+    <p>Line: {{vm.line}}</p>
+    <table class="table table-bordered table-hover table-condensed" style="width:75%">
+        <thead>
+            <tr>
+                <!--<th style="width:10%"><b>Name</b></th>
+                <th style="width:10%"><b>Date Of Birth</b></th>
+                <th style="width:10%"><b>Email Id</b></th>
+                <th style="width:10%"><b>Phone No.</b></th>
+                -->
+                <th style="width:15%"><b>Account</b></th>
+                <th style="width:15%"><b>Description</b></th>
+                <th style="width:20%"><b>Contact</b></th>
+                <th style="width:10%"><b>Tax</b></th>
+                <th style="width:10%"><b>Debit</b></th>
+                <th style="width:10%"><b>Credit</b></th>
+                <!--<th style="width:10%"><b>Action</b></th>-->
 
 
-<div class="row m-a-0">
-    <div class="col-sm-offset-1 col-sm-11 centered" style="width:80%">
-        <table class="table table-bordered table-hover table-condensed">
-            <tr style="font-weight: bold;">
-                <!--<td style="width:10%">User</td>-->
-                <td style="width:30%">Accounts</td>
-                <td style="width:30%">Description</td>
-                <td style="width:30%">Contacts</td>
-                <td style="width:30%">Tax</td>
-                <td style="width:30%">Debit</td>
-                <td style="width:30%">Credit</td>
-
-                <!--<td style="width:20%">Status</td>
-                <td style="width:20%">Group</td>
-                <td style="width:20%">Action</td>-->
             </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat=" tableData in journalEntries " ng-dblclick="modify(tableData)" ng-keyup="$event.keyCode == 13 ? update(tableData, vm.line) : null">
 
 
-
-            <tr ng-repeat="journal in vm.journalEntries">
                 <td>
-
-                    <!--{{'journal'+($index+1)}}-->
-                    <span editable-ui-select="vm.journal.accounts" e-form="rowform" e-name="journal" name="journal" e-ng-model="{{'journal'+($index+1)}}">
-    <editable-ui-select-match 
-    placeholder="Select Account" 
-    style="width: 200px">
-        {{$select.selected.acct_name}}
-    </editable-ui-select-match>
-    <editable-ui-select-choices repeat="account in vm.accounts | filter: {acct_name: $select.search}" group-by="'acct_type_name'">
-                        <span ng-bind="account.acct_name"></span>
-                    </editable-ui-select-choices>
-                    {{ vm.showAccount(journal) }}
-                    </span>
-
-                </td>
-
-                <!--Description field-->
-                <td>
-                    <!--editable description (textarea with validation) -->
-                    <span editable-textarea="journal.desc" e-rows="3" e-cols="40" theme="bootstrap">
-                        {{ journal.desc || 'empty' }}
-                    </span>
-                </td>
-
-
-
-
-
-                <td style="white-space: nowrap">
-                    <!-- form -->
-                    <form editable-form name="rowform" onbeforesave="vm.saveJournalEntry($data, $index)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
-                        <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-            save
-          </button>
-                        <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-            cancel
-          </button>
-                    </form>
-                    <div class="buttons" ng-show="!rowform.$visible">
-                        <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                        <button type="button" class="btn btn-danger" ng-click="vm.removeJournalEntry($index)">del</button>
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.accountName}}</div>
+                    <div ng-show="editingData[tableData.id]">
+                        <!--<p>{{vm.selectedAccount}}</p>-->
+                        <ui-select ng-model="vm.line.selectedAccount" title="Choose a account">
+                            <ui-select-match placeholder="Account">{{$select.selected.acct_name}}</ui-select-match>
+                            <ui-select-choices group-by="'acct_type_name'" repeat="account in vm.accounts | filter: $select.search">
+                                <span ng-bind-html="account.acct_name | highlight: $select.search"></span>
+                                <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </td>
+
+
+
+                <td>
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.entry_desc}}</div>
+                    <div ng-show="editingData[tableData.id]" ng-if="editingData[tableData.id]==true?vm.line.desc=tableData.entry_desc: null">
+                        <textarea placeholder="Description" class="form-control" ng-model="vm.line.desc " cols="10" rows="1"></textarea>
+                    </div>
+                </td>
+
+
+
+                <td style="width: 300px">
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.contactName}}</div>
+                    <div ng-show="editingData[tableData.id]">
+                        <!--<p>{{vm.selectedContact}}</p>-->
+                        <ui-select ng-model="vm.line.selectedContact" title="Choose a contact">
+                            <ui-select-match placeholder="Contact">{{$select.selected.contact_company_name}}</ui-select-match>
+                            <ui-select-choices group-by="'contact_company_name'" repeat="contact in vm.contacts | filter: $select.search">
+                                <span ng-bind-html="contact.contact_company_name | highlight: $select.search"></span>
+                                <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.tax}}</div>
+                    <div ng-show="editingData[tableData.id]">
+                        <!--<p>{{vm.selectedContact}}</p>-->
+                        <ui-select ng-model="vm.line.selectedTax" title="Choose a tax">
+                            <ui-select-match placeholder="Tax">{{$select.selected.tax_name}}[{{$select.selected.tax_rate_percentage}}]</ui-select-match>
+                            <ui-select-choices repeat="t in vm.tax | filter: $select.search">
+                                <span ng-bind-html="t.tax_name | highlight: $select.search"></span>[{{t.tax_rate_percentage}}]
+                                <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
+                            </ui-select-choices>
+                        </ui-select>
+                    </div>
+                </td>
+
+                <!--<td>
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.tax}}</div>
+                    <div ng-show="editingData[tableData.id] "><input type="text " ng-model="tableData.tax " /></div>
+                </td>-->
+
+                <td>
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.entry_debit}}</div>
+                    <div ng-show="editingData[tableData.id]" ng-if="editingData[tableData.id]==true?vm.line.entry_debit=tableData.entry_debit: null"><input class="form-control" type="number" ng-model="vm.line.entry_debit" placeholder="Debit" /></div>
+                </td>
+
+                <td>
+                    <div ng-hide="editingData[tableData.id] ">{{tableData.entry_credit}}</div>
+                    <div ng-show="editingData[tableData.id]" ng-if=" editingData[tableData.id]==true?vm.line.entry_credit=tableData.entry_credit: null "><input class="form-control " type="number" ng-model="vm.line.entry_credit " placeholder=" entry_credit " /></div>
+                </td>
             </tr>
-        </table>
+        </tbody>
+    </table>
+    <button type="button " class="btn btn-default " ng-click="add(); ">Add new line</button>
+    <br>
+    <br>
+    <button type="button " class="btn btn-default " ng-click="saveJournal(); ">Save</button>
 
-        <button type="button" class="btn btn-default" ng-click="vm.addJournalEntry();  rowform.$visible();">Add row</button>
+</div>
 
-    </div>
+
+
+
 </div>
 </div>
