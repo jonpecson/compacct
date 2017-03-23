@@ -9,24 +9,6 @@ setup:
 test:
     shell:
         - "curl https://llama.altimit.online/api/phpci/test"
-    php_code_sniffer:
-        ignore:
-            - "resources"
-            - "vendor"
-            - "storage"
-        standard: "PSR2"
-        allowed_errors: -1
-        allowed_warnings: -1
-    php_loc:
-        directory: "app"
-    php_mess_detector:
-        ignore:
-          - 'vendor'
-        allowed_warnings: -1
-        zero_config: true
-    php_docblock_checker:
-        allowed_warnings: -1
-        skip_classes: true
 
 complete:
 
