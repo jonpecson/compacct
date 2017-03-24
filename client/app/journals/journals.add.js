@@ -21,6 +21,8 @@
         $scope.response = {};
         vm.journal.date = new Date();
 
+        $scope.showAlert = false;
+
         init();
 
         function init() {
@@ -50,13 +52,12 @@
 
 
             $scope.journalEntries = [
-                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '0', 'accountName': 'Assets', 'entry_desc': 'Description 1', 'contactName': 'PLDT', 'tax': '12%', 'entry_debit': 1, 'entry_credit': 1 },
-                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '1', 'accountName': 'Expense', 'entry_desc': 'Description 2', 'contactName': 'SMART', 'tax': '12%', 'entry_debit': 1, 'entry_credit': 1 },
-                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '2', 'accountName': 'Equity', 'entry_desc': 'Description 3', 'contactName': 'GLOBE', 'tax': '12%', 'entry_debit': 1, 'entry_credit': 1 }
+                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '0', 'accountName': 'Assets', 'entry_desc': 'Description 1', 'contactName': 'PLDT', 'tax': '12%', tax_rate: 1, 'entry_debit': 0, 'entry_credit': 0 },
+                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '1', 'accountName': 'Expense', 'entry_desc': 'Description 2', 'contactName': 'SMART', 'tax': '12%', tax_rate: 1, 'entry_debit': 0, 'entry_credit': 0 },
+                { acct_id: 1, contact_id: 1, tax_id: 1, 'id': '2', 'accountName': 'Equity', 'entry_desc': 'Description 3', 'contactName': 'GLOBE', 'tax': '12%', tax_rate: 1, 'entry_debit': 0, 'entry_credit': 0 }
             ];
 
         }
-
 
         $scope.editingData = {};
 
@@ -64,9 +65,13 @@
             $scope.editingData[$scope.journalEntries[i].id] = false;
         }
 
-
         $scope.modify = function(tableData) {
             $scope.editingData[tableData.id] = true;
+            vm.line.desc = tableData.entry_desc;
+
+            vm.line.entry_debit = tableData.entry_debit;
+            vm.line.entry_credit = tableData.entry_credit;
+
         };
 
 
@@ -98,10 +103,11 @@
                 console.log(selectedTax);
 
 
+                // Updates the value of the journal entries
                 $scope.journalEntries[index].accountName = selectedAccount.name;
                 $scope.journalEntries[index].acct_id = selectedAccount.id;
 
-                $scope.journalEntries[index].description = line.desc;
+                $scope.journalEntries[index].entry_desc = line.desc;
 
                 $scope.journalEntries[index].contactName = selectedContact.name;
                 $scope.journalEntries[index].contact_id = selectedContact.id;
@@ -109,12 +115,47 @@
 
                 $scope.journalEntries[index].tax = selectedTax.name;
                 $scope.journalEntries[index].tax_id = selectedTax.id;
+                $scope.journalEntries[index].tax_rate = selectedTax.rate;
 
 
-                $scope.journalEntries[index].debit = line.debit;
-                $scope.journalEntries[index].credit = line.credit;
+                $scope.journalEntries[index].entry_debit = line.entry_debit;
+                $scope.journalEntries[index].entry_credit = line.entry_credit;
+
+
+                // Computes Debit and credit
+                $scope.debitSum = 0;
+                $scope.creditSum = 0;
+
+                $scope.debitVatSum = 0;
+                $scope.creditVatSum = 0;
+
+                $scope.debitTotal = 0;
+                $scope.creditTotal = 0;
+
+                for (var i = 0; i < $scope.journalEntries.length; i++) {
+                    // Debit & Credit Sum
+                    $scope.debitSum = $scope.debitSum + $scope.journalEntries[i].entry_debit;
+                    $scope.creditSum = $scope.creditSum + $scope.journalEntries[i].entry_credit;
+
+                    //Debit & Credit VAT SUM
+                    $scope.debitVatSum = $scope.debitVatSum + (($scope.journalEntries[i].tax_rate / 100) * $scope.journalEntries[i].entry_debit);
+
+                    $scope.creditVatSum = $scope.creditVatSum + (($scope.journalEntries[i].tax_rate / 100) * $scope.journalEntries[i].entry_credit);
+
+
+                }
+                // Total
+                $scope.debitTotal = $scope.debitSum + $scope.debitVatSum;
+                $scope.creditTotal = $scope.creditSum + $scope.creditVatSum;
+
+                if ($scope.debitTotal != $scope.creditTotal) {
+                    $scope.showAlert = true;
+                } else {
+                    $scope.showAlert = false;
+                }
 
                 console.log(JSON.stringify(tableData));
+
                 // $scope.journalEntries
                 console.log(JSON.stringify($scope.journalEntries));
             }
@@ -128,8 +169,8 @@
                 'description': 'Description',
                 'contactName': 'Contact',
                 'tax': 'Tax',
-                'debit': '0',
-                'credit': '0',
+                'debit': 0,
+                'credit': 0,
                 acct_id: 1,
                 contact_id: 1,
                 tax_id: 1,
@@ -139,21 +180,10 @@
 
 
         $scope.saveJournalEntry = function(data, index) {
-            //$scope.user not updated yet
-            // console.log(JSON.stringify(data));
-            // console.log("Account id: " + data.journalAccount.acct_id);
-            // vm.journalEntries[index].acct_id = data.journalAccount.acct_id;
-            // vm.journalEntries[index].contact_id = data.journalContacts.contact_id;
-
-
 
             angular.extend(data, { index: index });
             console.log("data after: " + JSON.stringify(data));
             console.log("Journal #:" + index);
-
-
-
-            // return $http.post('/saveUser', data);
         };
 
         var getJournalId = function(data) {
@@ -182,10 +212,6 @@
                 .then(
                     function(response) {
                         var data = response.data;
-                        // var journalId = getJournalId(data);
-
-                        // console.log(journalId);
-
                         var payload = {
                             journal_id: getJournalId(data),
                             journal_entries: $scope.journalEntries

@@ -8,10 +8,16 @@
 <!--<div class="card-header">
             Default Bootstrap elements
         </div>-->
+
+
+<div class="alert alert-danger alert-dismissable" ng-show="showAlert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> Please ensure that the <strong>Debits</strong> and <strong>Credits</strong> are equal.
+</div>
+
 <div class="card-block">
     <div class="row m-a-0">
 
-        <p>{{response}}</p>
+        <!--<p>{{response}}</p>-->
         <div class="col-lg-5">
             <form class="form-horizontal" role="form" ui-jq="validate">
                 <div class="form-group">
@@ -34,6 +40,31 @@
                         <textarea name="" class="form-control input-rounded" id="" rows="3" ng-model="vm.journal.notes"></textarea>
                     </div>
                 </div>
+                <!--<div class="form-group">
+                    <label class="col-sm-3 control-label"><b>Journal Type</b></label>
+                    <div class="col-sm-9">
+                        <div class="checkbox">
+                            <label>
+<input type="checkbox">Cash based journal</label>
+                        </div>
+
+                    </div>
+                </div>-->
+
+                <!--<div class="form-group">
+                    <label class="col-sm-3 control-label"><b>Currency</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control">
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+<option>PHP - Philippine Peso</option>
+</select>
+
+                    </div>
+                </div>-->
+
             </form>
 
             <!--<p>Journal Entries: {{vm.journalEntries | json}}</p>-->
@@ -45,113 +76,137 @@
 </div>
 
 
-<div class="wraper">
 
-    <p>{{journalEntries}}</p>
-
-    <p>Line: {{vm.line}}</p>
-    <table class="table table-bordered table-hover table-condensed" style="width:75%">
-        <thead>
-            <tr>
-                <!--<th style="width:10%"><b>Name</b></th>
-                <th style="width:10%"><b>Date Of Birth</b></th>
-                <th style="width:10%"><b>Email Id</b></th>
-                <th style="width:10%"><b>Phone No.</b></th>
-                -->
-                <th style="width:15%"><b>Account</b></th>
-                <th style="width:15%"><b>Description</b></th>
-                <th style="width:20%"><b>Contact</b></th>
-                <th style="width:10%"><b>Tax</b></th>
-                <th style="width:10%"><b>Debit</b></th>
-                <th style="width:10%"><b>Credit</b></th>
-                <!--<th style="width:10%"><b>Action</b></th>-->
+<div class="card bg-white m-b col-xs-offset-1" style="width:85%">
+    <div class="card-header">Journal Entries</div>
+    <div class="card-block p-a-0">
+        <div class="table-responsive">
+            <table class="table cart m-b-0">
+                <thead>
+                    <tr>
+                        <th style="width:20%"><b>Account</b></th>
+                        <th style="width:25%"><b>Description</b></th>
+                        <th style="width:20%"><b>Contact</b></th>
+                        <th style="width:15%"><b>Tax</b></th>
+                        <th><b>Debit</b></th>
+                        <th><b>Credit</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat=" tableData in journalEntries " ng-dblclick="modify(tableData)" ng-keyup="$event.keyCode == 13 ? update(tableData, vm.line) : null">
 
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat=" tableData in journalEntries " ng-dblclick="modify(tableData)" ng-keyup="$event.keyCode == 13 ? update(tableData, vm.line) : null">
+                        <td>
+                            <div ng-hide="editingData[tableData.id] ">{{tableData.accountName}}</div>
+                            <div ng-show="editingData[tableData.id]">
+                                <!--<p>{{vm.selectedAccount}}</p>-->
+                                <ui-select ng-model="vm.line.selectedAccount" title="Choose a account">
+                                    <ui-select-match placeholder="Account">{{$select.selected.acct_name}}</ui-select-match>
+                                    <ui-select-choices group-by="'acct_type_name'" repeat="account in vm.accounts | filter: $select.search">
+                                        <span ng-bind-html="account.acct_name | highlight: $select.search"></span>
+                                        <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </td>
 
 
-                <td>
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.accountName}}</div>
-                    <div ng-show="editingData[tableData.id]">
-                        <!--<p>{{vm.selectedAccount}}</p>-->
-                        <ui-select ng-model="vm.line.selectedAccount" title="Choose a account">
-                            <ui-select-match placeholder="Account">{{$select.selected.acct_name}}</ui-select-match>
-                            <ui-select-choices group-by="'acct_type_name'" repeat="account in vm.accounts | filter: $select.search">
-                                <span ng-bind-html="account.acct_name | highlight: $select.search"></span>
-                                <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                </td>
-
-
-
-                <td>
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.entry_desc}}</div>
-                    <div ng-show="editingData[tableData.id]" ng-if="editingData[tableData.id]==true?vm.line.desc=tableData.entry_desc: null">
-                        <textarea placeholder="Description" class="form-control" ng-model="vm.line.desc " cols="10" rows="1"></textarea>
-                    </div>
-                </td>
+                        <!--ng-if="editingData[tableData.id]==true?vm.line.desc=tableData.entry_desc: vm.doNothing()"-->
+                        <td>
+                            <div ng-hide="editingData[tableData.id] ">{{tableData.entry_desc==null?'Empty':tableData.entry_desc}}</div>
+                            <div ng-show="editingData[tableData.id]">
+                                <textarea placeholder="Description" class="form-control" ng-model="vm.line.desc" cols="10" rows="1"></textarea>
+                            </div>
+                        </td>
 
 
 
-                <td style="width: 300px">
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.contactName}}</div>
-                    <div ng-show="editingData[tableData.id]">
-                        <!--<p>{{vm.selectedContact}}</p>-->
-                        <ui-select ng-model="vm.line.selectedContact" title="Choose a contact">
-                            <ui-select-match placeholder="Contact">{{$select.selected.contact_company_name}}</ui-select-match>
-                            <ui-select-choices group-by="'contact_company_name'" repeat="contact in vm.contacts | filter: $select.search">
-                                <span ng-bind-html="contact.contact_company_name | highlight: $select.search"></span>
-                                <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                </td>
+                        <td style="width: 300px">
+                            <div ng-hide="editingData[tableData.id] ">{{tableData.contactName}}</div>
+                            <div ng-show="editingData[tableData.id]">
+                                <!--<p>{{vm.selectedContact}}</p>-->
+                                <ui-select ng-model="vm.line.selectedContact" title="Choose a contact">
+                                    <ui-select-match placeholder="Contact">{{$select.selected.contact_company_name}}</ui-select-match>
+                                    <ui-select-choices group-by="'contact_company_name'" repeat="contact in vm.contacts | filter: $select.search">
+                                        <span ng-bind-html="contact.contact_company_name | highlight: $select.search"></span>
+                                        <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </td>
 
 
-                <td>
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.tax}}</div>
-                    <div ng-show="editingData[tableData.id]">
-                        <!--<p>{{vm.selectedContact}}</p>-->
-                        <ui-select ng-model="vm.line.selectedTax" title="Choose a tax">
-                            <ui-select-match placeholder="Tax">{{$select.selected.tax_name}}[{{$select.selected.tax_rate_percentage}}]</ui-select-match>
-                            <ui-select-choices repeat="t in vm.tax | filter: $select.search">
-                                <span ng-bind-html="t.tax_name | highlight: $select.search"></span>[{{t.tax_rate_percentage}}]
-                                <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
-                            </ui-select-choices>
-                        </ui-select>
-                    </div>
-                </td>
+                        <td>
+                            <div ng-hide="editingData[tableData.id] ">{{tableData.tax}}</div>
+                            <div ng-show="editingData[tableData.id]">
+                                <!--<p>{{vm.selectedContact}}</p>-->
+                                <ui-select ng-model="vm.line.selectedTax" title="Choose a tax">
+                                    <ui-select-match placeholder="Tax">{{$select.selected.tax_name}}[{{$select.selected.tax_rate_percentage}}]</ui-select-match>
+                                    <ui-select-choices repeat="t in vm.tax | filter: $select.search">
+                                        <span ng-bind-html="t.tax_name | highlight: $select.search"></span>[{{t.tax_rate_percentage}}]
+                                        <!--<small ng-bind-html="account.acct_id | highlight: $select.search"></small>-->
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </td>
 
-                <!--<td>
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.tax}}</div>
-                    <div ng-show="editingData[tableData.id] "><input type="text " ng-model="tableData.tax " /></div>
-                </td>-->
+                        <td>
+                            <div ng-hide="editingData[tableData.id] ">{{tableData.entry_debit}}</div>
+                            <div ng-show="editingData[tableData.id]"><input class="form-control" type="number" ng-model="vm.line.entry_debit" placeholder="Debit" ng-change="vm.line.entry_credit=0" /></div>
+                        </td>
 
-                <td>
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.entry_debit}}</div>
-                    <div ng-show="editingData[tableData.id]" ng-if="editingData[tableData.id]==true?vm.line.entry_debit=tableData.entry_debit: null"><input class="form-control" type="number" ng-model="vm.line.entry_debit" placeholder="Debit" /></div>
-                </td>
+                        <td>
+                            <div ng-hide="editingData[tableData.id] ">{{tableData.entry_credit}}</div>
+                            <div ng-show="editingData[tableData.id]"><input class="form-control " type="number" ng-model="vm.line.entry_credit" placeholder="Credit" ng-change="vm.line.entry_debit=0" /></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                <td>
-                    <div ng-hide="editingData[tableData.id] ">{{tableData.entry_credit}}</div>
-                    <div ng-show="editingData[tableData.id]" ng-if=" editingData[tableData.id]==true?vm.line.entry_credit=tableData.entry_credit: null "><input class="form-control " type="number" ng-model="vm.line.entry_credit " placeholder=" entry_credit " /></div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button type="button " class="btn btn-default " ng-click="add(); ">Add new line</button>
-    <br>
-    <br>
-    <button type="button " class="btn btn-default " ng-click="saveJournal(); ">Save</button>
+
+
+
 
 </div>
 
 
+
+<div class="col-xs-offset-1" style="width:85%">
+    <button type="button " class="btn btn-default " ng-click="add(); ">Add new line</button>
+    <br>
+    <br>
+
+
+    <div class="invoice-totals">
+        <div class="invoice-totals-row">
+            <strong class="invoice-totals-title">Sub Total</strong>
+            <span class="invoice-totals-value">{{debitSum |  currency : 'P' : '2'}}</span>
+            <span class="invoice-totals-value">{{creditSum |  currency : 'P' : '2'}}</span>
+        </div>
+        <div class="invoice-totals-row">
+            <strong class="invoice-totals-title">VAT</strong>
+            <span class="invoice-totals-value"> {{debitVatSum |  currency : 'P' : '2'}}</span>
+            <span class="invoice-totals-value">{{creditVatSum |  currency : 'P' : '2'}}</span>
+        </div>
+        <div class="invoice-totals-row">
+            <strong class="invoice-totals-title">Total</strong>
+            <span class="invoice-totals-value">{{debitTotal |  currency : 'P' : '2'}}</span>
+            <span class="invoice-totals-value">{{creditTotal |  currency : 'P' : '2'}}</span>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="row">
+        <div class="col-xs-12">
+            <!--<a href="javascript:;" class="btn btn-primary pull-right">Checkout</a>-->
+            <button type="button" class="btn btn-primary pull-right" ng-click="saveJournal();" ng-disbled="showAlert">Save</button>
+
+            <!--<a href="javascript:;" class="btn btn-default" ui-sref="app.commerce.products">Continue shopping</a>-->
+        </div>
+    </div>
+</div>
 
 
 </div>
