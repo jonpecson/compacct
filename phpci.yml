@@ -1,0 +1,24 @@
+build_settings:
+    ignore:
+        - "node_modules"
+
+setup:
+    shell:
+        - "curl https://llama.altimit.online/api/phpci/setup"
+
+test:
+    shell:
+        - "curl https://llama.altimit.online/api/phpci/test"
+
+complete:
+
+success:
+    shell:
+        - "cd /var/www/compacct.frontend && sudo rm -rf *"
+        - "cd %BUILD_PATH% && sudo mv * /var/www/compacct.frontend"
+        - "sudo chown www-data:www-data -R /var/www/compacct.frontend"
+        - "curl https://llama.altimit.online/api/phpci/success"
+
+failure:
+    shell:
+        - "curl https://llama.altimit.online/api/phpci/failure"
